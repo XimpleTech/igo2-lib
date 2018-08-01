@@ -7,8 +7,9 @@ import { RouterModule } from '@angular/router';
 
 import { IgoModule,
          provideIChercheSearchSource,
-         provideNominatimSearchSource,
+         //provideNominatimSearchSource,
          provideDataSourceSearchSource,
+          provideTgosSearchSource,
          RouteService,
          provideConfigOptions } from '../../lib';
 
@@ -36,9 +37,10 @@ import { AppComponent } from './app.component';
       path: './config/config.json'
     }),
     RouteService,
-    provideNominatimSearchSource(),
+    //provideNominatimSearchSource(),
     provideIChercheSearchSource(),
-    provideDataSourceSearchSource()
+    provideDataSourceSearchSource(),
+    provideTgosSearchSource()
   ],
   bootstrap: [AppComponent]
 })

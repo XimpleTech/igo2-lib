@@ -5,9 +5,21 @@ import { SearchSource } from './search-source';
 import { NominatimSearchSource } from './nominatim-search-source';
 import { IChercheSearchSource } from './icherche-search-source';
 import { DataSourceSearchSource } from './datasource-search-source';
+import {TgosSearchSource} from './togs-search-source';
 
 
 
+export function tgosSearchSourceFactory(http: HttpClient, config: ConfigService) {
+  return new TgosSearchSource(http, config);
+}
+export function provideTgosSearchSource() {
+  return {
+    provide: SearchSource,
+    useFactory: (tgosSearchSourceFactory),
+    multi: true,
+    deps: [HttpClient, ConfigService]
+  };
+}
 export function nominatimSearchSourcesFactory(http: HttpClient, config: ConfigService) {
   return new NominatimSearchSource(http, config);
 }
