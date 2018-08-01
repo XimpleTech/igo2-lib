@@ -1,5 +1,5 @@
 import { Directive, Self, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 
 import { MapService } from '../../map';
 import { TimeFilterListComponent } from './time-filter-list.component';

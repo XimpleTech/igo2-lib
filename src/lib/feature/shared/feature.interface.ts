@@ -23,5 +23,5 @@ export interface Feature {
 
 export interface FeatureGeometry {
   type: GeoJsonGeometryTypes;
-  coordinates: number[];
+  coordinates: [number, number];
 }

@@ -8,7 +8,9 @@ import {
   AfterViewInit
 } from '@angular/core';
 
-import { Subscription ,  Observable ,  forkJoin } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 
 import * as ol from 'openlayers';
 

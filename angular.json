@@ -4,8 +4,8 @@
   "newProjectRoot": "projects",
   "projects": {
     "lib": {
-      "root": "",
-      "sourceRoot": "src",
+      "root": "src",
+      "sourceRoot": "src/lib",
       "projectType": "application",
       "architect": {
         "build": {
@@ -20,7 +20,19 @@
             "styles": [],
             "scripts": []
           },
-          "configurations": {}
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -63,8 +75,8 @@
       }
     },
     "lib-e2e": {
-      "root": "",
-      "sourceRoot": "",
+      "root": "src/e2e",
+      "sourceRoot": "src/e2e",
       "projectType": "application",
       "architect": {
         "e2e": {
@@ -88,8 +100,8 @@
       }
     },
     "demo": {
-      "root": "",
-      "sourceRoot": "src",
+      "root": "src",
+      "sourceRoot": "src/demo-app",
       "projectType": "application",
       "architect": {
         "build": {
@@ -202,8 +214,8 @@
       }
     },
     "demo-e2e": {
-      "root": "",
-      "sourceRoot": "",
+      "root": "src/e2e",
+      "sourceRoot": "src/e2e",
       "projectType": "application",
       "architect": {
         "e2e": {

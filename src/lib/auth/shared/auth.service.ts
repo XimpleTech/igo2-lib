@@ -2,8 +2,9 @@ import { Injectable, Optional } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { tap } from 'rxjs/operators/tap';
 
 import { ConfigService } from '../../core';
 import { Base64 } from '../../utils';
@@ -65,14 +66,14 @@ export class AuthService {
 
   loginAnonymous() {
     this.anonymous = true;
-    return of(true);
+    return Observable.of(true);
   }
 
   logout() {
     this.anonymous = false;
     this.tokenService.remove();
     this.authenticate$.next(false);
-    return of(true);
+    return Observable.of(true);
   }
 
   isAuthenticated(): boolean {

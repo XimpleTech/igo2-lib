@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 import * as ol from 'openlayers';
 
@@ -8,7 +8,6 @@ import { ObjectUtils } from '../../utils';
 import { TimeFilterOptions } from '../../filter';
 
 import { WMTSDataSourceOptions, WMSDataSourceOptions } from './datasources';
-import {map} from 'rxjs/operators';
 
 
 @Injectable()
@@ -28,9 +27,9 @@ export class CapabilitiesService {
     const url = baseOptions.url;
     const version = (baseOptions.params as any).version;
 
-    return this.getCapabilities('wms', url, version).pipe(
-      map((capabilities: any) =>
-        this.parseWMSOptions(baseOptions, capabilities)));
+    return this.getCapabilities('wms', url, version)
+      .map((capabilities: any) =>
+        this.parseWMSOptions(baseOptions, capabilities));
   }
 
   getWMTSOptions(baseOptions: WMTSDataSourceOptions):
@@ -39,9 +38,9 @@ export class CapabilitiesService {
     const url = baseOptions.url;
     const version = baseOptions.version;
 
-    const options = this.getCapabilities('wmts', url, version).pipe(
-      map((capabilities: any) =>
-        this.parseWMTSOptions(baseOptions, capabilities)));
+    const options = this.getCapabilities('wmts', url, version)
+      .map((capabilities: any) =>
+        this.parseWMTSOptions(baseOptions, capabilities));
 
     return options;
   }
@@ -69,13 +68,13 @@ export class CapabilitiesService {
       responseType: 'text'
     });
 
-    return request.pipe(
-      map((res) => {
+    return request
+      .map((res) => {
         const capabilities = this.parsers[service].read(res);
         this.cache(url, capabilities);
 
         return capabilities;
-      }));
+      });
   }
 
   private parseWMSOptions(baseOptions: WMSDataSourceOptions,

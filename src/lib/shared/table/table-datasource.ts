@@ -1,10 +1,11 @@
 import { DataSource } from '@angular/cdk/table';
 import { MatSort } from '@angular/material';
 
-import { Observable ,  BehaviorSubject ,  merge } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { merge } from 'rxjs/observable/merge';
 
 import { TableDatabase, TableModel } from './index';
-import {map} from 'rxjs/operators';
 
 export class TableDataSource extends DataSource<any> {
 
@@ -27,12 +28,12 @@ export class TableDataSource extends DataSource<any> {
       this._sort.sortChange
     ];
 
-    return merge(...displayDataChanges).pipe(
-    map(() => {
+    return merge(...displayDataChanges)
+    .map(() => {
       return this.getFilteredData(this._database.data);
-    })).pipe(map((data) => {
+    }).map((data) => {
       return this.getSortedData(data);
-    }));
+    });
   }
 
   disconnect() {}

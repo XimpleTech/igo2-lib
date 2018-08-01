@@ -1,6 +1,6 @@
 import { Directive, Self, HostListener,
          OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 
 import { Tool, ToolService } from '../shared';
 import { ToolbarComponent } from './toolbar.component';

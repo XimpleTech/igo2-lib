@@ -1,5 +1,6 @@
-import { Subject ,  Subscription } from 'rxjs';
-import { distinctUntilChanged } from 'rxjs/operators';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
+import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 
 export enum SubjectStatus {
   Error = 0,

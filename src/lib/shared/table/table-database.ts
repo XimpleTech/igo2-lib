@@ -1,4 +1,4 @@
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 export class TableDatabase {
   /** Stream that emits whenever the data has been modified. */

@@ -17,7 +17,6 @@ import {
   OgcFiltersOptions
 } from '../../../filter/shared';
 import { WFSDataSourceService } from './wfs-datasource.service';
-import {map} from 'rxjs/operators';
 
 export class WMSDataSource extends DataSource
   implements
@@ -83,8 +82,8 @@ export class WMSDataSource extends DataSource
       ) {
         options['sourceFields'] = [];
         this.dataSourceService
-          .wfsGetCapabilities(options).pipe(
-          map(
+          .wfsGetCapabilities(options)
+          .map(
             wfsCapabilities =>
               (options.wfsSource['wfsCapabilities'] = {
                 xml: wfsCapabilities.body,
@@ -94,7 +93,7 @@ export class WMSDataSource extends DataSource
                   ? true
                   : false
               })
-          ))
+          )
           .subscribe(
             val =>
               (options[

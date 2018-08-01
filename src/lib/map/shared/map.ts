@@ -1,6 +1,8 @@
 import * as ol from 'openlayers';
 
-import { BehaviorSubject ,  Subject ,  Subscription } from 'rxjs';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 
 import { LayerWatcher } from '../utils';
 import { SubjectStatus } from '../../utils';
@@ -309,9 +311,11 @@ export class IgoMap {
 
   zoomToExtent(extent: ol.Extent) {
     const view = this.ol.getView();
-    view.fit(extent, {
-      maxZoom: 17
-    });
+    view.animate({
+      center: [extent[0], extent[1]],
+      duration: 600,
+      zoom : 15
+    })
   }
 
   zoomToFeature(feature: ol.Feature) {
