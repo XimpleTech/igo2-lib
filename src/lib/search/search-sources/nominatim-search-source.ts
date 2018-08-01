@@ -47,7 +47,7 @@ export class NominatimSearchSource extends SearchSource {
     const searchParams = this.getSearchParams(term);
 
     return this.http
-      .get(this.searchUrl, { params: searchParams }).pipe
+      .get(this.searchUrl, { params: searchParams }).pipe(
       map(res => this.extractData(res, SourceFeatureType.Search)));
   }
 
