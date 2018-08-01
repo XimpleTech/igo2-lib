@@ -7,6 +7,7 @@ import { Feature, FeatureType, SourceFeatureType } from '../../feature';
 
 import { SearchSource } from './search-source';
 import { SearchSourceOptions } from './search-source.interface';
+import { map } from 'rxjs/operators';
 
 
 @Injectable()
@@ -37,8 +38,8 @@ export class DataSourceSearchSource extends SearchSource {
     const searchParams = this.getSearchParams(term);
 
     return this.http
-      .get(this.searchUrl, { params: searchParams })
-      .map(res => this.extractData(res));
+      .get(this.searchUrl, { params: searchParams }).pipe(
+      map(res => this.extractData(res)));
   }
 
   locate(coordinate?: [number, number]): Observable<Feature[]>  {

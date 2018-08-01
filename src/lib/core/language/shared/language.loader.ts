@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
 import { combineLatest } from 'rxjs/operators/combineLatest';
 
 import { TranslateLoader } from '@ngx-translate/core';
 
 import { ConfigService } from '../../config';
+
+import { of } from 'rxjs/observable/of';
 
 declare function require(arg: string): any;
 
@@ -17,7 +18,7 @@ export class LanguageLoader implements TranslateLoader {
 
   public getTranslation(lang: string): any {
     const translation = require(`../../../../../src/locale/${lang}.json`);
-    const igoLocale$ = Observable.of(translation);
+    const igoLocale$ = of(translation);
 
     if (this.config && !this.prefix) {
       this.prefix = this.config.getConfig('language.prefix');

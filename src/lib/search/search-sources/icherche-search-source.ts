@@ -16,6 +16,8 @@ import {
 import { SearchSource } from './search-source';
 import { SearchSourceOptions } from './search-source.interface';
 
+import { map } from 'rxjs/operators';
+
 @Injectable()
 export class IChercheSearchSource extends SearchSource {
   get enabled(): boolean {
@@ -47,8 +49,8 @@ export class IChercheSearchSource extends SearchSource {
   search(term?: string): Observable<Feature[]> {
     const searchParams = this.getSearchParams(term);
     return this.http
-      .get(this.searchUrl, { params: searchParams })
-      .map(res => this.extractSearchData(res));
+      .get(this.searchUrl, { params: searchParams }).pipe(
+      map(res => this.extractSearchData(res)));
   }
 
   locate(
@@ -63,8 +65,8 @@ export class IChercheSearchSource extends SearchSource {
       coordinate[1] < 64
     ) {
       return this.http
-        .get(this.locateUrl, { params: locateParams })
-        .map(res => this.extractLocateData(res))
+        .get(this.locateUrl, { params: locateParams }).pipe(
+        map(res => this.extractLocateData(res)))
         .pipe(
           catchError(error => {
             error.error.toDisplay = true;

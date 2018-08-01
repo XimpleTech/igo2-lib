@@ -16,6 +16,8 @@ import { IgoModule,
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 
+import {TranslateService} from '@ngx-translate/core';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -44,4 +46,12 @@ import { AppComponent } from './app.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(translate: TranslateService) {
+    // this language will be used as a fallback when a translation isn't found in the current language
+    translate.setDefaultLang('zh_TW');
+
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+    translate.use('zh_TW');
+  }
+}

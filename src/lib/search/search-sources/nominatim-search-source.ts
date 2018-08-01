@@ -13,6 +13,8 @@ import {
 import { SearchSource } from './search-source';
 import { SearchSourceOptions } from './search-source.interface';
 
+import { map } from 'rxjs/operators';
+
 @Injectable()
 export class NominatimSearchSource extends SearchSource {
   get enabled(): boolean {
@@ -45,8 +47,8 @@ export class NominatimSearchSource extends SearchSource {
     const searchParams = this.getSearchParams(term);
 
     return this.http
-      .get(this.searchUrl, { params: searchParams })
-      .map(res => this.extractData(res, SourceFeatureType.Search));
+      .get(this.searchUrl, { params: searchParams }).pipe
+      map(res => this.extractData(res, SourceFeatureType.Search)));
   }
 
   locate(
@@ -55,8 +57,8 @@ export class NominatimSearchSource extends SearchSource {
   ): Observable<Feature[]> {
     const locateParams = this.getLocateParams(coordinate, zoom);
     return this.http
-      .get(this.locateUrl, { params: locateParams })
-      .map(res => this.extractData([res], SourceFeatureType.LocateXY));
+      .get(this.locateUrl, { params: locateParams }).pipe(
+      map(res => this.extractData([res], SourceFeatureType.LocateXY)));
   }
 
   private extractData(response, resultType): Feature[] {
