@@ -22,7 +22,7 @@ export class TgosSearchSource extends SearchSource {
     this.options.enabled = value;
   }
 
-  static _name: string = '台灣電力公司';
+  static _name: string = '地址定位 (內政部通用版電子地圖-TGOS)';
   static sortIndex: number = 10;
 
   private searchUrl: string = 'https://nominatim.openstreetmap.org/search';
