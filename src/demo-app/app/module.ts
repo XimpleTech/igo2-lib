@@ -2,8 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+// import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule, MatCardModule, MatIconModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+// import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+// import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 import { IgoModule,
          provideIChercheSearchSource,
@@ -15,6 +19,13 @@ import { IgoModule,
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 
+/*
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/locale/', '.json');
+}
+*/
+
 @NgModule({
   declarations: [
     AppComponent
@@ -22,6 +33,15 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot([]),
+    TranslateModule.forRoot(),
+    /*
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }), */
 
     FormsModule,
     HttpClientModule,

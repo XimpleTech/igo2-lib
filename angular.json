@@ -101,14 +101,10 @@
             "tsConfig": "src/demo-app/../tsconfig.demo.json",
             "polyfills": "src/demo-app/polyfills.ts",
             "assets": [
-              "src/demo-app/config",
-              "src/demo-app/assets",
-              "src/demo-app/contexts",
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets/igo2"
-              }
+              { "glob": "**/*", "input": "src/assets", "output": "/assets/igo2" },
+              { "glob": "**/*", "input": "src/demo-app/assets", "output": "/assets" },
+              { "glob": "**/*", "input": "src/demo-app/config", "output": "/config" },
+              { "glob": "**/*", "input": "src/demo-app/contexts", "output": "/contexts" }
             ],
             "styles": [
               "node_modules/openlayers/dist/ol.css",
@@ -175,14 +171,10 @@
               "src/demo-app/style/main.styl"
             ],
             "assets": [
-              "src/demo-app/config",
-              "src/demo-app/assets",
-              "src/demo-app/contexts",
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets/igo2"
-              }
+              { "glob": "**/*", "input": "src/demo-app/config", "output": "/config" },
+              { "glob": "**/*", "input": "src/demo-app/assets", "output": "/assets" },
+              { "glob": "**/*", "input": "src/demo-app/contexts", "output": "/contexts" },
+              { "glob": "**/*", "input": "src/assets", "output": "/assets/igo2" }
             ]
           }
         },
