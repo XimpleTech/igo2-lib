@@ -12,6 +12,7 @@ import {
 
 import { SearchSource } from './search-source';
 import { SearchSourceOptions } from './search-source.interface';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class TgosSearchSource extends SearchSource {
@@ -49,7 +50,7 @@ export class TgosSearchSource extends SearchSource {
   }
 
   search(term?: string): Observable<Feature[]> {
-    return this.getTogsResult(term).map(res => this.extractData2(res, SourceFeatureType.Search));
+    return this.getTogsResult(term).pipe(map(res => this.extractData2(res, SourceFeatureType.Search)));
   }
 
   locate(
@@ -59,7 +60,7 @@ export class TgosSearchSource extends SearchSource {
     const locateParams = this.getLocateParams(coordinate, zoom);
     return this.http
       .get(this.locateUrl, { params: locateParams })
-      .map(res => this.extractData([res], SourceFeatureType.LocateXY));
+      .pipe(map(res => this.extractData([res], SourceFeatureType.LocateXY)));
   }
 
   private extractData(response, resultType): Feature[] {
@@ -94,9 +95,9 @@ export class TgosSearchSource extends SearchSource {
     const togsUrl: string = this.serviceUrl + term + this.serviceUrl2;
 
     return this.http.get(togsUrl, { responseType: 'text' })
-      .map(res => res.substring(res.indexOf('{'), res.lastIndexOf('}') + 1))
-      .map(text => JSON.parse(text))
-      .map(resJson => resJson.AddressList);
+      .pipe(map(res => res.substring(res.indexOf('{'), res.lastIndexOf('}') + 1)))
+      .pipe(map(text => JSON.parse(text)))
+      .pipe(map(resJson => resJson.AddressList));
   }
   private formatResult(result: any, resultType): Feature {
     return {

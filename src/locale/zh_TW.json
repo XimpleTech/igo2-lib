@@ -141,23 +141,23 @@
 			"write": "讀取與寫入"
 		},
 		"poiButton": {
-			"create": "Create a new zone of interest",
+			"create": "建立新的喜好區域",
 			"dialog": {
-				"confirmDelete": "Are you sure you want to delete this zone of interest?",
-				"createMsg": "The zone of interest '{{value}}' was created",
-				"createTitle": "Zone of interest created",
-				"deleteMsg": "The zone of interest '{{value}}' was deleted",
-				"deleteTitle": "Zone of interest deleted",
-				"placeholder": "Title",
-				"title": "New zone of interest"
+				"confirmDelete": "您確定想刪處這個喜好區域?",
+				"createMsg": "喜好區域 '{{value}}' 已經建立",
+				"createTitle": "喜好區域已建立",
+				"deleteMsg": "喜好區域 '{{value}}' 已經刪除",
+				"deleteTitle": "喜好區域已刪除",
+				"placeholder": "標題",
+				"title": "新增喜好區域"
 			},
-			"placeholder": "Zones of interest"
+			"placeholder": "喜好區域"
 		},
 		"print": "列印",
 		"printForm": {
 			"format": "格式",
-			"landscape": "Landscape",
-			"portrait": "Portrait",
+			"landscape": "橫向方式",
+			"portrait": "直列方式",
 			"printBtn": "列印",
 			"resolution": "解析度",
 			"title": "標題"
@@ -166,10 +166,10 @@
 			"dataSources": {
 				"name": "圖層",
 				"properties": {
-					"abstract": "Abstract",
-					"group": "Group",
-					"title": "Title",
-					"type": "Type",
+					"abstract": "摘要",
+					"group": "群組",
+					"title": "標題",
+					"type": "種類",
 					"url": "URL"
 				}
 			}
@@ -177,9 +177,9 @@
 		"searchResults": "搜尋結果",
 		"shareMap": {
 			"button": "分享地圖",
-			"copy": "Copy to clipboard",
+			"copy": "複製到剪貼簿",
 			"dialog": {
-				"copyMsg": "Link copied to clipboard",
+				"copyMsg": "連結到剪貼簿",
 				"copyTitle": "連結"
 			},
 			"placeholderLink": "連結",
@@ -189,7 +189,7 @@
 			"selectField": "選擇一個欄位"
 		},
 		"spatialSelector": {
-			"btnSetExtent": "Define the extent of the spatial filter to the current view"
+			"btnSetExtent": "定義空間過濾的範圍至目前的視景中"
 		},
 		"table": {
 			"filter": "過濾條件"
@@ -212,7 +212,7 @@
 		"userButton": {
 			"dialog": {
 				"email": "電子郵件",
-				"expiration": "Expiration",
+				"expiration": "已逾期",
 				"user": "使用者"
 			},
 			"infoTitle": "使用者資訊",
