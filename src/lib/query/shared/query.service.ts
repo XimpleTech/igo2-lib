@@ -12,6 +12,7 @@ import { Layer } from '../../layer';
 
 import { QueryFormat } from './query.enum';
 import { QueryOptions } from './query.interface';
+import { map } from 'rxjs/operators';
 
 
 @Injectable()
@@ -35,7 +36,7 @@ export class QueryService {
 
     this.featureService.clear();
 
-    return request.map(res => this.extractData(res, dataSource, options, url, zIndex));
+    return request.pipe(map(res => this.extractData(res, dataSource, options, url, zIndex)));
   }
 
   private extractData(res, dataSource: DataSource, options: QueryOptions,

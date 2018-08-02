@@ -11,6 +11,7 @@ import { Base64 } from '../../utils';
 
 import { AuthOptions, User } from './auth.interface';
 import { TokenService } from './token.service';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class AuthService {
@@ -66,14 +67,14 @@ export class AuthService {
 
   loginAnonymous() {
     this.anonymous = true;
-    return Observable.of(true);
+    return of(true);
   }
 
   logout() {
     this.anonymous = false;
     this.tokenService.remove();
     this.authenticate$.next(false);
-    return Observable.of(true);
+    return of(true);
   }
 
   isAuthenticated(): boolean {

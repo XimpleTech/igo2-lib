@@ -22,9 +22,6 @@
 		"catalogTool": {
 			"baseLayers": "Base Layers"
 		},
-		"clickOnMap": {
-			"clickedFeature": "Clicked Feature"
-		},		
 		"confirmDialog": {
 			"cancelBtn": "Cancel",
 			"confirmBtn": "Confirm",
@@ -45,12 +42,6 @@
 				"saveTitle": "Context saved"
 			},
 			"edit": "Edit this context",
-			"errors": {
-	      "uncaught": {
-	        "message": "Sorry, service is currently not available. Please try again later",
-	        "title": "Error server"
-	      }
-	    },
 			"favorite": "Favorite",
 			"form": {
 				"edit": "Edit",
@@ -71,6 +62,9 @@
 			"sharedContexts": "Shared contexts"
 		},
 		"contexts": "Contexts",
+		"download": {
+			"action": "Download data"
+		},
 		"dropGeoFile": {
 			"invalid": {
 				"text": "Invalid file ({{i}}/{{count}})",
@@ -85,6 +79,12 @@
 				"title": "The file '{{value}}' is unreadable"
 			}
 		},
+		"filter": {
+			"addFilter": "Add an empty filter to the current list",
+			"refreshFilters": "Update this datasource with the active filter(s). To enable this button, the layer must be visible (or in the defined scale ranges) or you must modify the current filter.",
+			"removeFilter": "Remove the current filter from the filters's list",
+			"toggleFilterState": "Enable/disable the current filter"
+		},
 		"importExport": "Import & export",
 		"importExportForm": {
 			"exportButton": "Export",
@@ -95,46 +95,10 @@
 			"importProjPlaceholder": "Source projection (EPSG:4326)",
 			"importTabTitle": "Import"
 		},
-		"operators": {
-		  "And": "And",
-		  "Or": "Or",
-		  "PropertyIsEqualTo": "=",
-		  "PropertyIsNotEqualTo": "!=",
-		  "PropertyIsLike": "≈",
-		  "PropertyIsGreaterThan": ">",
-		  "PropertyIsGreaterThanOrEqualTo": ">=",
-		  "PropertyIsLessThan": "<",
-		  "PropertyIsLessThanOrEqualTo": "<=",
-		  "PropertyIsBetween": "between",
-		  "During": "during",
-		  "PropertyIsNull": "is null",
-		  "Intersects": "intersects",
-		  "Within": "within",
-		  "Contains": "contains"
-		},
-		"sourceFields": {
-		  "selectField": "Choose a field"
-		},
-		"ogcFilter": "Filter by",
-		"filter": {
-		  "addFilter": "Add an empty filter to the current list",
-		  "removeFilter": "Remove the current filter from the filters's list",
-		  "toggleFilterState": "Enable/disable the current filter",
-		  "refreshFilters": "Update this datasource with the active filter(s). To enable this button, the layer must be visible (or in the defined scale ranges) or you must modify the current filter.",
-		  "layerFiltered": "This layer is currently filtered",
-		  "layerFilterable": "This layer is filterable"
-		},
-		"spatialSelector": {
-		  "fixedExtent": "Fixed extent",
-		  "btnSetExtent": "Define the extent of the spatial filter to the current view",
-		  "snrc": "SNRC (ex:21L14)",
-		  "selectFeature": "",
-		  "drawFeature": ""
-		},
 		"layer": {
 			"hideLayer": "Hide Layer",
-			"lowerLayer": "Bring layer backward",
 			"loadingLegendText": "Loading legend",
+			"lowerLayer": "Bring layer backward",
 			"noLegendText": "No legend available for this layer",
 			"opacity": "Opacity",
 			"raiseLayer": "Bring layer forward",
@@ -143,19 +107,18 @@
 			"showLayer": "Show Layer",
 			"showMetadata": "Show metadata"
 		},
-		"download":{
-			"action": "Download data",
-			"title": "Downloading file",
-			"start": "Started. Check the download progression in your browser",
-			"end": "Completed"
-		},
 		"map": "Map",
 		"mapButtons": {
 			"baselayerSwitcher": "Change base layer",
-      "geolocate": "Geolocate",
-      "zoomIn": "Zoom in",
-      "zoomOut": "Zoom out"
-    },
+			"geolocate": "Geolocate",
+			"zoomIn": "Zoom in",
+			"zoomOut": "Zoom out"
+		},
+		"ogcFilter": "Filter by",
+		"operators": {
+			"And": "And",
+			"Or": "Or"
+		},
 		"permission": {
 			"addBtn": "Add",
 			"delete": "Remove permission",
@@ -221,6 +184,12 @@
 			},
 			"placeholderLink": "Link",
 			"share": "Share"
+		},
+		"sourceFields": {
+			"selectField": "Choose a field"
+		},
+		"spatialSelector": {
+			"btnSetExtent": "Define the extent of the spatial filter to the current view"
 		},
 		"table": {
 			"filter": "Filter"

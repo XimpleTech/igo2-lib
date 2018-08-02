@@ -22,9 +22,6 @@
 		"catalogTool": {
 			"baseLayers": "Fonds de carte"
 		},
-		"clickOnMap": {
-			"clickedFeature": "Entités cliquées"
-		},
 		"confirmDialog": {
 			"cancelBtn": "Annuler",
 			"confirmBtn": "Confirmer",
@@ -65,6 +62,9 @@
 			"sharedContexts": "Contextes partagés"
 		},
 		"contexts": "Contextes",
+		"download": {
+			"action": "Télécharger les données associées"
+		},
 		"dropGeoFile": {
 			"invalid": {
 				"text": "Le fichier '{{value}}' est invalide",
@@ -79,12 +79,12 @@
 				"title": "Fichier illisible"
 			}
 		},
-    "errors": {
-      "uncaught": {
-        "message": "Désolé! Le service que vous voulez utiliser n’est malheureusement pas disponible pour le moment. Essayez plus tard!",
-        "title": "Erreur serveur"
-      }
-    },
+		"filter": {
+			"addFilter": "Ajouter un filtre vidre à la liste courante",
+			"refreshFilters": "Mettre à jour la source de donnée avec les filtres actifs de la liste. Pour activer ce boutton, la couche doit être visible (et dans les échelles permises) ou veuillez modifier le présent filtre.",
+			"removeFilter": "Supprimer le présent filtre à la liste des filtres",
+			"toggleFilterState": "Activer/désactiver le présent filtre"
+		},
 		"importExport": "Importation et exportation",
 		"importExportForm": {
 			"exportButton": "Exporter",
@@ -95,46 +95,10 @@
 			"importProjPlaceholder": "Projection de l'intrant (EPSG:4326)",
 			"importTabTitle": "Importer"
 		},
-		"operators": {
-		  "And": "Et",
-		  "Or": "Ou",
-		  "PropertyIsEqualTo": "=",
-		  "PropertyIsNotEqualTo": "!=",
-		  "PropertyIsLike": "≈",
-		  "PropertyIsGreaterThan": ">",
-		  "PropertyIsGreaterThanOrEqualTo": ">=",
-		  "PropertyIsLessThan": "<",
-		  "PropertyIsLessThanOrEqualTo": "<=",
-		  "PropertyIsBetween": "entre",
-		  "During": "durant",
-		  "PropertyIsNull": "est nul",
-		  "Intersects": "intersecte",
-		  "Within": "contenu dans",
-		  "Contains": "contient"
-		},
-		"sourceFields": {
-		  "selectField": "Choisir un champ"
-		},
-		"ogcFilter": "Filtrer par",
-		"filter": {
-		  "addFilter": "Ajouter un filtre vidre à la liste courante",
-		  "removeFilter": "Supprimer le présent filtre à la liste des filtres",
-		  "toggleFilterState": "Activer/désactiver le présent filtre",
-		  "refreshFilters": "Mettre à jour la source de donnée avec les filtres actifs de la liste. Pour activer ce boutton, la couche doit être visible (et dans les échelles permises) ou veuillez modifier le présent filtre.",
-		  "layerFiltered": "Cette couche d'information est présentement filtrée.",
-		  "layerFilterable": "Cette couche d'information est filtrable"
-		},	
-		"spatialSelector": {
-		  "fixedExtent": "Étendue fixe",
-		  "btnSetExtent": "Définir l'étendue du filtre selon l'étendue courante de la carte",
-		  "snrc": "SNRC (ex:21L14)",
-		  "selectFeature": "",
-		  "drawFeature": ""
-		},
 		"layer": {
 			"hideLayer": "Masquer la couche",
-			"lowerLayer": "Descendre la couche",
 			"loadingLegendText": "Chargement de la légende",
+			"lowerLayer": "Descendre la couche",
 			"noLegendText": "Aucune légende disponible pour cette couche",
 			"opacity": "Opacité",
 			"raiseLayer": "Monter la couche",
@@ -143,19 +107,18 @@
 			"showLayer": "Afficher la couche",
 			"showMetadata": "Montrer les métadonnées"
 		},
-		"download":{
-			"action": "Télécharger les données associées",
-			"title": "Téléchargement des données",
-			"start": "Vérifiez la progression du téléchargement dans votre navigateur",
-			"end": "Terminé"
-		},
 		"map": "Carte",
-    "mapButtons": {
+		"mapButtons": {
 			"baselayerSwitcher": "Changer le fond de carte",
-      "geolocate": "Positionnement GPS",
-      "zoomIn": "Zoomer ({{zoom}})",
-      "zoomOut": "Dézoomer ({{zoom}})"
-    },
+			"geolocate": "Positionnement GPS",
+			"zoomIn": "Zoomer ({{zoom}})",
+			"zoomOut": "Dézoomer ({{zoom}})"
+		},
+		"ogcFilter": "Filtrer par",
+		"operators": {
+			"And": "Et",
+			"Or": "Ou"
+		},
 		"permission": {
 			"addBtn": "Ajouter",
 			"delete": "Retirer la permission",
@@ -221,6 +184,12 @@
 			},
 			"placeholderLink": "Lien",
 			"share": "Partager"
+		},
+		"sourceFields": {
+			"selectField": "Choisir un champ"
+		},
+		"spatialSelector": {
+			"btnSetExtent": "Définir l'étendue du filtre selon l'étendue courante de la carte"
 		},
 		"table": {
 			"filter": "Filtre"
