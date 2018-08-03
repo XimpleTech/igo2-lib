@@ -5,11 +5,13 @@ export interface SearchSourceOptions {
   enabled?: boolean;
   type?: string;
   distance?: number;
+  appid?: string;
+  appkey?: string;
 }
 
 export interface SearchSourcesOptions {
   icherche?: SearchSourceOptions;
   nominatim?: SearchSourceOptions;
-  datasource?: SearchSourceOptions;
   tgos?: SearchSourceOptions;
+  datasource?: SearchSourceOptions;
 }

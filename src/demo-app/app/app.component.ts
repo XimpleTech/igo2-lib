@@ -21,7 +21,8 @@ export class AppComponent implements OnInit {
     controls: {
       attribution: {
         collapsed: true
-      }
+      },
+      scaleLine: true
     }
   });
   public searchTerm: string;

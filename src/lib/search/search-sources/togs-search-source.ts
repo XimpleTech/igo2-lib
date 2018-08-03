@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 
-import { ConfigService } from '../../core';
+import {ConfigService} from '../../core';
 import {
   Feature,
   FeatureType,
@@ -10,31 +10,34 @@ import {
   SourceFeatureType
 } from '../../feature';
 
-import { SearchSource } from './search-source';
-import { SearchSourceOptions } from './search-source.interface';
-import { map } from 'rxjs/operators';
+import {SearchSource} from './search-source';
+import {SearchSourceOptions} from './search-source.interface';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class TgosSearchSource extends SearchSource {
   get enabled(): boolean {
     return this.options.enabled !== false;
   }
+
   set enabled(value: boolean) {
     this.options.enabled = value;
   }
 
-  static _name: string = '地址定位 (內政部通用版電子地圖-TGOS)';
+  static _name: string = '地址定位 (全國門牌地址定位服務-TGOS)';
   static sortIndex: number = 10;
 
-  private searchUrl: string = 'https://nominatim.openstreetmap.org/search';
+  private searchUrl: string = 'http://addr.tgos.nat.gov.tw/addrws/v30/QueryAddr.asmx/QueryAddr?';
   private locateUrl: string = 'https://nominatim.openstreetmap.org/reverse';
+  private appId: string = '%2F9PZSOga%2FYetRdV5KHCY1XhIG5gGS%2FOsjGPC3ZrdnVsaAW9HlEeErw%3D%3D';
+  private appKey: string = 'cGEErDNy5yNr14zbsE%2F4GSfiGP5i3PuZwlsR5ASVWUusGuHdTAiJg5chYjOvjS3dT%2F%2BAxjWh4SAqLnjPk5CztZfjheHzw4PQT8kokv5IabMs%2BqhUkbRGw1%2Bnl6cKO4lA5QwYo9od0EewQSHTIL9HmjFXwLDQ1yp3nMYbvckV0zMDUW1jTm8pYyVc8IKMJOyAHd8ODeIwmuW9a%2BM6QAvhtkd7iPJdfgAqhCS5vrF3CoUadr7QgKluD2Z7pg5zxao%2BoL90prUmGE%2BzITCV8sYsykVoj73VBsi7p%2BVSZtkkochCFllth9jGSs032295yeqSewR%2BO0j%2FFbC3KFzp3aqsjoBGGjqtIoD1vDEStPXueTm7%2BP5cTERUZpH%2Bbu7gyLTX';
   private options: SearchSourceOptions;
   data: any;
-  serviceUrl: string = 'http://addr.tgos.nat.gov.tw/addrws/v30/QueryAddr.asmx/QueryAddr?_dc=1467083923420' +
+  private serviceUrl: string = 'http://addr.tgos.nat.gov.tw/addrws/v30/QueryAddr.asmx/QueryAddr?_dc=1467083923420' +
     '&oAPPId=%2F9PZSOga%2FYetRdV5KHCY1XhIG5gGS%2FOsjGPC3ZrdnVsaAW9HlEeErw%3D%3D' +
     '&oAPIKey=cGEErDNy5yNr14zbsE%2F4GSfiGP5i3PuZwlsR5ASVWUusGuHdTAiJg5chYjOvjS3dT%2F%2BAxjWh4SAqLnjPk5CztZfjheHzw4PQT8kokv5IabMs%2BqhUkbRGw1%2Bnl6cKO4lA5QwYo9od0EewQSHTIL9HmjFXwLDQ1yp3nMYbvckV0zMDUW1jTm8pYyVc8IKMJOyAHd8ODeIwmuW9a%2BM6QAvhtkd7iPJdfgAqhCS5vrF3CoUadr7QgKluD2Z7pg5zxao%2BoL90prUmGE%2BzITCV8sYsykVoj73VBsi7p%2BVSZtkkochCFllth9jGSs032295yeqSewR%2BO0j%2FFbC3KFzp3aqsjoBGGjqtIoD1vDEStPXueTm7%2BP5cTERUZpH%2Bbu7gyLTX' +
     '&oAddress=';
-  serviceUrl2: string = '&oSRS=EPSG%3A4326&oFuzzyType=2&oResultDataType=json&oFuzzyBuffer=0&oIsOnlyFullMatch=false&oIsLockCounty=false&oIsLockTown=false&oIsLockVillage=false&oIsLockRoadSection=false&oIsLockLane=false&oIsLockAlley=false&oIsLockArea=false&oIsSameNumber_SubNumber=false&oCanIgnoreVillage=false&oCanIgnoreNeighborhood=false&oReturnMaxCount=0'
+  private serviceUrl2: string = '&oSRS=EPSG%3A4326&oFuzzyType=2&oResultDataType=json&oFuzzyBuffer=0&oIsOnlyFullMatch=false&oIsLockCounty=false&oIsLockTown=false&oIsLockVillage=false&oIsLockRoadSection=false&oIsLockLane=false&oIsLockAlley=false&oIsLockArea=false&oIsSameNumber_SubNumber=false&oCanIgnoreVillage=false&oCanIgnoreNeighborhood=false&oReturnMaxCount=0'
 
 
   constructor(private http: HttpClient, private config: ConfigService) {
@@ -42,6 +45,8 @@ export class TgosSearchSource extends SearchSource {
 
     this.options = this.config.getConfig('searchSources.tgos') || {};
     this.searchUrl = this.options.url || this.searchUrl;
+    this.appId = this.options.appid || this.appId;
+    this.appKey = this.options.appkey || this.appKey;
     this.locateUrl = this.options.locateUrl || this.locateUrl;
   }
 
@@ -50,6 +55,17 @@ export class TgosSearchSource extends SearchSource {
   }
 
   search(term?: string): Observable<Feature[]> {
+    const searchParams = this.getSearchParams(term);
+
+    return this.http
+      .get(this.searchUrl, {params: searchParams, responseType: 'text'})
+      .pipe(map(res => res.substring(res.indexOf('{'), res.lastIndexOf('}') + 1)))
+      .pipe(map(text => JSON.parse(text)))
+      .pipe(map(resJson => resJson.AddressList))
+      .pipe(map(res => this.extractData2(res, SourceFeatureType.Search)));
+  }
+
+  oldsearch(term?: string): Observable<Feature[]> {
     return this.getTogsResult(term).pipe(map(res => this.extractData2(res, SourceFeatureType.Search)));
   }
 
@@ -59,7 +75,7 @@ export class TgosSearchSource extends SearchSource {
   ): Observable<Feature[]> {
     const locateParams = this.getLocateParams(coordinate, zoom);
     return this.http
-      .get(this.locateUrl, { params: locateParams })
+      .get(this.locateUrl, {params: locateParams})
       .pipe(map(res => this.extractData([res], SourceFeatureType.LocateXY)));
   }
 
@@ -69,6 +85,7 @@ export class TgosSearchSource extends SearchSource {
     }
     return response.map(this.formatResult, resultType);
   }
+
   private extractData2(response, resultType): Feature[] {
     if (response[0] && response[0].error) {
       return [];
@@ -91,14 +108,44 @@ export class TgosSearchSource extends SearchSource {
     });
   }
 
+  private getSearchParams(term: string): HttpParams {
+    const limit = this.options.limit === undefined ? 10 : this.options.limit;
+
+    return new HttpParams({
+      fromObject: {
+        _dt: 'null',
+        oAPPId: this.appId,
+        oAPIKey: this.appKey,
+        oAddress: term,
+        oSRS: 'EPSG3826',
+        oFuzzyType: '2',
+        oResultDataType: 'json',
+        oFuzzyBuffer: '0',
+        oIsOnlyFullMatch: 'false',
+        oIsLockCounty: 'false',
+        oIsLockTown: 'false',
+        oIsLockVillage: 'false',
+        oIsLockRoadSection: 'false',
+        oIsLockLane: 'false',
+        oIsLockAlley: 'false',
+        oIsLockArea: 'false',
+        oIsSameNumber_SubNumber: 'false',
+        oCanIgnoreVillage: 'false',
+        oCanIgnoreNeighborhood: 'false',
+        oReturnMaxCount: String(limit)
+      }
+    });
+  }
+
   private getTogsResult(term: string): Observable<any> {
     const togsUrl: string = this.serviceUrl + term + this.serviceUrl2;
 
-    return this.http.get(togsUrl, { responseType: 'text' })
+    return this.http.get(togsUrl, {responseType: 'text'})
       .pipe(map(res => res.substring(res.indexOf('{'), res.lastIndexOf('}') + 1)))
       .pipe(map(text => JSON.parse(text)))
       .pipe(map(resJson => resJson.AddressList));
   }
+
   private formatResult(result: any, resultType): Feature {
     return {
       id: result.place_id,
@@ -129,6 +176,7 @@ export class TgosSearchSource extends SearchSource {
       ]
     };
   }
+
   private formatResultForTGos(result: any, resultType): Feature {
     return {
       id: '179125824',
