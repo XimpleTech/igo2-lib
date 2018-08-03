@@ -55,3 +55,4 @@ Thumbs.db
 # Object file
 *.o
 /package-lock.json
+/yarn.lock
