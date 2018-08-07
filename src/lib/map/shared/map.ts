@@ -64,6 +64,11 @@ export class IgoMap {
           {} : this.options.controls.scaleLine) as ol.olx.control.ScaleLineOptions;
         controls.push(new ol.control.ScaleLine(scaleLineOpt));
       }
+      if (this.options.controls.overviewMap) {
+        const overviewMapOpt = (this.options.controls.overviewMap === true ?
+          {} : this.options.controls.overviewMap) as ol.olx.control.OverviewMapOptions;
+        controls.push(new ol.control.OverviewMap(overviewMapOpt));
+      }
     }
     let interactions = {};
     if (this.options.interactions === false) {

@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
       attribution: {
         collapsed: true
       },
-      scaleLine: true
+      scaleLine: true,
+      overviewMap: true
     }
   });
   public searchTerm: string;

@@ -28,16 +28,11 @@ export class TgosSearchSource extends SearchSource {
   static sortIndex: number = 10;
 
   private searchUrl: string = 'http://addr.tgos.nat.gov.tw/addrws/v30/QueryAddr.asmx/QueryAddr?';
-  private locateUrl: string = 'https://nominatim.openstreetmap.org/reverse';
-  private appId: string = '%2F9PZSOga%2FYetRdV5KHCY1XhIG5gGS%2FOsjGPC3ZrdnVsaAW9HlEeErw%3D%3D';
-  private appKey: string = 'cGEErDNy5yNr14zbsE%2F4GSfiGP5i3PuZwlsR5ASVWUusGuHdTAiJg5chYjOvjS3dT%2F%2BAxjWh4SAqLnjPk5CztZfjheHzw4PQT8kokv5IabMs%2BqhUkbRGw1%2Bnl6cKO4lA5QwYo9od0EewQSHTIL9HmjFXwLDQ1yp3nMYbvckV0zMDUW1jTm8pYyVc8IKMJOyAHd8ODeIwmuW9a%2BM6QAvhtkd7iPJdfgAqhCS5vrF3CoUadr7QgKluD2Z7pg5zxao%2BoL90prUmGE%2BzITCV8sYsykVoj73VBsi7p%2BVSZtkkochCFllth9jGSs032295yeqSewR%2BO0j%2FFbC3KFzp3aqsjoBGGjqtIoD1vDEStPXueTm7%2BP5cTERUZpH%2Bbu7gyLTX';
+  private locateUrl: string = '';
+  private appId: string = '/9PZSOga/YetRdV5KHCY1XhIG5gGS/OsjGPC3ZrdnVsaAW9HlEeErw==';
+  private appKey: string = 'cGEErDNy5yNr14zbsE/4GSfiGP5i3PuZwlsR5ASVWUusGuHdTAiJg5chYjOvjS3dT/+AxjWh4SAqLnjPk5CztZfjheHzw4PQT8kokv5IabMs+qhUkbRGw1+nl6cKO4lA5QwYo9od0EewQSHTIL9HmjFXwLDQ1yp3nMYbvckV0zMDUW1jTm8pYyVc8IKMJOyAHd8ODeIwmuW9a+M6QAvhtkd7iPJdfgAqhCS5vrF3CoUadr7QgKluD2Z7pg5zxao+oL90prUmGE+zITCV8sYsykVoj73VBsi7p+VSZtkkochCFllth9jGSs032295yeqSewR+O0j/FbC3KFzp3aqsjoBGGjqtIoD1vDEStPXueTm7+P5cTERUZpH+bu7gyLTX';
   private options: SearchSourceOptions;
   data: any;
-  private serviceUrl: string = 'http://addr.tgos.nat.gov.tw/addrws/v30/QueryAddr.asmx/QueryAddr?_dc=1467083923420' +
-    '&oAPPId=%2F9PZSOga%2FYetRdV5KHCY1XhIG5gGS%2FOsjGPC3ZrdnVsaAW9HlEeErw%3D%3D' +
-    '&oAPIKey=cGEErDNy5yNr14zbsE%2F4GSfiGP5i3PuZwlsR5ASVWUusGuHdTAiJg5chYjOvjS3dT%2F%2BAxjWh4SAqLnjPk5CztZfjheHzw4PQT8kokv5IabMs%2BqhUkbRGw1%2Bnl6cKO4lA5QwYo9od0EewQSHTIL9HmjFXwLDQ1yp3nMYbvckV0zMDUW1jTm8pYyVc8IKMJOyAHd8ODeIwmuW9a%2BM6QAvhtkd7iPJdfgAqhCS5vrF3CoUadr7QgKluD2Z7pg5zxao%2BoL90prUmGE%2BzITCV8sYsykVoj73VBsi7p%2BVSZtkkochCFllth9jGSs032295yeqSewR%2BO0j%2FFbC3KFzp3aqsjoBGGjqtIoD1vDEStPXueTm7%2BP5cTERUZpH%2Bbu7gyLTX' +
-    '&oAddress=';
-  private serviceUrl2: string = '&oSRS=EPSG%3A4326&oFuzzyType=2&oResultDataType=json&oFuzzyBuffer=0&oIsOnlyFullMatch=false&oIsLockCounty=false&oIsLockTown=false&oIsLockVillage=false&oIsLockRoadSection=false&oIsLockLane=false&oIsLockAlley=false&oIsLockArea=false&oIsSameNumber_SubNumber=false&oCanIgnoreVillage=false&oCanIgnoreNeighborhood=false&oReturnMaxCount=0'
 
 
   constructor(private http: HttpClient, private config: ConfigService) {
@@ -56,34 +51,21 @@ export class TgosSearchSource extends SearchSource {
 
   search(term?: string): Observable<Feature[]> {
     const searchParams = this.getSearchParams(term);
+    const url = this.searchUrl + '?_dt=null&oAPPId=' + encodeURIComponent(this.appId) + '&oAPIKey=' + encodeURIComponent(this.appKey);
 
     return this.http
-      .get(this.searchUrl, {params: searchParams, responseType: 'text'})
+      .get(url, {params: searchParams, responseType: 'text'})
       .pipe(map(res => res.substring(res.indexOf('{'), res.lastIndexOf('}') + 1)))
       .pipe(map(text => JSON.parse(text)))
       .pipe(map(resJson => resJson.AddressList))
       .pipe(map(res => this.extractData2(res, SourceFeatureType.Search)));
   }
 
-  oldsearch(term?: string): Observable<Feature[]> {
-    return this.getTogsResult(term).pipe(map(res => this.extractData2(res, SourceFeatureType.Search)));
-  }
-
   locate(
     coordinate: [number, number],
     zoom: number
   ): Observable<Feature[]> {
-    const locateParams = this.getLocateParams(coordinate, zoom);
-    return this.http
-      .get(this.locateUrl, {params: locateParams})
-      .pipe(map(res => this.extractData([res], SourceFeatureType.LocateXY)));
-  }
-
-  private extractData(response, resultType): Feature[] {
-    if (response[0] && response[0].error) {
-      return [];
-    }
-    return response.map(this.formatResult, resultType);
+      return null;
   }
 
   private extractData2(response, resultType): Feature[] {
@@ -93,31 +75,13 @@ export class TgosSearchSource extends SearchSource {
     return response.map(this.formatResultForTGos, resultType);
   }
 
-  private getLocateParams(
-    coordinate: [number, number],
-    zoom: number
-  ): HttpParams {
-    return new HttpParams({
-      fromObject: {
-        lat: String(coordinate[1]),
-        lon: String(coordinate[0]),
-        format: 'json',
-        zoom: String(zoom),
-        polygon_geojson: String(1)
-      }
-    });
-  }
-
   private getSearchParams(term: string): HttpParams {
     const limit = this.options.limit === undefined ? 10 : this.options.limit;
 
     return new HttpParams({
       fromObject: {
-        _dt: 'null',
-        oAPPId: this.appId,
-        oAPIKey: this.appKey,
         oAddress: term,
-        oSRS: 'EPSG3826',
+        oSRS: 'EPSG:3826',
         oFuzzyType: '2',
         oResultDataType: 'json',
         oFuzzyBuffer: '0',
@@ -135,46 +99,6 @@ export class TgosSearchSource extends SearchSource {
         oReturnMaxCount: String(limit)
       }
     });
-  }
-
-  private getTogsResult(term: string): Observable<any> {
-    const togsUrl: string = this.serviceUrl + term + this.serviceUrl2;
-
-    return this.http.get(togsUrl, {responseType: 'text'})
-      .pipe(map(res => res.substring(res.indexOf('{'), res.lastIndexOf('}') + 1)))
-      .pipe(map(text => JSON.parse(text)))
-      .pipe(map(resJson => resJson.AddressList));
-  }
-
-  private formatResult(result: any, resultType): Feature {
-    return {
-      id: result.place_id,
-      source: TgosSearchSource._name,
-      sourceType: resultType,
-      order: 0,
-      type: FeatureType.Feature,
-      format: FeatureFormat.GeoJSON,
-      title: result.display_name,
-      icon: 'place',
-      projection: 'EPSG:4326',
-      properties: {
-        name: result.display_name,
-        place_id: result.place_id,
-        osm_type: result.osm_type,
-        class: result.class,
-        type: result.type
-      },
-      geometry: {
-        type: 'Point',
-        coordinates: [parseFloat(result.lon), parseFloat(result.lat)]
-      },
-      extent: [
-        parseFloat(result.boundingbox[2]),
-        parseFloat(result.boundingbox[0]),
-        parseFloat(result.boundingbox[3]),
-        parseFloat(result.boundingbox[1])
-      ]
-    };
   }
 
   private formatResultForTGos(result: any, resultType): Feature {
