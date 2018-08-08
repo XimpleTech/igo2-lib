@@ -79,7 +79,8 @@
     "timeAnalysis",
     "ogcFilter",
     "contextManager",
-    "print"
+    "print",
+    "featureDetails"
   ],
   "tools": [
     {
@@ -103,6 +104,9 @@
     },
     {
       "name": "print"
+    },
+    {
+      "name": "featureDetails"
     }
   ]
 }

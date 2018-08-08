@@ -209,6 +209,7 @@
 				"deleteTitle": "工具已移除"
 			}
 		},
+    "featureDetails": "饋線詳細",
 		"userButton": {
 			"dialog": {
 				"email": "電子郵件",

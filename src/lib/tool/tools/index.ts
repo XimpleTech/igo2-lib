@@ -11,3 +11,4 @@ export * from './search-results-tool';
 export * from './share-map-tool';
 export * from './time-analysis-tool';
 export * from './ogc-filter-tool';
+export * from './feature-detail-tool'

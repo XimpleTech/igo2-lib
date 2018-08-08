@@ -29,6 +29,7 @@ import { ContextManagerToolComponent,
          PrintToolComponent,
          ShareMapToolComponent,
          TimeAnalysisToolComponent,
+         FeatureDetailToolComponent,
          OgcFilterToolComponent} from './tools';
 
 const IGO_TOOLS = [
@@ -44,7 +45,8 @@ const IGO_TOOLS = [
   PrintToolComponent,
   ShareMapToolComponent,
   TimeAnalysisToolComponent,
-  OgcFilterToolComponent
+  OgcFilterToolComponent,
+  FeatureDetailToolComponent
 ];
 
 @NgModule({

@@ -7,6 +7,7 @@ _('igo.map');
 _('igo.print');
 _('igo.searchResults');
 _('igo.timeAnalysis');
+_('igo.featureDetails');
 
 _('igo.bookmarkButton.dialog.createTitle');
 _('igo.bookmarkButton.dialog.createMsg');
