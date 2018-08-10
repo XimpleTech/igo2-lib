@@ -1,6 +1,6 @@
 {
   "name": "@ximple/igo2",
-  "version": "0.19.26",
+  "version": "0.19.30",
   "description": "IGO Library",
   "main": "bundle/igo.js",
   "typings": "dist/lib/index.d.ts",

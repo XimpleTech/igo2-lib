@@ -81,7 +81,7 @@ export class TgosSearchSource extends SearchSource {
     return new HttpParams({
       fromObject: {
         oAddress: term,
-        oSRS: 'EPSG:3826',
+        oSRS: 'EPSG:4326',
         oFuzzyType: '2',
         oResultDataType: 'json',
         oFuzzyBuffer: '0',
