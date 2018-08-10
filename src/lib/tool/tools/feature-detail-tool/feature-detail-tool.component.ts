@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {Register} from '../../shared';
+import {FeatureService} from '../../../feature/shared';
+
 
 
 @Register({
@@ -10,13 +12,10 @@ import {Register} from '../../shared';
 @Component({
   selector: 'igo-feature-detail-tool',
   templateUrl: './feature-detail-tool.component.html',
-  styleUrls: ['./feature-detail-tool.component.styl']
+  styleUrls: ['./feature-detail-tool.component.styl'],
 })
-export class FeatureDetailToolComponent implements OnInit {
+export class FeatureDetailToolComponent {
+  constructor(public featureService: FeatureService) { }
 
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
