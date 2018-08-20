@@ -4,8 +4,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import * as ol from 'openlayers';
 
-import { IgoMap, MapViewOptions } from '../../../map';
+import { MapViewOptions } from '../../../map';
 import { Layer } from '../../../layer';
+import {MapFactoryService} from '../../../map/shared/map-factory.service';
 
 
 @Component({
@@ -90,13 +91,13 @@ export class MapFieldComponent
   }
   private _layers: Layer[];
 
-  public map = new IgoMap();
+  public map = this.mapFactoryService.createIgoMap();
   public projection = 'EPSG:4326';
 
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  constructor() {}
+  constructor(private mapFactoryService: MapFactoryService) {}
 
   ngAfterViewInit() {
     this.map.ol.on('singleclick', this.handleMapClick, this);

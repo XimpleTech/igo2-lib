@@ -4,6 +4,7 @@ import { Component, Input,
 import { Layer } from '../../layer/shared';
 import { LayerService } from '../../layer/shared/layer.service';
 import { IgoMap } from '../shared';
+import {MapFactoryService} from '../shared/map-factory.service';
 
 @Component({
   selector: 'igo-mini-basemap',
@@ -43,12 +44,12 @@ export class MiniBaseMapComponent
   }
   private _display: boolean;
 
-  public basemap = new IgoMap({
+  public basemap = this.mapFactoryService.createIgoMap({
     controls: {},
     interactions: false
   });
 
-  constructor(private layerService: LayerService) {}
+  constructor(private layerService: LayerService, private mapFactoryService: MapFactoryService) {}
 
   ngAfterViewInit() {
     this.map.ol.on('moveend', this.handleMoveEnd, this);

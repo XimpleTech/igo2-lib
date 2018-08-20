@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { ContextService,
-         Feature, FeatureType, FeatureService, IgoMap,
+         Feature, FeatureType, FeatureService,
          LanguageService, LayerService, MapService, MessageService,
          OverlayService, ToolService, SourceFeatureType } from '../../lib';
 
 import { AnyDataSourceContext, DataSourceService } from '../../lib/datasource';
+import {MapFactoryService} from '../../lib/map/shared/map-factory.service';
 
 
 
@@ -17,7 +18,7 @@ import { AnyDataSourceContext, DataSourceService } from '../../lib/datasource';
 })
 export class AppComponent implements OnInit {
 
-  public map = new IgoMap({
+  public map = this.mapFactoryService.createIgoMap({
     controls: {
       attribution: {
         collapsed: true
@@ -42,7 +43,8 @@ export class AppComponent implements OnInit {
               public overlayService: OverlayService,
               public toolService: ToolService,
               public language: LanguageService,
-              private formBuilder: FormBuilder) {}
+              private formBuilder: FormBuilder,
+              private mapFactoryService: MapFactoryService) {}
 
   ngOnInit() {
     // If you do not want to load a context from a file,

@@ -10,6 +10,7 @@ import { BookmarkButtonComponent, BookmarkDialogComponent } from './bookmark-but
 import { PoiButtonComponent, PoiDialogComponent } from './poi-button';
 import { UserButtonComponent, UserDialogComponent } from './user-button';
 import { BaseLayersSwitcherComponent, MiniBaseMapComponent } from './baselayers-switcher';
+import {MapFactoryService} from './shared/map-factory.service';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ export class IgoMapModule {
     return {
       ngModule: IgoMapModule,
       providers: [
-        MapService
+        MapService,
+        MapFactoryService
       ]
     };
   }

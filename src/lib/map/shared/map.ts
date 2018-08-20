@@ -10,6 +10,11 @@ import { Layer, VectorLayer } from '../../layer/shared/layers';
 import { FeatureDataSource } from '../../datasource/shared/datasources/feature-datasource';
 
 import { MapViewOptions, MapOptions } from './map.interface';
+import {ConfigService} from '../../core/config';
+
+
+
+
 
 
 export class IgoMap {
@@ -30,6 +35,7 @@ export class IgoMap {
   private geolocation$$: Subscription;
   private geolocationFeature: ol.Feature;
 
+  private markImage: string = './assets/igo2/icons/place_blue_36px.svg';
   private options: MapOptions = {
     controls: {attribution: true},
     overlay: true
@@ -43,12 +49,13 @@ export class IgoMap {
     return this.ol.getView().getResolution();
   }
 
-  constructor(options?: MapOptions) {
+  constructor( options?: MapOptions, private config?: ConfigService) {
     Object.assign(this.options, options);
     this.layerWatcher = new LayerWatcher();
     this.status$ = this.layerWatcher.status$;
-
+    this.markImage = this.config.getConfig('icon.placeblue');
     this.init();
+
   }
 
   init() {
@@ -98,7 +105,7 @@ export class IgoMap {
     if (this.options.overlay) {
       this.overlayMarkerStyle = new ol.style.Style({
         image: new ol.style.Icon({
-          src: './assets/igo2/icons/place_blue_36px.svg',
+          src: this.markImage,
           imgSize: [36, 36], // for ie
           anchor: [0.5, 1]
         })
