@@ -6,7 +6,8 @@ import * as ol from 'openlayers';
 
 import { MapViewOptions } from '../../../map';
 import { Layer } from '../../../layer';
-import {MapFactoryService} from '../../../map/shared/map-factory.service';
+
+import {IgoMap} from '../../../map/shared/map';
 
 
 @Component({
@@ -91,13 +92,13 @@ export class MapFieldComponent
   }
   private _layers: Layer[];
 
-  public map = this.mapFactoryService.createIgoMap();
+  public map = new IgoMap();
   public projection = 'EPSG:4326';
 
   onChange: any = () => {};
   onTouched: any = () => {};
 
-  constructor(private mapFactoryService: MapFactoryService) {}
+  constructor() {}
 
   ngAfterViewInit() {
     this.map.ol.on('singleclick', this.handleMapClick, this);
