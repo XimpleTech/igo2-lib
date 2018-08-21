@@ -35,7 +35,7 @@ export class IgoMap {
   private geolocation$$: Subscription;
   private geolocationFeature: ol.Feature;
 
-  private markImage: string = './assets/igo2/icons/place_blue_36px.svg';
+  private markImage;
   private options: MapOptions = {
     controls: {attribution: true},
     overlay: true
