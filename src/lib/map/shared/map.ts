@@ -53,7 +53,9 @@ export class IgoMap {
     Object.assign(this.options, options);
     this.layerWatcher = new LayerWatcher();
     this.status$ = this.layerWatcher.status$;
-    this.markImage = this.config.getConfig('icon.placeblue');
+    if (this.config) {
+      this.markImage = this.config.getConfig('icon.placeblue') || {};
+    }
     this.init();
 
   }

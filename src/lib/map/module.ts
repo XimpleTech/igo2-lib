@@ -51,8 +51,8 @@ export class IgoMapModule {
     return {
       ngModule: IgoMapModule,
       providers: [
-        MapService,
-        MapFactoryService
+        MapFactoryService,
+        MapService
       ]
     };
   }

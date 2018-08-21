@@ -4,10 +4,12 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { ContextService,
          Feature, FeatureType, FeatureService,
          LanguageService, LayerService, MapService, MessageService,
-         OverlayService, ToolService, SourceFeatureType } from '../../lib';
+         OverlayService, ToolService, SourceFeatureType, MapFactoryService } from '../../lib';
 
 import { AnyDataSourceContext, DataSourceService } from '../../lib/datasource';
-import {MapFactoryService} from '../../lib/map/shared/map-factory.service';
+
+
+
 
 
 

@@ -3,8 +3,8 @@ import { Component, Input,
 
 import { Layer } from '../../layer/shared';
 import { LayerService } from '../../layer/shared/layer.service';
-import { IgoMap } from '../shared';
-import {MapFactoryService} from '../shared/map-factory.service';
+import {IgoMap, MapFactoryService} from '../shared';
+
 
 @Component({
   selector: 'igo-mini-basemap',
