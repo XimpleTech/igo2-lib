@@ -1,0 +1,44 @@
+<mat-card>
+  <mat-card-subtitle>Geo</mat-card-subtitle>
+  <mat-card-title>Catalog</mat-card-title>
+  <mat-card-content>
+    <li>Dependencies: ConfigService, LanguageService</li>
+
+    <br>
+    See the <a href="https://github.com/infra-geo-ouverte/igo2-lib/tree/master/demo/src/app/geo/catalog">code of this example</a><br>
+    See catalog section of the <a href="https://github.com/infra-geo-ouverte/igo2-lib/tree/master/demo/src/environments"> environment config</a>
+    <hr>
+  </mat-card-content>
+
+  <igo-map-browser [map]="map" [view]="view">
+    <igo-zoom-button [map]="map" color="primary"></igo-zoom-button>
+  </igo-map-browser>
+
+  <igo-panel title="Catalog">
+
+    <button *ngIf="catalogSelected"
+      mat-icon-button
+      panelLeftButton
+      (click)="unselectCatalog()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <igo-catalog-list igoCatalogListBinding
+      *ngIf="!catalogSelected"
+      (select)="selectCatalog($event)">
+    </igo-catalog-list>
+
+    <igo-catalog-layers-list igoCatalogLayersListBinding
+      *ngIf="catalogSelected">
+    </igo-catalog-layers-list>
+
+    <button
+      mat-icon-button
+      panelRightButton
+      matTooltip="Reset map"
+      (click)="resetMap()">
+      <mat-icon>settings_backup_restore</mat-icon>
+    </button>
+  </igo-panel>
+
+</mat-card>
