@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable ,  BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { CapabilitiesService } from './capabilities.service';
 
@@ -10,7 +11,7 @@ import { DataSource,
          WFSDataSource, WFSDataSourceContext, WFSDataSourceService,
          WMTSDataSource, WMTSDataSourceContext,
          WMSDataSource, WMSDataSourceContext } from './datasources';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 export type AnyDataSourceContext =
   OSMDataSourceContext | FeatureDataSourceContext | WFSDataSourceContext |

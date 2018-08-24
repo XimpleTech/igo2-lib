@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 
 import { DataSource } from '../../../datasource';
 import { IgoMap } from '../../../map';

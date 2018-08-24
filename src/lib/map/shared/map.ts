@@ -1,6 +1,8 @@
 import * as ol from 'openlayers';
 
-import { BehaviorSubject ,  Subject ,  Subscription } from 'rxjs';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 
 import { LayerWatcher } from '../utils';
 import { SubjectStatus } from '../../utils';
@@ -8,6 +10,11 @@ import { Layer, VectorLayer } from '../../layer/shared/layers';
 import { FeatureDataSource } from '../../datasource/shared/datasources/feature-datasource';
 
 import { MapViewOptions, MapOptions } from './map.interface';
+import {ConfigService} from '../../core/config';
+
+
+
+
 
 
 export class IgoMap {
@@ -28,6 +35,7 @@ export class IgoMap {
   private geolocation$$: Subscription;
   private geolocationFeature: ol.Feature;
 
+  private markImage: string = './assets/igo2/icons/place_blue_36px.svg';
   private options: MapOptions = {
     controls: {attribution: true},
     overlay: true
@@ -41,12 +49,15 @@ export class IgoMap {
     return this.ol.getView().getResolution();
   }
 
-  constructor(options?: MapOptions) {
+  constructor( options?: MapOptions, private config?: ConfigService) {
     Object.assign(this.options, options);
     this.layerWatcher = new LayerWatcher();
     this.status$ = this.layerWatcher.status$;
-
+    if (this.config) {
+      this.markImage = this.config.getConfig('icon.placeblue') || {};
+    }
     this.init();
+
   }
 
   init() {
@@ -61,6 +72,11 @@ export class IgoMap {
         const scaleLineOpt = (this.options.controls.scaleLine === true ?
           {} : this.options.controls.scaleLine) as ol.olx.control.ScaleLineOptions;
         controls.push(new ol.control.ScaleLine(scaleLineOpt));
+      }
+      if (this.options.controls.overviewMap) {
+        const overviewMapOpt = (this.options.controls.overviewMap === true ?
+          {} : this.options.controls.overviewMap) as ol.olx.control.OverviewMapOptions;
+        controls.push(new ol.control.OverviewMap(overviewMapOpt));
       }
     }
     let interactions = {};
@@ -91,7 +107,7 @@ export class IgoMap {
     if (this.options.overlay) {
       this.overlayMarkerStyle = new ol.style.Style({
         image: new ol.style.Icon({
-          src: './assets/igo2/icons/place_blue_36px.svg',
+          src: this.markImage,
           imgSize: [36, 36], // for ie
           anchor: [0.5, 1]
         })
@@ -309,9 +325,11 @@ export class IgoMap {
 
   zoomToExtent(extent: ol.Extent) {
     const view = this.ol.getView();
-    view.fit(extent, {
-      maxZoom: 17
-    });
+    view.animate({
+      center: [extent[0], extent[1]],
+      duration: 600,
+      zoom : 15
+    })
   }
 
   zoomToFeature(feature: ol.Feature) {

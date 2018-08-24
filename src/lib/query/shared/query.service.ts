@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 import * as ol from 'openlayers';
 
@@ -13,6 +12,7 @@ import { Layer } from '../../layer';
 
 import { QueryFormat } from './query.enum';
 import { QueryOptions } from './query.interface';
+import { map } from 'rxjs/operators';
 
 
 @Injectable()

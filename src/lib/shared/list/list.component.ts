@@ -1,7 +1,7 @@
 import { Component, AfterViewInit, OnInit, OnDestroy,
          QueryList, Input, ContentChildren, HostListener,
          ElementRef } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 
 import { ListItemDirective } from './list-item.directive';
 

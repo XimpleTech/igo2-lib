@@ -4,8 +4,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import * as ol from 'openlayers';
 
-import { IgoMap, MapViewOptions } from '../../../map';
+import { MapViewOptions } from '../../../map';
 import { Layer } from '../../../layer';
+
+import {IgoMap} from '../../../map/shared/map';
 
 
 @Component({

@@ -1,6 +1,6 @@
 import { Directive, Self, OnInit, OnDestroy,
          HostListener } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 
 import { Catalog, CatalogService } from '../shared';
 import { CatalogListComponent } from './catalog-list.component';

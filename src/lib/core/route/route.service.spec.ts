@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 
 import { RouteService } from '.';
-import {of} from 'rxjs';
+import { of } from 'rxjs/observable/of';
 
 describe('RouteService', () => {
   beforeEach(() => {

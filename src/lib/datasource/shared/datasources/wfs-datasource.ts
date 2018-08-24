@@ -11,7 +11,7 @@ import { DataSource } from './datasource';
 import { OgcFilterableDataSource } from './datasource.interface';
 import { WFSDataSourceOptions } from './wfs-datasource.interface';
 import { WFSDataSourceService } from './wfs-datasource.service';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 
 export class WFSDataSource extends DataSource implements OgcFilterableDataSource {

@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 import { ContextService,
-         Feature, FeatureType, FeatureService, IgoMap,
+         Feature, FeatureType, FeatureService,
          LanguageService, LayerService, MapService, MessageService,
-         OverlayService, ToolService, SourceFeatureType } from '../../lib';
+         OverlayService, ToolService, SourceFeatureType, MapFactoryService } from '../../lib';
 
 import { AnyDataSourceContext, DataSourceService } from '../../lib/datasource';
+
+
+
+
 
 
 @Component({
@@ -16,11 +20,13 @@ import { AnyDataSourceContext, DataSourceService } from '../../lib/datasource';
 })
 export class AppComponent implements OnInit {
 
-  public map = new IgoMap({
+  public map = this.mapFactoryService.createIgoMap({
     controls: {
       attribution: {
         collapsed: true
-      }
+      },
+      scaleLine: true,
+      overviewMap: true
     }
   });
   public searchTerm: string;
@@ -39,7 +45,8 @@ export class AppComponent implements OnInit {
               public overlayService: OverlayService,
               public toolService: ToolService,
               public language: LanguageService,
-              private formBuilder: FormBuilder) {}
+              private formBuilder: FormBuilder,
+              private mapFactoryService: MapFactoryService) {}
 
   ngOnInit() {
     // If you do not want to load a context from a file,
@@ -72,7 +79,6 @@ export class AppComponent implements OnInit {
       this.overlayService.setFeatures([feature], 'zoom');
     } else if (feature.type === FeatureType.DataSource) {
       const map = this.mapService.getMap();
-
       if (map !== undefined) {
         this.dataSourceService
           .createAsyncDataSource(feature.layer as AnyDataSourceContext)

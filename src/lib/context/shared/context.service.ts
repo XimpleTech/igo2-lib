@@ -1,8 +1,12 @@
 import { Injectable, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { BehaviorSubject ,  Observable } from 'rxjs';
-import { map ,  tap ,  catchError ,  debounceTime } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators/map';
+import { tap } from 'rxjs/operators/tap';
+import { catchError } from 'rxjs/operators/catchError';
+import { debounceTime } from 'rxjs/operators/debounceTime';
 
 import * as ol from 'openlayers';
 

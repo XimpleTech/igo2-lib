@@ -1,6 +1,6 @@
 import { Component, Input,
   AfterViewInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 
 import { MediaService } from '../../core';
 import { Layer } from '../../layer';

@@ -1,2 +1,10 @@
 {
+  "searchSources": {
+    "tgos": {
+      "url": "https://addr.tgos.tw/addrws/v30/QueryAddr.asmx/QueryAddr?"
+    }
+  },
+  "icon":{
+    "placeblue":"./geohc/assets/igo2/icons/place_blue_36px.svg"
+  }
 }

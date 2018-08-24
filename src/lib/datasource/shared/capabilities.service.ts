@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 import * as ol from 'openlayers';
 
@@ -8,7 +8,7 @@ import { ObjectUtils } from '../../utils';
 import { TimeFilterOptions } from '../../filter';
 
 import { WMTSDataSourceOptions, WMSDataSourceOptions } from './datasources';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 
 @Injectable()
@@ -40,7 +40,7 @@ export class CapabilitiesService {
     const version = baseOptions.version;
 
     const options = this.getCapabilities('wmts', url, version).pipe(
-      map((capabilities: any) =>
+        map((capabilities: any) =>
         this.parseWMTSOptions(baseOptions, capabilities)));
 
     return options;

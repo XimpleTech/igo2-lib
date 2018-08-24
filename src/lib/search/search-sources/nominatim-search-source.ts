@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 import { ConfigService } from '../../core';
 import {
@@ -12,7 +12,8 @@ import {
 
 import { SearchSource } from './search-source';
 import { SearchSourceOptions } from './search-source.interface';
-import {map} from 'rxjs/operators';
+
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class NominatimSearchSource extends SearchSource {

@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 
-import { of } from 'rxjs';
-import { combineLatest } from 'rxjs/operators';
+import { combineLatest } from 'rxjs/operators/combineLatest';
 
 import { TranslateLoader } from '@ngx-translate/core';
 
 import { ConfigService } from '../../config';
+
+import { of } from 'rxjs/observable/of';
 
 declare function require(arg: string): any;
 

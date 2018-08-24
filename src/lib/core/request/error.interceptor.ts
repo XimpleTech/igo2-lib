@@ -3,12 +3,13 @@ import {
   HttpInterceptor,
   HttpHandler,
   HttpRequest,
-  // HttpEvent,
+  HttpEvent,
   HttpErrorResponse
 } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
-import { catchError ,  finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import { catchError } from 'rxjs/operators/catchError';
+import { finalize } from 'rxjs/operators/finalize';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
 import { MessageService } from '../message';
@@ -26,11 +27,11 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
-  ): Observable<any> {
+  ): Observable<HttpEvent<any>> {
     return next
       .handle(req)
       .pipe(
-        catchError((error) => this.handleError(error, req)),
+        catchError(error => this.handleError(error, req)),
         finalize(() => this.handleCaughtError()),
         finalize(() => this.handleUncaughtError())
       );
@@ -57,7 +58,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       });
     }
 
-    return new ErrorObservable(this.httpError.error);
+    return new ErrorObservable(this.httpError);
   }
 
   private handleCaughtError() {

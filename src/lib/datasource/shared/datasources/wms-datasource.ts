@@ -17,7 +17,7 @@ import {
   OgcFiltersOptions
 } from '../../../filter/shared';
 import { WFSDataSourceService } from './wfs-datasource.service';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 export class WMSDataSource extends DataSource
   implements

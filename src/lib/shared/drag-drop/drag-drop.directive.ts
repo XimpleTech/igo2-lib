@@ -7,9 +7,6 @@ import {
   selector: '[igoDragAndDrop]'
 })
 export class DragAndDropDirective {
-  get background(): string {
-    return this._background;
-  }
   @Input()
   get allowed_extensions() { return this._allowed_extensions; }
   set allowed_extensions(value: Array<string>) {
@@ -19,26 +16,26 @@ export class DragAndDropDirective {
 
   @Output() protected filesDropped: EventEmitter<File[]> = new EventEmitter();
   @Output() protected filesInvalid: EventEmitter<File[]> = new EventEmitter();
-  @HostBinding('style.background') private _background = 'inherit';
+  @HostBinding('style.background') private background = 'inherit';
 
   constructor() { }
 
   @HostListener('dragover', ['$event']) public onDragOver(evt) {
     evt.preventDefault();
     evt.stopPropagation();
-    this._background = '#999';
+    this.background = '#999';
   }
 
   @HostListener('dragleave', ['$event']) public onDragLeave(evt) {
     evt.preventDefault();
     evt.stopPropagation();
-    this._background = 'inherit';
+    this.background = 'inherit';
   }
 
   @HostListener('drop', ['$event']) public onDrop(evt) {
     evt.preventDefault();
     evt.stopPropagation();
-    this._background = 'inherit';
+    this.background = 'inherit';
     const filesObj = this.validExtensions(evt);
     if (filesObj.valid.length) {
       this.filesDropped.emit(filesObj.valid);

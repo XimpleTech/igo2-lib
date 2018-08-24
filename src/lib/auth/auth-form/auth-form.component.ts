@@ -12,9 +12,6 @@ import { AuthService, AuthOptions } from '../shared';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class AuthFormComponent implements OnInit {
-  get user() {
-    return this._user;
-  }
 
   @Input()
   get alreadyConnectedDiv(): boolean {
@@ -35,7 +32,7 @@ export class AuthFormComponent implements OnInit {
   private _backgroundDisable: boolean = true;
 
   private options: AuthOptions;
-  private _user;
+  private user;
 
   public visible: boolean = true;
 
@@ -48,7 +45,7 @@ export class AuthFormComponent implements OnInit {
     this.visible = Object.getOwnPropertyNames(this.options).length !== 0;
 
     if (this.auth.decodeToken()) {
-        this._user = {
+        this.user = {
           name: this.auth.decodeToken().user.sourceId
         };
     }

@@ -1,6 +1,6 @@
 {
   "name": "@ximple/igo2",
-  "version": "0.19.10-1",
+  "version": "0.19.41",
   "description": "IGO Library",
   "main": "bundle/igo.js",
   "typings": "dist/lib/index.d.ts",
@@ -13,12 +13,12 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/XimpleTech/igo2-lib.git/issues"
+    "url": "https://github.com/XimpleTech/igo2-lib/issues"
   },
-  "homepage": "https://github.com/XimpleTech/igo2-lib.git#readme",
+  "homepage": "https://github.com/XimpleTech/igo2-lib#readme",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --project demo --proxy-config proxy.conf.json",
+    "start": "ng serve --app demo --proxy-config proxy.conf.json",
     "start.lib": "ng serve --proxy-config proxy.conf.json",
     "build.lib": "npm run clean && gulp && ngc -p ./src/tsconfig.lib.json && npm run build.lib.bundle",
     "build.lib.bundle": "webpack --config webpack.conf.js  --bail --display-modules",
@@ -59,8 +59,8 @@
     "jwt-decode": "^2.2.0",
     "ol": "^4.6.5",
     "openlayers": "^4.6.5",
-    "rxjs": "^6.2.2",
-    "rxjs-compat": "^6.2.2",
+    "proj4": "^2.4.4",
+    "rxjs": "^5.5.11",
     "ts-md5": "^1.2.4",
     "zone.js": "^0.8.26"
   },
@@ -88,7 +88,7 @@
     "gulp-stylus": "^2.7.0",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "^2.0.4",
+    "karma": "^2.0.5",
     "karma-chrome-launcher": "~2.2.0",
     "karma-cli": "~1.0.1",
     "karma-coverage-istanbul-reporter": "^1.4.3",
