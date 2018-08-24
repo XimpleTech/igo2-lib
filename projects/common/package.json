@@ -1,5 +1,5 @@
 {
-  "name": "@igo2/common",
+  "name": "@ximple/igo2-common",
   "version": "0.22.2",
   "description": "IGO Library",
   "author": "MSP",
@@ -14,10 +14,10 @@
     "url": "https://github.com/infra-geo-ouverte/igo2-lib/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^6.0.0",
-    "@angular/core": "^6.0.0",
-    "@angular/material": "^6.0.0",
-    "@igo2/core": "^0.22.2",
-    "@igo2/utils": "^0.22.2"
+    "@angular/common": "^6.1.4",
+    "@angular/core": "^6.1.4",
+    "@angular/material": "^6.4.6",
+    "@ximple/igo2-core": "^0.22.1",
+    "@ximple/igo2-utils": "^0.22.1"
   }
 }
