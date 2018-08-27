@@ -1,0 +1,99 @@
+{
+  "igo": {
+    "context": {
+      "bookmarkButton": {
+        "create": "建立新的景況",
+        "dialog": {
+          "createMsg": "景況 '{{value}}' 已建立",
+          "createTitle": "景況已建立",
+          "placeholder": "標題",
+          "title": "新的景況"
+        }
+      },
+      "context": {
+        "clone": "複製此景況",
+        "delete": "刪除此景況",
+        "dialog": {
+          "cloneMsg": "景況 '{{value}}' 已經被複製",
+          "cloneTitle": "景況已被複製",
+          "confirmDelete": "您確定想要刪除這個景況?",
+          "deleteMsg": "此景況 '{{value}}' 已刪除",
+          "deleteTitle": "景況已刪除",
+          "favoriteMsg": "此景況 '{{value}}' 已經設定成我的最愛",
+          "favoriteTitle": "我的最愛已儲存",
+          "saveMsg": "此景況 '{{value}}' 已儲存",
+          "saveTitle": "景況已儲存"
+        },
+        "edit": "編輯這個景況",
+        "errors": {
+          "uncaught": {
+            "message":
+            "Sorry, service is currently not available. Please try again later",
+            "title": "Error server"
+          }
+        },
+        "favorite": "我的最愛",
+        "form": {
+          "edit": "編輯",
+          "title": "標題",
+          "titleRequired": "標題必須的",
+          "uri": "URI",
+          "uriRequired": "URI 必須的"
+        },
+        "invalid": {
+          "text": "景況 '{{value}}' 不正確",
+          "title": "不正確的景況"
+        },
+        "managePermissions": "管理景況的許可權",
+        "manageTools": "管理工具景況",
+        "ourContexts": "我的景況",
+        "publicContexts": "公開的景況",
+        "save": "儲存此景況",
+        "sharedContexts": "已分享景況"
+      },
+      "poiButton": {
+        "create": "建立新的喜好區域",
+        "dialog": {
+          "confirmDelete": "您確定想刪處這個喜好區域?",
+          "createMsg": "喜好區域 '{{value}}' 已經建立",
+          "createTitle": "喜好區域已建立",
+          "deleteMsg": "喜好區域 '{{value}}' 已經刪除",
+          "deleteTitle": "喜好區域已刪除",
+          "placeholder": "標題",
+          "title": "新增喜好區域"
+        },
+        "placeholder": "喜好區域"
+      },
+      "sidenav": {
+        "goBack": "回去之前",
+        "mainMenu": "主選單"
+      },
+      "shareMap": {
+        "button": "分享地圖",
+        "copy": "複製到剪貼簿",
+        "dialog": {
+          "copyMsg": "連結複製到剪貼簿",
+          "copyTitle": "連結"
+        },
+        "placeholderLink": "連結"
+      },
+      "tool": {
+        "dialog": {
+          "addMsg": "工具 '{{value}}' 已增加",
+          "addTitle": "工具已增加",
+          "deleteMsg": "工具 '{{value}}' 已移除",
+          "deleteTitle": "工具已移除"
+        }
+      },
+      "userButton": {
+        "dialog": {
+          "email": "電子郵件",
+          "expiration": "已逾期",
+          "user": "使用者"
+        },
+        "infoTitle": "使用者資訊",
+        "logout": "登出"
+      }
+    }
+  }
+}

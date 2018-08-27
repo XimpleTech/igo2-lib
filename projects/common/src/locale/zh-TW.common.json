@@ -1,0 +1,14 @@
+{
+  "igo": {
+    "common": {
+      "confirmDialog": {
+        "cancelBtn": "取消",
+        "confirmBtn": "確認",
+        "title": "確認"
+      },
+      "table": {
+        "filter": "過濾條件"
+      }
+    }
+  }
+}
