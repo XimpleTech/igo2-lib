@@ -29,16 +29,8 @@ export class TgosSearchSource extends SearchSource {
   static sortIndex = 10;
 
   private searchUrl = 'https://addr.tgos.nat.gov.tw/addrws/v30/QueryAddr.asmx/QueryAddr?';
-  private locateUrl = '';
   private appId = '';
   private appKey = '';
-  /*
-  private appId = '/9PZSOga/YetRdV5KHCY1XhIG5gGS/OsjGPC3ZrdnVsaAW9HlEeErw==';
-  private appKey = 'cGEErDNy5yNr14zbsE/4GSfiGP5i3PuZwlsR5ASVWUusGuHdTAiJg5chYjOvjS3dT/+AxjWh4SAqLnjPk5CztZfjheHzw4' +
-    'PQT8kokv5IabMs+qhUkbRGw1+nl6cKO4lA5QwYo9od0EewQSHTIL9HmjFXwLDQ1yp3nMYbvckV0zMDUW1jTm8pYyVc8IKM' +
-    'JOyAHd8ODeIwmuW9a+M6QAvhtkd7iPJdfgAqhCS5vrF3CoUadr7QgKluD2Z7pg5zxao+oL90prUmGE+zITCV8sYsykVoj7' +
-    '3VBsi7p+VSZtkkochCFllth9jGSs032295yeqSewR+O0j/FbC3KFzp3aqsjoBGGjqtIoD1vDEStPXueTm7+P5cTERUZpH+bu7gyLTX';
-  */
   private options: SearchSourceOptions;
   data: any;
 
@@ -50,7 +42,6 @@ export class TgosSearchSource extends SearchSource {
     this.searchUrl = this.options.url || this.searchUrl;
     this.appId = this.options.appid || this.appId;
     this.appKey = this.options.appkey || this.appKey;
-    this.locateUrl = this.options.locateUrl || this.locateUrl;
   }
 
   getName(): string {
