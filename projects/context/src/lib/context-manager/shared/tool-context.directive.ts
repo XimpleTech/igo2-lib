@@ -1,7 +1,7 @@
 import { Directive, OnInit, OnDestroy } from '@angular/core';
 
-import { Subscription } from 'rxjs/Subscription';
-import { filter } from 'rxjs/operators/filter';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import { ToolService } from '../../tool/shared/tool.service';
 import { Tool } from '../../tool/shared/tool.interface';

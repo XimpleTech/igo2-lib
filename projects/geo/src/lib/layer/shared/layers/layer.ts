@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 import olLayer from 'ol/layer/Layer';
 

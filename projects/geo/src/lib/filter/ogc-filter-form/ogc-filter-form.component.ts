@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectorRef } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { LanguageService } from '@igo2/core';
 

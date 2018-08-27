@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import * as olproj from 'ol/proj';
 import * as oleasing from 'ol/easing';

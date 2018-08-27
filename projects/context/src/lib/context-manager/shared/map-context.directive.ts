@@ -1,7 +1,7 @@
 import { Directive, OnInit, OnDestroy } from '@angular/core';
 
-import { Subscription } from 'rxjs/Subscription';
-import { filter } from 'rxjs/operators/filter';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import { IgoMap, MapViewOptions, MapBrowserComponent } from '@igo2/geo';
 
@@ -42,7 +42,7 @@ export class MapContextDirective implements OnInit, OnDestroy {
     }
 
     // This creates a new ol.Map when the context changes. Doing that
-    // allows the print tool to work properly even when the map's canvas
+    // allows the prn tool to work properly even when the map's canvas
     // has been tainted (CORS) with the layers of another context. This could
     // have some side effects such as unbinding all listeners on the first map.
     // A better solution would be to create a new map (preview) before

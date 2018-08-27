@@ -1,5 +1,5 @@
 import { Directive, Self, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import olFormatGeoJSON from 'ol/format/GeoJSON';
 import * as olextent from 'ol/extent';

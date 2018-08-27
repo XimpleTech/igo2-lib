@@ -5,7 +5,7 @@ import {
   OnDestroy,
   HostListener
 } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import { MapService } from '../../map/shared/map.service';
 import { LayerService } from '../../layer/shared/layer.service';

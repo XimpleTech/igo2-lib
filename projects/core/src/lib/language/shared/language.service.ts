@@ -12,7 +12,7 @@ export class LanguageService {
 
   public getLanguage(): string {
     const browserLang = this.translate.getBrowserLang();
-    return browserLang.match(/en|fr|zh_TW/) ? browserLang : 'en';
+    return browserLang.match(/en|fr/) ? browserLang : 'en';
   }
 
   public setLanguage(language: string) {

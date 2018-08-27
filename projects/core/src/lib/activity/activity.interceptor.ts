@@ -6,8 +6,8 @@ import {
   HttpRequest
 } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
-import { finalize } from 'rxjs/operators/finalize';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 import { ActivityService } from './activity.service';
 
