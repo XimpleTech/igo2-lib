@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MediaService } from '@igo2/core';
+import { MediaService } from '@ximple/igo2-core';
 
 @Component({
   selector: 'app-media',

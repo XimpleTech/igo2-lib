@@ -13,7 +13,7 @@ import * as olstyle from 'ol/style';
 import proj4 from 'proj4';
 import { BehaviorSubject, Subject, Subscription } from 'rxjs';
 
-import { SubjectStatus } from '@igo2/utils';
+import { SubjectStatus } from '@ximple/igo2-utils';
 
 import { Layer, VectorLayer } from '../../layer/shared/layers';
 import { FeatureDataSource } from '../../datasource/shared/datasources/feature-datasource';

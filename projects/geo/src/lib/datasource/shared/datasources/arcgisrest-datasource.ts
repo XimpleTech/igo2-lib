@@ -2,7 +2,7 @@ import olSourceVector from 'ol/source/Vector';
 import olFormatEsriJSON from 'ol/format/EsriJSON';
 import * as olloadingstrategy from 'ol/loadingstrategy';
 
-import { uuid } from '@igo2/utils';
+import { uuid } from '@ximple/igo2-utils';
 
 import { DataSource } from './datasource';
 import { ArcGISRestDataSourceOptions } from './arcgisrest-datasource.interface';

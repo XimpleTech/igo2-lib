@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { LanguageService } from '@igo2/core';
-import { IgoMap, DataSourceService, LayerService } from '@igo2/geo';
+import { LanguageService } from '@ximple/igo2-core';
+import { IgoMap, DataSourceService, LayerService } from '@ximple/igo2-geo';
 
 @Component({
   selector: 'app-simple-map',

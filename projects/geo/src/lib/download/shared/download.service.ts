@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import olProjection from 'ol/proj/Projection';
 
-import { MessageService, LanguageService } from '@igo2/core';
+import { MessageService, LanguageService } from '@ximple/igo2-core';
 
 import { Layer } from '../../layer/shared';
 import { OgcFilterWriter } from '../../filter/shared';

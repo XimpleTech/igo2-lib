@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { LanguageService } from '@igo2/core';
-import { IgoMap, LayerService } from '@igo2/geo';
+import { LanguageService } from '@ximple/igo2-core';
+import { IgoMap, LayerService } from '@ximple/igo2-geo';
 
 @Component({
   selector: 'app-print',

@@ -1,6 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { Register } from '@igo2/context';
+import { Register } from '@ximple/igo2-context';
 
 import {
   MapService,
@@ -10,7 +10,7 @@ import {
   FeatureType,
   AnyDataSourceOptions,
   DataSourceService
-} from '@igo2/geo';
+} from '@ximple/igo2-geo';
 
 @Register({
   name: 'searchResults',

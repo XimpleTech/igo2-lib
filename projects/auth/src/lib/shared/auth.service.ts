@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { ConfigService } from '@igo2/core';
-import { Base64 } from '@igo2/utils';
+import { ConfigService } from '@ximple/igo2-core';
+import { Base64 } from '@ximple/igo2-utils';
 
 import { AuthOptions, User } from './auth.interface';
 import { TokenService } from './token.service';

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule, MatButtonModule } from '@angular/material';
 
-import { IgoConfigModule, provideConfigOptions } from '@igo2/core';
+import { IgoConfigModule, provideConfigOptions } from '@ximple/igo2-core';
 
 import { environment } from '../../../environments/environment';
 import { AppConfigComponent } from './config.component';

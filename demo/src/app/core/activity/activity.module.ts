@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatCardModule, MatButtonModule } from '@angular/material';
 
-import { IgoActivityModule } from '@igo2/core';
+import { IgoActivityModule } from '@ximple/igo2-core';
 
 import { AppActivityComponent } from './activity.component';
 import { AppActivityRoutingModule } from './activity-routing.module';

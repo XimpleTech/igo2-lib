@@ -7,8 +7,8 @@ import {
   MatTooltipModule
 } from '@angular/material';
 
-import { IgoLanguageModule } from '@igo2/core';
-import { IgoConfirmDialogModule } from '@igo2/common';
+import { IgoLanguageModule } from '@ximple/igo2-core';
+import { IgoConfirmDialogModule } from '@ximple/igo2-common';
 
 import { MapBrowserBindingDirective } from './map-browser/map-browser-binding.directive';
 import { MapBrowserComponent } from './map-browser/map-browser.component';

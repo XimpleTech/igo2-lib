@@ -5,7 +5,7 @@ import olLayer from 'ol/layer/Layer';
 import { DataSource } from '../../../datasource';
 import { IgoMap } from '../../../map';
 
-import { SubjectStatus } from '@igo2/utils';
+import { SubjectStatus } from '@ximple/igo2-utils';
 import { LayerOptions } from './layer.interface';
 
 export abstract class Layer {

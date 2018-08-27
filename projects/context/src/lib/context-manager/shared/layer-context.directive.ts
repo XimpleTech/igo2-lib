@@ -3,13 +3,13 @@ import { Directive, OnInit, OnDestroy, Optional } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { skip, filter } from 'rxjs/operators';
 
-import { RouteService } from '@igo2/core';
+import { RouteService } from '@ximple/igo2-core';
 import {
   IgoMap,
   MapBrowserComponent,
   DataSourceService,
   LayerService
-} from '@igo2/geo';
+} from '@ximple/igo2-geo';
 
 import { ContextService } from './context.service';
 import { DetailedContext, ContextLayer } from './context.interface';

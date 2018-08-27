@@ -12,22 +12,22 @@ const version = package.version;
 
 gulp.task('core:clean', () => {
   return del([
-    'dist/core/assets/**/*',
-    'dist/core/style/**/*',
-    'dist/core/locale/**/*'
+    'dist/igo2-core/assets/**/*',
+    'dist/igo2-core/style/**/*',
+    'dist/igo2-core/locale/**/*'
   ]);
 });
 
 gulp.task('common:clean', () => {
-  return del(['dist/common/assets/**/*', 'dist/common/style/**/*']);
+  return del(['dist/igo2-common/assets/**/*', 'dist/igo2-common/style/**/*']);
 });
 
 gulp.task('auth:clean', () => {
-  return del(['dist/auth/assets/**/*', 'dist/auth/style/**/*']);
+  return del(['dist/igo2-auth/assets/**/*', 'dist/igo2-auth/style/**/*']);
 });
 
 gulp.task('geo:clean', () => {
-  return del(['dist/geo/assets/**/*', 'dist/geo/style/**/*']);
+  return del(['dist/igo2-geo/assets/**/*', 'dist/igo2-geo/style/**/*']);
 });
 
 // ==========================================================
@@ -37,7 +37,7 @@ gulp.task('core:copyAssets', () => {
     .src('./projects/core/src/assets/**/*', {
       base: './projects/core/src/assets/'
     })
-    .pipe(gulp.dest('./dist/core/assets'));
+    .pipe(gulp.dest('./dist/igo2-core/assets'));
 });
 
 gulp.task('common:copyAssets', () => {
@@ -45,7 +45,7 @@ gulp.task('common:copyAssets', () => {
     .src('./projects/common/src/assets', {
       base: './projects/common/src/assets/'
     })
-    .pipe(gulp.dest('./dist/common/assets'));
+    .pipe(gulp.dest('./dist/igo2-common/assets'));
 });
 
 gulp.task('auth:copyAssets', () => {
@@ -53,7 +53,7 @@ gulp.task('auth:copyAssets', () => {
     .src('./projects/auth/src/assets', {
       base: './projects/auth/src/assets/'
     })
-    .pipe(gulp.dest('./dist/auth/assets'));
+    .pipe(gulp.dest('./dist/igo2-auth/assets'));
 });
 
 gulp.task('geo:copyAssets', () => {
@@ -61,7 +61,7 @@ gulp.task('geo:copyAssets', () => {
     .src('./projects/geo/src/assets/**/*', {
       base: './projects/geo/src/assets/'
     })
-    .pipe(gulp.dest('./dist/geo/assets'));
+    .pipe(gulp.dest('./dist/igo2-geo/assets'));
 });
 
 // ==========================================================
@@ -69,23 +69,23 @@ gulp.task('geo:copyAssets', () => {
 gulp.task('core:copyStyles', () => {
   gulp
     .src('./projects/core/src/style/**/*')
-    .pipe(gulp.dest('./dist/core/style'));
+    .pipe(gulp.dest('./dist/igo2-core/style'));
 });
 
 gulp.task('common:copyStyles', () => {
   gulp
     .src('./projects/common/src/style/**/*')
-    .pipe(gulp.dest('./dist/common/style'));
+    .pipe(gulp.dest('./dist/igo2-common/style'));
 });
 
 gulp.task('auth:copyStyles', () => {
   gulp
     .src('./projects/auth/src/style/**/*')
-    .pipe(gulp.dest('./dist/auth/style'));
+    .pipe(gulp.dest('./dist/igo2-auth/style'));
 });
 
 gulp.task('geo:copyStyles', () => {
-  gulp.src('./projects/geo/src/style/**/*').pipe(gulp.dest('./dist/geo/style'));
+  gulp.src('./projects/geo/src/style/**/*').pipe(gulp.dest('./dist/igo2-geo/style'));
 });
 
 // ==========================================================
@@ -95,17 +95,17 @@ gulp.task('core:bundleStyles', () => {
     .src('.')
     .pipe(
       exec(
-        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/core/src/style/core.theming.scss -d ./dist/core/style/core.theming.scss'
+        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/core/src/style/core.theming.scss -d ./dist/igo2-core/style/core.theming.scss'
       )
     )
     .pipe(
       exec(
-        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/core/src/style/theming.scss -d ./dist/core/style/theming.scss'
+        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/core/src/style/theming.scss -d ./dist/igo2-core/style/theming.scss'
       )
     )
     .pipe(
       exec(
-        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/core/src/style/all.theming.scss -d ./dist/core/style/all.theming.scss'
+        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/core/src/style/all.theming.scss -d ./dist/igo2-core/style/all.theming.scss'
       )
     )
     .pipe(exec.reporter());
@@ -116,7 +116,7 @@ gulp.task('common:bundleStyles', () => {
     .src('.')
     .pipe(
       exec(
-        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/common/src/style/common.theming.scss -d ./dist/common/style/common.theming.scss'
+        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/common/src/style/common.theming.scss -d ./dist/igo2-common/style/common.theming.scss'
       )
     )
     .pipe(exec.reporter());
@@ -127,7 +127,7 @@ gulp.task('geo:bundleStyles', () => {
     .src('.')
     .pipe(
       exec(
-        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/geo/src/style/geo.theming.scss -d ./dist/geo/style/geo.theming.scss'
+        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/geo/src/style/geo.theming.scss -d ./dist/igo2-geo/style/geo.theming.scss'
       )
     )
     .pipe(exec.reporter());
@@ -138,62 +138,74 @@ gulp.task('geo:bundleStyles', () => {
 gulp.task('core:copyLocale', () => {
   gulp
     .src('./projects/core/src/locale/*')
-    .pipe(gulp.dest('./dist/core/locale'));
+    .pipe(gulp.dest('./dist/igo2-core/locale'));
 });
 
 gulp.task('common:copyLocale', () => {
   gulp
     .src('./projects/common/src/locale/*')
-    .pipe(gulp.dest('./dist/core/locale'));
+    .pipe(gulp.dest('./dist/igo2-core/locale'));
 });
 
 gulp.task('auth:copyLocale', () => {
   gulp
     .src('./projects/auth/src/locale/*')
-    .pipe(gulp.dest('./dist/core/locale'));
+    .pipe(gulp.dest('./dist/igo2-core/locale'));
 });
 
 gulp.task('geo:copyLocale', () => {
-  gulp.src('./projects/geo/src/locale/*').pipe(gulp.dest('./dist/core/locale'));
+  gulp.src('./projects/geo/src/locale/*').pipe(gulp.dest('./dist/igo2-core/locale'));
 });
 
 gulp.task('context:copyLocale', () => {
   gulp
     .src('./projects/context/src/locale/*')
-    .pipe(gulp.dest('./dist/core/locale'));
+    .pipe(gulp.dest('./dist/igo2-core/locale'));
 });
 
 gulp.task('tools:copyLocale', () => {
   gulp
     .src('./projects/tools/src/locale/*')
-    .pipe(gulp.dest('./dist/core/locale'));
+    .pipe(gulp.dest('./dist/igo2-core/locale'));
 });
 
 gulp.task('core:bundleLocale.fr', () => {
   gulp
-    .src('./dist/core/locale/fr.*.json')
+    .src('./dist/igo2-core/locale/fr.*.json')
     .pipe(
       merge({
         fileName: 'fr.json'
       })
     )
-    .pipe(gulp.dest('./dist/core/locale'));
+    .pipe(gulp.dest('./dist/igo2-core/locale'));
 });
 
 gulp.task('core:bundleLocale.en', () => {
   gulp
-    .src('./dist/core/locale/en.*.json')
+    .src('./dist/igo2-core/locale/en.*.json')
     .pipe(
       merge({
         fileName: 'en.json'
       })
     )
-    .pipe(gulp.dest('./dist/core/locale'));
+    .pipe(gulp.dest('./dist/igo2-core/locale'));
+});
+
+gulp.task('core:bundleLocale.zh-TW', () => {
+  gulp
+    .src('./dist/igo2-core/locale/zh-TW.*.json')
+    .pipe(
+      merge({
+        fileName: 'zh-TW.json'
+      })
+    )
+    .pipe(gulp.dest('./dist/igo2-core/locale'));
 });
 
 gulp.task('core:bundleLocale', [
   'core:bundleLocale.fr',
-  'core:bundleLocale.en'
+  'core:bundleLocale.en',
+  'core:bundleLocale.zh-TW'
 ]);
 
 // ==========================================================
@@ -216,7 +228,7 @@ gulp.task('core:bumpVersion', () => {
       jeditor({
         version: version,
         peerDependencies: {
-          '@igo2/utils': `^${version}`
+          '@ximple/igo2-utils': `^${version}`
         }
       })
     )
@@ -230,8 +242,8 @@ gulp.task('common:bumpVersion', () => {
       jeditor({
         version: version,
         peerDependencies: {
-          '@igo2/core': `^${version}`,
-          '@igo2/utils': `^${version}`
+          '@ximple/igo2-core': `^${version}`,
+          '@ximple/igo2-utils': `^${version}`
         }
       })
     )
@@ -245,8 +257,8 @@ gulp.task('auth:bumpVersion', () => {
       jeditor({
         version: version,
         peerDependencies: {
-          '@igo2/core': `^${version}`,
-          '@igo2/utils': `^${version}`
+          '@ximple/igo2-core': `^${version}`,
+          '@ximple/igo2-utils': `^${version}`
         }
       })
     )
@@ -260,9 +272,9 @@ gulp.task('geo:bumpVersion', () => {
       jeditor({
         version: version,
         peerDependencies: {
-          '@igo2/common': `^${version}`,
-          '@igo2/core': `^${version}`,
-          '@igo2/utils': `^${version}`
+          '@ximple/igo2-common': `^${version}`,
+          '@ximple/igo2-core': `^${version}`,
+          '@ximple/igo2-utils': `^${version}`
         }
       })
     )
@@ -276,11 +288,11 @@ gulp.task('context:bumpVersion', () => {
       jeditor({
         version: version,
         peerDependencies: {
-          '@igo2/auth': `^${version}`,
-          '@igo2/common': `^${version}`,
-          '@igo2/core': `^${version}`,
-          '@igo2/geo': `^${version}`,
-          '@igo2/utils': `^${version}`
+          '@ximple/igo2-auth': `^${version}`,
+          '@ximple/igo2-common': `^${version}`,
+          '@ximple/igo2-core': `^${version}`,
+          '@ximple/igo2-geo': `^${version}`,
+          '@ximple/igo2-utils': `^${version}`
         }
       })
     )
@@ -294,8 +306,8 @@ gulp.task('tools:bumpVersion', () => {
       jeditor({
         version: version,
         peerDependencies: {
-          '@igo2/geo': version,
-          '@igo2/context': version
+          '@ximple/igo2-geo': version,
+          '@ximple/igo2-context': version
         }
       })
     )

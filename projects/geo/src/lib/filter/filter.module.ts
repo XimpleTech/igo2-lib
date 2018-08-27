@@ -23,12 +23,12 @@ import {
   MatNativeDatetimeModule
 } from '@mat-datetimepicker/core';
 
-import { IgoLanguageModule } from '@igo2/core';
+import { IgoLanguageModule } from '@ximple/igo2-core';
 import {
   IgoCollapsibleModule,
   IgoListModule,
   IgoKeyValueModule
-} from '@igo2/common';
+} from '@ximple/igo2-common';
 
 import { FilterableDataSourcePipe } from './shared/filterable-datasource.pipe';
 import { TimeFilterFormComponent } from './time-filter-form/time-filter-form.component';

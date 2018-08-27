@@ -1,7 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
 
-import { RouteService, ConfigService, MessageService } from '@igo2/core';
-import { IgoMap, RoutingFormService } from '@igo2/geo';
+import { RouteService, ConfigService, MessageService } from '@ximple/igo2-core';
+import { IgoMap, RoutingFormService } from '@ximple/igo2-geo';
 
 import { ContextService } from '../../context-manager/shared/context.service';
 

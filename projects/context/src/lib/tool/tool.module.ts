@@ -6,8 +6,8 @@ import {
   MatTooltipModule
 } from '@angular/material';
 
-import { IgoLanguageModule } from '@igo2/core';
-import { IgoListModule } from '@igo2/common';
+import { IgoLanguageModule } from '@ximple/igo2-core';
+import { IgoListModule } from '@ximple/igo2-common';
 
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ToolbarBindingDirective } from './toolbar/toolbar-binding.directive';

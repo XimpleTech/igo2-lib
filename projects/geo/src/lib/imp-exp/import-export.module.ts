@@ -8,8 +8,8 @@ import {
   MatFormFieldModule
 } from '@angular/material';
 
-import { IgoLanguageModule } from '@igo2/core';
-import { IgoKeyValueModule } from '@igo2/common';
+import { IgoLanguageModule } from '@ximple/igo2-core';
+import { IgoKeyValueModule } from '@ximple/igo2-common';
 
 import { ImportExportComponent } from './import-export/import-export.component';
 import { DropGeoFileDirective } from './shared/drop-geo-file.directive';

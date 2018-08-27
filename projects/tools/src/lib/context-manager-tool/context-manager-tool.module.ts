@@ -4,7 +4,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 
-import { IgoContextModule } from '@igo2/context';
+import { IgoContextModule } from '@ximple/igo2-context';
 import { ContextManagerToolComponent } from './context-manager-tool.component';
 
 @NgModule({

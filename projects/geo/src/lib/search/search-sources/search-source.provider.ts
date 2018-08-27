@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 
-import { ConfigService, LanguageService } from '@igo2/core';
+import { ConfigService, LanguageService } from '@ximple/igo2-core';
 
 import { SearchSource } from './search-source';
 import { NominatimSearchSource } from './nominatim-search-source';

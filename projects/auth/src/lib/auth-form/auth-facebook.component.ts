@@ -6,7 +6,7 @@ import {
   EventEmitter
 } from '@angular/core';
 
-import { ConfigService } from '@igo2/core';
+import { ConfigService } from '@ximple/igo2-core';
 import { AuthFacebookOptions } from '../shared/auth.interface';
 import { AuthService } from '../shared/auth.service';
 

@@ -3,7 +3,7 @@ import * as olformat from 'ol/format';
 
 import { Md5 } from 'ts-md5';
 
-import { uuid } from '@igo2/utils';
+import { uuid } from '@ximple/igo2-utils';
 import { DataSource } from './datasource';
 import { FeatureDataSourceOptions } from './feature-datasource.interface';
 

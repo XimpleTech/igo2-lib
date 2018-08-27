@@ -3,7 +3,7 @@ import olFormatWKT from 'ol/format/WKT';
 import olFormatWFS from 'ol/format/WFS';
 import olGeometry from 'ol/geom/Geometry';
 
-import { uuid } from '@igo2/utils';
+import { uuid } from '@ximple/igo2-utils';
 
 import {
   OgcFilter,

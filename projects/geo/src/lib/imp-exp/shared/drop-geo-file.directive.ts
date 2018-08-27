@@ -1,6 +1,6 @@
 import { Directive, EventEmitter } from '@angular/core';
 
-import { DragAndDropDirective } from '@igo2/common';
+import { DragAndDropDirective } from '@ximple/igo2-common';
 import { ImportExportService } from './import-export.service';
 
 @Directive({

@@ -1,6 +1,6 @@
 import { Directive, Self, OnInit } from '@angular/core';
 
-import { MapService } from '@igo2/geo';
+import { MapService } from '@ximple/igo2-geo';
 import { ShareMapComponent } from './share-map.component';
 
 @Directive({

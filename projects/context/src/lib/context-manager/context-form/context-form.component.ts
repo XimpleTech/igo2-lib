@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { ObjectUtils } from '@igo2/utils';
+import { ObjectUtils } from '@ximple/igo2-utils';
 import { Context } from '../shared/context.interface';
 
 @Component({

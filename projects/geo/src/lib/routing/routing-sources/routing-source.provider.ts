@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 
-import { ConfigService } from '@igo2/core';
+import { ConfigService } from '@ximple/igo2-core';
 
 import { RoutingSource } from './routing-source';
 import { OsrmRoutingSource } from './osrm-routing-source';

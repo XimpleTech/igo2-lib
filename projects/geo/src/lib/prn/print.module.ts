@@ -12,8 +12,8 @@ import {
   MatCheckboxModule
 } from '@angular/material';
 
-import { IgoLanguageModule } from '@igo2/core';
-import { IgoKeyValueModule } from '@igo2/common';
+import { IgoLanguageModule } from '@ximple/igo2-core';
+import { IgoKeyValueModule } from '@ximple/igo2-common';
 
 import { PrintComponent } from './print/print.component';
 import { PrintBindingDirective } from './print/print-binding.directive';

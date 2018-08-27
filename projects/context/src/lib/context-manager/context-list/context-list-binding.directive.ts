@@ -8,10 +8,10 @@ import {
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { MessageService, LanguageService } from '@igo2/core';
-import { ConfirmDialogService } from '@igo2/common';
-import { AuthService } from '@igo2/auth';
-import { MapService } from '@igo2/geo';
+import { MessageService, LanguageService } from '@ximple/igo2-core';
+import { ConfirmDialogService } from '@ximple/igo2-common';
+import { AuthService } from '@ximple/igo2-auth';
+import { MapService } from '@ximple/igo2-geo';
 
 import {
   Context,

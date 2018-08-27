@@ -2,7 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule, MatButtonModule } from '@angular/material';
 
-import { IgoPanelModule, IgoFlexibleModule } from '@igo2/common';
+import { IgoPanelModule, IgoFlexibleModule } from '@ximple/igo2-common';
 
 import { IgoFeatureModule } from '../feature/feature.module';
 import { ToastComponent } from './toast.component';

@@ -10,7 +10,7 @@ import olFormatGML3 from 'ol/format/GML3';
 import olFormatEsriJSON from 'ol/format/EsriJSON';
 import olFeature from 'ol/Feature';
 
-import { uuid } from '@igo2/utils';
+import { uuid } from '@ximple/igo2-utils';
 import { Feature } from '../../feature/shared/feature.interface';
 import { FeatureService } from '../../feature/shared/feature.service';
 import {

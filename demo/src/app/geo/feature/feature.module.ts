@@ -6,8 +6,8 @@ import {
   MatIconModule
 } from '@angular/material';
 
-import { IgoPanelModule } from '@igo2/common';
-import { IgoMapModule, IgoOverlayModule, IgoFeatureModule } from '@igo2/geo';
+import { IgoPanelModule } from '@ximple/igo2-common';
+import { IgoMapModule, IgoOverlayModule, IgoFeatureModule } from '@ximple/igo2-geo';
 
 import { AppFeatureComponent } from './feature.component';
 import { AppFeatureRoutingModule } from './feature-routing.module';

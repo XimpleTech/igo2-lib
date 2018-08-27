@@ -13,9 +13,9 @@ import {
   MatInputModule
 } from '@angular/material';
 
-import { IgoLanguageModule } from '@igo2/core';
-import { IgoConfirmDialogModule } from '@igo2/common';
-import { IgoAuthModule } from '@igo2/auth';
+import { IgoLanguageModule } from '@ximple/igo2-core';
+import { IgoConfirmDialogModule } from '@ximple/igo2-common';
+import { IgoAuthModule } from '@ximple/igo2-auth';
 
 import { BookmarkButtonComponent } from './bookmark-button/bookmark-button.component';
 import { BookmarkDialogComponent } from './bookmark-button/bookmark-dialog.component';

@@ -11,7 +11,7 @@ import {
   MatListModule
 } from '@angular/material';
 
-import { IgoAuthModule } from '@igo2/auth';
+import { IgoAuthModule } from '@ximple/igo2-auth';
 
 import { AppComponent } from './app.component';
 

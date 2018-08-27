@@ -7,7 +7,7 @@ import { WMSCapabilities, WMTSCapabilities } from 'ol/format';
 import olSourceWMTS from 'ol/source/WMTS';
 import olAttribution from 'ol/control/Attribution';
 
-import { ObjectUtils } from '@igo2/utils';
+import { ObjectUtils } from '@ximple/igo2-utils';
 import { EsriStyleGenerator } from '../utils/esri-style-generator';
 
 import {

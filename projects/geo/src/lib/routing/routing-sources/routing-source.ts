@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { Message } from '@igo2/core';
+import { Message } from '@ximple/igo2-core';
 
 import { Routing } from '../shared/routing.interface';
 

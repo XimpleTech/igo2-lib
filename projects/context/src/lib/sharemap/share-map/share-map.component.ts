@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { uuid, Clipboard } from '@igo2/utils';
-import { ConfigService, MessageService, LanguageService } from '@igo2/core';
-import { AuthService } from '@igo2/auth';
-import { IgoMap } from '@igo2/geo';
+import { uuid, Clipboard } from '@ximple/igo2-utils';
+import { ConfigService, MessageService, LanguageService } from '@ximple/igo2-core';
+import { AuthService } from '@ximple/igo2-auth';
+import { IgoMap } from '@ximple/igo2-geo';
 
 import { ShareMapService } from '../shared/share-map.service';
 

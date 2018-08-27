@@ -6,13 +6,13 @@ import {
   MatIconModule
 } from '@angular/material';
 
-import { IgoPanelModule } from '@igo2/common';
+import { IgoPanelModule } from '@ximple/igo2-common';
 import {
   IgoMapModule,
   IgoOverlayModule,
   IgoQueryModule,
   IgoFeatureModule
-} from '@igo2/geo';
+} from '@ximple/igo2-geo';
 
 import { AppQueryComponent } from './query.component';
 import { AppQueryRoutingModule } from './query-routing.module';

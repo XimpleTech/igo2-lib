@@ -5,13 +5,13 @@ import {
   MatIconModule
 } from '@angular/material';
 
-import { IgoPanelModule } from '@igo2/common';
+import { IgoPanelModule } from '@ximple/igo2-common';
 import {
   IgoMapModule,
   IgoLayerModule,
   IgoMetadataModule,
   IgoDownloadModule
-} from '@igo2/geo';
+} from '@ximple/igo2-geo';
 
 import { AppLayerComponent } from './layer.component';
 import { AppLayerRoutingModule } from './layer-routing.module';

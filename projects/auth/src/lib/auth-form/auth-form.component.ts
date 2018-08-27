@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ConfigService } from '@igo2/core';
+import { ConfigService } from '@ximple/igo2-core';
 import { AuthOptions } from '../shared/auth.interface';
 import { AuthService } from '../shared/auth.service';
 

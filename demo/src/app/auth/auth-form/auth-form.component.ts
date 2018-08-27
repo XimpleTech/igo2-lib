@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LanguageService } from '@igo2/core';
+import { LanguageService } from '@ximple/igo2-core';
 
 @Component({
   selector: 'app-auth-form',

@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { FlexibleState } from '@igo2/common';
+import { FlexibleState } from '@ximple/igo2-common';
 import { Feature } from '../feature/shared/feature.interface';
 
 @Component({

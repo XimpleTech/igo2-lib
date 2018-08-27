@@ -4,7 +4,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 
-import { IgoImportExportModule } from '@igo2/geo';
+import { IgoImportExportModule } from '@ximple/igo2-geo';
 import { ImportExportToolComponent } from './import-export-tool.component';
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Message } from '@igo2/core';
+import { Message } from '@ximple/igo2-core';
 
 import { Feature } from '../../feature/shared/feature.interface';
 import { FeatureService } from '../../feature/shared/feature.service';

@@ -1,4 +1,4 @@
-import { MapViewOptions, LayerOptions, DataSourceOptions } from '@igo2/geo';
+import { MapViewOptions, LayerOptions, DataSourceOptions } from '@ximple/igo2-geo';
 
 import { Tool } from '../../tool/shared/tool.interface';
 import { TypePermission } from './context.enum';

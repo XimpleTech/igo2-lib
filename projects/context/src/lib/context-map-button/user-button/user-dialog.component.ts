@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
-import { AuthService } from '@igo2/auth';
+import { AuthService } from '@ximple/igo2-auth';
 
 @Component({
   selector: 'igo-user-dialog',

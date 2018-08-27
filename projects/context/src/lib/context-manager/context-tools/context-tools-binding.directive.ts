@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { MessageService, LanguageService } from '@igo2/core';
+import { MessageService, LanguageService } from '@ximple/igo2-core';
 
 import { Tool } from '../../tool/shared/tool.interface';
 import { ToolService } from '../../tool/shared/tool.service';

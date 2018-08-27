@@ -6,7 +6,7 @@ import {
   ChangeDetectorRef
 } from '@angular/core';
 
-import { RouteService } from '@igo2/core';
+import { RouteService } from '@ximple/igo2-core';
 
 import { SearchBarComponent } from './search-bar.component';
 

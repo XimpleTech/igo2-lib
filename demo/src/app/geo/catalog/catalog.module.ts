@@ -7,8 +7,8 @@ import {
   MatTooltipModule
 } from '@angular/material';
 
-import { IgoPanelModule } from '@igo2/common';
-import { IgoMapModule, IgoCatalogModule } from '@igo2/geo';
+import { IgoPanelModule } from '@ximple/igo2-common';
+import { IgoMapModule, IgoCatalogModule } from '@ximple/igo2-geo';
 
 import { AppCatalogComponent } from './catalog.component';
 import { AppCatalogRoutingModule } from './catalog-routing.module';

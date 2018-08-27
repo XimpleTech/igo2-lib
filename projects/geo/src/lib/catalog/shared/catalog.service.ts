@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { LanguageService, ConfigService } from '@igo2/core';
+import { LanguageService, ConfigService } from '@ximple/igo2-core';
 
 import { Catalog } from './catalog.interface';
 

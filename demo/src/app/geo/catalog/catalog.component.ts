@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { LanguageService } from '@igo2/core';
-import { IgoMap, LayerService, Catalog, MapService, Layer } from '@igo2/geo';
+import { LanguageService } from '@ximple/igo2-core';
+import { IgoMap, LayerService, Catalog, MapService, Layer } from '@ximple/igo2-geo';
 
 @Component({
   selector: 'app-catalog',

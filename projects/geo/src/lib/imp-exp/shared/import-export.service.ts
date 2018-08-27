@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as olformat from 'ol/format';
 import * as olstyle from 'ol/style';
 
-import { ConfigService, MessageService, LanguageService } from '@igo2/core';
+import { ConfigService, MessageService, LanguageService } from '@ximple/igo2-core';
 import { MapService } from '../../map/shared/map.service';
 import { VectorLayer } from '../../layer/shared/layers';
 import { FeatureDataSource } from '../../datasource/shared/datasources/feature-datasource';
