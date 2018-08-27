@@ -14,14 +14,14 @@
     "url": "https://github.com/infra-geo-ouverte/igo2-lib/issues"
   },
   "dependencies": {
-    "@ngx-translate/core": "^10.0.0",
+    "@ngx-translate/core": "^10.0.2",
     "angular2-notifications": "^1.0.2"
   },
   "peerDependencies": {
-    "@angular/common": "^6.0.0",
-    "@angular/core": "^6.0.0",
-    "@angular/cdk": "^6.0.0",
+    "@angular/common": "^6.1.4",
+    "@angular/core": "^6.1.4",
+    "@angular/cdk": "^6.4.6",
     "@igo2/utils": "^0.22.2",
-    "rxjs": "^6.1.0"
+    "rxjs": "^6.2.2"
   }
 }

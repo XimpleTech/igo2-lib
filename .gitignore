@@ -54,3 +54,5 @@ Thumbs.db
 *.ali
 # Object file
 *.o
+/package-lock.json
+/yarn.lock
