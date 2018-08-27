@@ -1,0 +1,87 @@
+<form class="igo-form" [formGroup]="form">
+
+  <div class="igo-input-container">
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="title"
+        placeholder="{{'igo.geo.printForm.title' | translate}}">
+    </mat-form-field>
+  </div>
+
+  <div class="igo-input-container">
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="comment"
+        placeholder="{{'igo.geo.printForm.comment' | translate}}">
+    </mat-form-field>
+  </div>
+
+  <div class="igo-input-container">
+    <mat-checkbox class="horizontal-left" formControlName="showProjection">
+        {{'igo.geo.printForm.showProjection' | translate}}
+    </mat-checkbox>
+     <mat-checkbox class="horizontal-left" formControlName="showScale">
+        {{'igo.geo.printForm.showScale' | translate}}
+    </mat-checkbox>
+     <mat-checkbox class="horizontal-left" formControlName="showLegend">
+        {{'igo.geo.printForm.showLegend' | translate}}
+    </mat-checkbox>
+  </div>
+
+  <div class="igo-input-container">
+    <mat-form-field>
+      <mat-select (change)="toggleImageSaveProp()"
+        formControlName="format"
+        placeholder="{{'igo.geo.printForm.format' | translate}}">
+        <mat-option *ngFor="let format of formats | keyvalue " [value]="format.key">
+          {{format.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="igo-input-container">
+    <mat-form-field>
+      <mat-select
+        formControlName="imageFormat"
+        placeholder="{{'igo.geo.printForm.imageFormat' | translate}}">
+        <mat-option *ngFor="let imageFormat of imageFormats | keyvalue " [value]="imageFormat.key">
+          {{imageFormat.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="igo-input-container">
+    <mat-form-field>
+      <mat-select
+        formControlName="resolution"
+        placeholder="{{'igo.geo.printForm.resolution' | translate}}">
+        <mat-option *ngFor="let resolution of resolutions | keyvalue " [value]="resolution.key">
+          {{resolution.value + ' PPI'}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="igo-input-container">
+    <mat-radio-group formControlName="orientation" class="horizontal">
+      <mat-radio-button *ngFor="let orientation of orientations | keyvalue " [value]="orientation.key">
+        {{('igo.geo.printForm.' + orientation.value) | translate}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="igo-form-button-group">
+    <button
+      mat-raised-button
+      type="button"
+      [disabled]="!form.valid || disabled"
+      (click)="handleFormSubmit(form.value, form.valid)">
+      {{(isPrintService ? 'igo.geo.printForm.printBtn' : 'igo.geo.printForm.saveBtn') | translate}}
+    </button>
+  </div>
+
+</form>
