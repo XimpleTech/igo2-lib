@@ -4,13 +4,13 @@
   "description": "IGO Library",
   "author": "MSP",
   "license": "MIT",
-  "homepage": "https://github.com/infra-geo-ouverte/igo2-lib#readme",
+  "homepage": "https://github.com/XimpleTech/igo2-lib#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/infra-geo-ouverte/igo2-lib.git"
+    "url": "git+https://github.com/XimpleTech/igo2-lib.git"
   },
   "bugs": {
-    "url": "https://github.com/infra-geo-ouverte/igo2-lib/issues"
+    "url": "https://github.com/XimpleTech/igo2-lib/issues"
   },
   "scripts": {
     "ng": "ng",
@@ -60,6 +60,7 @@
     "@angular/router": "^6.1.4",
     "@mat-datetimepicker/core": "^2.0.1",
     "@ngx-translate/core": "^10.0.2",
+    "@ngx-translate/http-loader": "^3.0.1",
     "angular2-notifications": "^1.0.2",
     "bowser": "^1.9.2",
     "classlist.js": "^1.1.20150312",

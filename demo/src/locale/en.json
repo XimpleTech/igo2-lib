@@ -1,3 +1,10 @@
 {
-  "welcome": "Welcome to {{title}}"
+  "welcome": "Welcome to {{title}}",
+  "Home": "Home",
+  "Activity": "Activity",
+  "Config": "Config",
+  "Language": "Language",
+  "Media": "Media",
+  "Message": "Message",
+  "Request": "Request"
 }
