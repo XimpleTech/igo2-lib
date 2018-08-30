@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { MessageService } from '@igo2/core';
+import { MessageService } from '@ximple/igo2-core';
 
 @Component({
   selector: 'app-message',

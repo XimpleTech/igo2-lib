@@ -8,7 +8,7 @@ import {
   MatFormFieldModule
 } from '@angular/material';
 
-import { IgoLanguageModule } from '@igo2/core';
+import { IgoLanguageModule } from '@ximple/igo2-core';
 
 import { TableComponent } from './table.component';
 

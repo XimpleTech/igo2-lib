@@ -3,15 +3,16 @@ import { Subject } from 'rxjs';
 import olLayer from 'ol/layer/Layer';
 
 import { DataSource } from '../../../datasource';
-import { IgoMap } from '../../../map';
+import { IgoMap, IgoWebGLMap } from '../../../map';
 
-import { SubjectStatus } from '@igo2/utils';
+import { SubjectStatus } from '@ximple/igo2-utils';
 import { LayerOptions } from './layer.interface';
 
 export abstract class Layer {
   public collapsed: boolean;
   public dataSource: DataSource;
   public map: IgoMap;
+  public mapgl: IgoWebGLMap;
   public ol: olLayer;
   public options: LayerOptions;
   public status$: Subject<SubjectStatus>;
@@ -95,6 +96,11 @@ export abstract class Layer {
   add(map: IgoMap) {
     this.map = map;
     map.ol.addLayer(this.ol);
+  }
+
+  addgl(mapgl: IgoWebGLMap) {
+    this.mapgl = mapgl;
+    mapgl.ol.addLayer(this.ol);
   }
 
   remove() {

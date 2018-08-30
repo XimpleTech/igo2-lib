@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { SubjectStatus } from '@igo2/utils';
+import { SubjectStatus } from '@ximple/igo2-utils';
 
 import { IgoMap } from '../../map/shared/map';
 

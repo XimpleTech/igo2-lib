@@ -6,7 +6,7 @@ import {
   Optional
 } from '@angular/core';
 
-import { RouteService } from '@igo2/core';
+import { RouteService } from '@ximple/igo2-core';
 
 import { MapService } from '../../map/shared/map.service';
 import { RoutingFormComponent } from './routing-form.component';

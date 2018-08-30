@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { AuthService } from '@igo2/auth';
+import { AuthService } from '@ximple/igo2-auth';
 import { TypePermission } from '../shared/context.enum';
 import { DetailedContext } from '../shared/context.interface';
 

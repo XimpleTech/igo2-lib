@@ -1,7 +1,7 @@
 import { Subscription } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
-import { Watcher, SubjectStatus } from '@igo2/utils';
+import { Watcher, SubjectStatus } from '@ximple/igo2-utils';
 import { Layer } from '../../layer/shared/layers';
 
 export class LayerWatcher extends Watcher {

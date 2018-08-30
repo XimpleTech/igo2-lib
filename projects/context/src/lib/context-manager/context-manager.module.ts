@@ -12,13 +12,13 @@ import {
   MatRadioModule
 } from '@angular/material';
 
-import { IgoAuthModule } from '@igo2/auth';
-import { IgoLanguageModule } from '@igo2/core';
+import { IgoAuthModule } from '@ximple/igo2-auth';
+import { IgoLanguageModule } from '@ximple/igo2-core';
 import {
   IgoListModule,
   IgoKeyValueModule,
   IgoCollapsibleModule
-} from '@igo2/common';
+} from '@ximple/igo2-common';
 
 import { MapContextDirective } from './shared/map-context.directive';
 import { LayerContextDirective } from './shared/layer-context.directive';

@@ -5,8 +5,8 @@ import {
   MatIconModule
 } from '@angular/material';
 
-import { IgoPanelModule } from '@igo2/common';
-import { IgoMapModule, IgoFilterModule } from '@igo2/geo';
+import { IgoPanelModule } from '@ximple/igo2-common';
+import { IgoMapModule, IgoFilterModule } from '@ximple/igo2-geo';
 
 import { AppTimeFilterComponent } from './time-filter.component';
 import { AppTimeFilterRoutingModule } from './time-filter-routing.module';

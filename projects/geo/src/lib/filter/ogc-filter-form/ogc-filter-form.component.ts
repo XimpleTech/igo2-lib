@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { LanguageService } from '@igo2/core';
+import { LanguageService } from '@ximple/igo2-core';
 
 import {
   OgcInterfaceFilterOptions,

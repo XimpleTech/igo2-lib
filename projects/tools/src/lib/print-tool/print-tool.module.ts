@@ -4,7 +4,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 
-import { IgoPrintModule } from '@igo2/geo';
+import { IgoPrintModule } from '@ximple/igo2-geo';
 import { PrintToolComponent } from './print-tool.component';
 
 @NgModule({

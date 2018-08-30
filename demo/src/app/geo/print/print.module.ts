@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { MatCardModule, MatButtonModule } from '@angular/material';
 
-import { IgoMessageModule } from '@igo2/core';
-import { IgoMapModule, IgoPrintModule } from '@igo2/geo';
+import { IgoMessageModule } from '@ximple/igo2-core';
+import { IgoMapModule, IgoPrintModule } from '@ximple/igo2-geo';
 
 import { AppPrintComponent } from './print.component';
 import { AppPrintRoutingModule } from './print-routing.module';

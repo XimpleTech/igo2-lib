@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { MatCardModule, MatButtonModule } from '@angular/material';
 
-import { IgoMessageModule } from '@igo2/core';
+import { IgoMessageModule } from '@ximple/igo2-core';
 import {
   IgoMapModule,
   IgoRoutingModule,
   provideOsrmRoutingSource
-} from '@igo2/geo';
+} from '@ximple/igo2-geo';
 
 import { AppDirectionsComponent } from './directions.component';
 import { AppDirectionsRoutingModule } from './directions-routing.module';

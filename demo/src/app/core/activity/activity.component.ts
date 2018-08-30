@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ActivityService } from '@igo2/core';
+import { ActivityService } from '@ximple/igo2-core';
 
 @Component({
   selector: 'app-activity',

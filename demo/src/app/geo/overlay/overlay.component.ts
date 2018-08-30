@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LanguageService } from '@igo2/core';
+import { LanguageService } from '@ximple/igo2-core';
 import {
   IgoMap,
   DataSourceService,
@@ -8,7 +8,7 @@ import {
   OverlayService,
   Feature,
   FeatureType
-} from '@igo2/geo';
+} from '@ximple/igo2-geo';
 
 @Component({
   selector: 'app-overlay',

@@ -15,7 +15,7 @@ import {
   MatAutocompleteModule
 } from '@angular/material';
 
-import { IgoLanguageModule } from '@igo2/core';
+import { IgoLanguageModule } from '@ximple/igo2-core';
 
 import { RoutingFormComponent } from './routing-form/routing-form.component';
 import { RoutingFormBindingDirective } from './routing-form/routing-form-binding.directive';

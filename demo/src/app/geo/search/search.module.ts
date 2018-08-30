@@ -9,8 +9,8 @@ import {
   MatTooltipModule
 } from '@angular/material';
 
-import { ConfigService, LanguageService } from '@igo2/core';
-import { IgoPanelModule } from '@igo2/common';
+import { ConfigService, LanguageService } from '@ximple/igo2-core';
+import { IgoPanelModule } from '@ximple/igo2-common';
 import {
   IgoMapModule,
   IgoSearchModule,
@@ -18,7 +18,7 @@ import {
   IgoOverlayModule,
   provideIChercheSearchSource,
   provideDataSourceSearchSource
-} from '@igo2/geo';
+} from '@ximple/igo2-geo';
 
 import { AppSearchComponent } from './search.component';
 import { AppSearchRoutingModule } from './search-routing.module';

@@ -9,12 +9,12 @@ import {
   MatSliderModule
 } from '@angular/material';
 
-import { IgoLanguageModule } from '@igo2/core';
+import { IgoLanguageModule } from '@ximple/igo2-core';
 import {
   IgoListModule,
   IgoCollapsibleModule,
   IgoImageModule
-} from '@igo2/common';
+} from '@ximple/igo2-common';
 
 import { LayerService } from './shared/layer.service';
 import { StyleService } from './shared/style.service';

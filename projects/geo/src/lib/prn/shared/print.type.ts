@@ -1,4 +1,4 @@
-import { strEnum } from '@igo2/utils';
+import { strEnum } from '@ximple/igo2-utils';
 
 export const PrintFormat = strEnum([
   'A0',

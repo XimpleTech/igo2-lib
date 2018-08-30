@@ -2,7 +2,7 @@ import olSourceVector from 'ol/source/Vector';
 import * as olloadingstrategy from 'ol/loadingstrategy';
 import * as olformat from 'ol/format';
 
-import { uuid } from '@igo2/utils';
+import { uuid } from '@ximple/igo2-utils';
 
 import { DataSource } from './datasource';
 import { WFSDataSourceOptions } from './wfs-datasource.interface';

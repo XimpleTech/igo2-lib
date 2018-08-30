@@ -6,7 +6,7 @@ import olPolygon from 'ol/geom/Polygon';
 import olLineString from 'ol/geom/LineString';
 import * as olproj from 'ol/proj';
 
-import { LanguageService } from '@igo2/core';
+import { LanguageService } from '@ximple/igo2-core';
 import {
   IgoMap,
   FeatureDataSource,
@@ -16,7 +16,7 @@ import {
   Feature,
   FeatureType,
   FeatureService
-} from '@igo2/geo';
+} from '@ximple/igo2-geo';
 
 @Component({
   selector: 'app-query',

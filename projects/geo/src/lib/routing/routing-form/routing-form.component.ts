@@ -19,8 +19,8 @@ import * as olcondition from 'ol/events/condition';
 import * as olinteraction from 'ol/interaction';
 import * as olextent from 'ol/extent';
 
-import { Clipboard } from '@igo2/utils';
-import { Message, LanguageService, MessageService } from '@igo2/core';
+import { Clipboard } from '@ximple/igo2-utils';
+import { Message, LanguageService, MessageService } from '@ximple/igo2-core';
 
 import { IgoMap } from '../../map/shared/map';
 import { SearchService } from '../../search/shared/search.service';

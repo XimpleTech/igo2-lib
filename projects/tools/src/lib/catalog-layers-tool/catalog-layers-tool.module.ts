@@ -4,7 +4,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 
-import { IgoCatalogModule } from '@igo2/geo';
+import { IgoCatalogModule } from '@ximple/igo2-geo';
 import { CatalogLayersToolComponent } from './catalog-layers-tool.component';
 
 @NgModule({

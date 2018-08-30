@@ -7,7 +7,7 @@ import {
   MatTooltipModule
 } from '@angular/material';
 
-import { IgoLanguageModule } from '@igo2/core';
+import { IgoLanguageModule } from '@ximple/igo2-core';
 
 import { MetadataButtonComponent } from './metadata-button/metadata-button.component';
 

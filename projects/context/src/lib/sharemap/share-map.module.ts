@@ -9,7 +9,7 @@ import {
   MatButtonModule
 } from '@angular/material';
 
-import { IgoLanguageModule } from '@igo2/core';
+import { IgoLanguageModule } from '@ximple/igo2-core';
 
 import { ShareMapComponent } from './share-map/share-map.component';
 import { ShareMapBindingDirective } from './share-map/share-map-binding.directive';

@@ -1,7 +1,7 @@
 import { Component, Input, AfterViewInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { MediaService, Media } from '@igo2/core';
+import { MediaService, Media } from '@ximple/igo2-core';
 import { Layer } from '../../layer';
 import { IgoMap } from '../shared';
 import { baseLayersSwitcherSlideInOut } from './baselayers-switcher.animation';

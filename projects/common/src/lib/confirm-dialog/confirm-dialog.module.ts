@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { MatButtonModule } from '@angular/material';
 
-import { IgoLanguageModule } from '@igo2/core';
+import { IgoLanguageModule } from '@ximple/igo2-core';
 
 import { ConfirmDialogComponent } from './confirm-dialog.component';
 import { ConfirmDialogService } from './confirm-dialog.service';

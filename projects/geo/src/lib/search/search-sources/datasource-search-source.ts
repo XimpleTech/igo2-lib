@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ConfigService, LanguageService } from '@igo2/core';
+import { ConfigService, LanguageService } from '@ximple/igo2-core';
 
 import {
   FeatureType,

@@ -1,0 +1,13 @@
+{
+  "igo": {
+    "auth": {
+      "accessAnonymous": "匿名存取",
+      "connection": "連線",
+      "login": "登入",
+      "password": "密碼",
+      "signOut": "簽出",
+      "user": "使用者",
+      "welcome": "歡迎 {{name}}!"
+    }
+  }
+}

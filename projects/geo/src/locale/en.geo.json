@@ -193,7 +193,8 @@
         "date": "Date",
         "endDate": "End Date",
         "startDate": "Start Date"
-      }
+      },
+      "featureDetails": "featureDetails"
     }
   }
 }

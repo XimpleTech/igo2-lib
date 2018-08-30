@@ -6,16 +6,16 @@ import { map, tap, catchError, debounceTime } from 'rxjs/operators';
 
 import olPoint from 'ol/geom/Point';
 
-import { uuid } from '@igo2/utils';
+import { uuid } from '@ximple/igo2-utils';
 import {
   ConfigService,
   RouteService,
   Message,
   LanguageService
-} from '@igo2/core';
+} from '@ximple/igo2-core';
 
-import { AuthService } from '@igo2/auth';
-import { IgoMap } from '@igo2/geo';
+import { AuthService } from '@ximple/igo2-auth';
+import { IgoMap } from '@ximple/igo2-geo';
 
 import { ToolService } from '../../tool/shared/tool.service';
 

@@ -17,7 +17,7 @@ import olFeature from 'ol/Feature';
 import olLayer from 'ol/layer/Layer';
 import { MAC } from 'ol/has';
 
-import { LanguageService } from '@igo2/core';
+import { LanguageService } from '@ximple/igo2-core';
 import { IgoMap } from '../../map/shared/map';
 import { MapBrowserComponent } from '../../map/map-browser/map-browser.component';
 import { Layer } from '../../layer/shared/layers/layer';

@@ -4,8 +4,8 @@ import { saveAs } from 'file-saver';
 import * as jsPDF from 'jspdf';
 import * as _html2canvas from 'html2canvas';
 
-import { SubjectStatus } from '@igo2/utils';
-import { MessageService, ActivityService, LanguageService } from '@igo2/core';
+import { SubjectStatus } from '@ximple/igo2-utils';
+import { MessageService, ActivityService, LanguageService } from '@ximple/igo2-core';
 
 import { IgoMap } from '../../map/shared/map';
 

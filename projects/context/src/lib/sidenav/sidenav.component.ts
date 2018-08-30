@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
-import { Media } from '@igo2/core';
-import { FlexibleState } from '@igo2/common';
-import { Feature } from '@igo2/geo';
+import { Media } from '@ximple/igo2-core';
+import { FlexibleState } from '@ximple/igo2-common';
+import { Feature } from '@ximple/igo2-geo';
 import { Tool } from '../tool/shared/tool.interface';
 import { ToolService } from '../tool/shared/tool.service';
 

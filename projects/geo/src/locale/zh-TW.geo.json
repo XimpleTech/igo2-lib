@@ -1,0 +1,200 @@
+{
+  "igo": {
+    "geo": {
+      "catalogTool": {
+        "baseLayers": "基礎圖層"
+      },
+      "clickOnMap": {
+        "clickedFeature": "點選設備"
+      },
+      "dropGeoFile": {
+        "invalid": {
+          "text": "不正確的檔案 ({{i}}/{{count}})",
+          "title": "檔案 '{{value}}' 不正確"
+        },
+        "success": {
+          "text": "已匯入檔案 ({{i}}/{{count}})",
+          "title": "圖層 '{{value}}' 已經加入到地圖中"
+        },
+        "unreadable": {
+          "text": "無法讀取的檔案",
+          "title": "檔案 '{{value}}' 不能讀取"
+        }
+      },
+      "importExportForm": {
+        "exportButton": "匯出",
+        "exportFormatPlaceholder": "格式",
+        "exportLayerPlaceholder": "圖層",
+        "exportTabTitle": "匯出",
+        "importButton": "匯入",
+        "importProjPlaceholder": "來源投影 (EPSG:4326)",
+        "importTabTitle": "匯入"
+      },
+      "operators": {
+        "And": "And",
+        "Or": "Or",
+        "PropertyIsEqualTo": "=",
+        "PropertyIsNotEqualTo": "!=",
+        "PropertyIsLike": "≈",
+        "PropertyIsGreaterThan": ">",
+        "PropertyIsGreaterThanOrEqualTo": ">=",
+        "PropertyIsLessThan": "<",
+        "PropertyIsLessThanOrEqualTo": "<=",
+        "PropertyIsBetween": "between",
+        "During": "during",
+        "PropertyIsNull": "is null",
+        "Intersects": "intersects",
+        "Within": "within",
+        "Contains": "contains"
+      },
+      "sourceFields": {
+        "selectField": "選擇欄位"
+      },
+      "filter": {
+        "addFilter": "增加空白過濾條件到目前的列表中",
+        "removeFilter": "由目前的過濾條件列表中移除目前的過濾條件",
+        "toggleFilterState": "啟用/關閉 目前的過濾條件",
+        "refreshFilters":
+        "Update this datasource with the active filter(s). To enable this button, the layer must be visible (or in the defined scale ranges) or you must modify the current filter.",
+        "layerFiltered": "此圖層目前正被過濾中",
+        "layerFilterable": "此圖層可被過濾",
+        "filterBy": "過濾由"
+      },
+      "spatialSelector": {
+        "fixedExtent": "固定空間大小",
+        "btnSetExtent":
+        "Define the extent of the spatial filter to the current view",
+        "snrc": "SNRC (ex:21L14)",
+        "selectFeature": "",
+        "drawFeature": ""
+      },
+      "layer": {
+        "hideLayer": "隱藏圖層",
+        "lowerLayer": "圖層向後移動",
+        "loadingLegendText": "載入圖例",
+        "noLegendText": "No legend available for this layer",
+        "opacity": "透明度",
+        "raiseLayer": "圖層向前移動",
+        "removeLayer": "由地圖中移除此圖層",
+        "showFeaturesList": "顯示設備列表",
+        "showLayer": "顯示圖層"
+      },
+      "download": {
+        "action": "下載資料",
+        "title": "下載檔案中",
+        "start": "已開始. 請在你的瀏覽器中確認下載的進度",
+        "end": "已完成"
+      },
+      "mapButtons": {
+        "baselayerSwitcher": "變更基礎圖層",
+        "geolocate": "地理定位",
+        "zoomIn": "放大 ({{zoom}})",
+        "zoomOut": "縮小 ({{zoom}})"
+      },
+      "metadata": {
+        "show": "顯示中介資料"
+      },
+      "permission": {
+        "addBtn": "增加",
+        "delete": "移除權限",
+        "dialog": {
+          "addMsg": "權限 '{{value}}' 已增加",
+          "addTitle": "權限已增加",
+          "deleteMsg": "權限 '{{value}}' 已移除",
+          "deleteTitle": "權限已移除",
+          "scopeChangedMsg": "範圍已變更至 {{value}}",
+          "scopeChangedTitle": "範圍已變更"
+        },
+        "profil": "Profil",
+        "profilRequired": "Profil required",
+        "read": "唯獨",
+        "scope": {
+          "private": "私有",
+          "protected": "受保護",
+          "public": "公開"
+        },
+        "write": "讀取與寫入"
+      },
+      "printForm": {
+        "comment": "註解",
+        "format": "格式",
+        "imageFormat": "影像格式",
+        "landscape": "橫向方式",
+        "portrait": "直列方式",
+        "projection": "投影方式",
+        "printBtn": "列印",
+        "resolution": "解析度",
+        "saveBtn": "儲存",
+        "scale": "比例",
+        "showLegend": "顯示圖例",
+        "showProjection": "顯示投影",
+        "showScale": "顯示比例",
+        "title": "標題"
+      },
+      "routingForm": {
+        "start": "開始",
+        "intermediate": "中間",
+        "end": "結束",
+        "routingBtn": "取得路徑",
+        "resetRoutingBtn": "重置",
+        "zoomRoute": "縮放至路徑",
+        "null": "",
+        "directions": "路線",
+        "raiseStop": "提升停止點的優先權",
+        "lowerStop": "降低停止點的優先權",
+        "addStop": "增加一個停止點",
+        "removeStop": "移除這個停止點",
+        "drivingOptions": "選項",
+        "summary": "路線的總結",
+        "stopsList": "停止點列表",
+        "instructions": "指令",
+        "copy": "複製路線",
+        "geolocate": "使用目前位置為停止點",
+        "link": "連結",
+        "dialog": {
+          "copyMsg": "路線複製到剪貼簿",
+          "copyTitle": "路線"
+        }
+      },
+      "routing": {
+        "uturn": "向後轉",
+        "sharp right": "fortement à droite",
+        "right": "右",
+        "slight right": "稍微右邊",
+        "sharp left": "fortement à gauche",
+        "left": "左",
+        "slight left": "稍微左邊",
+        "straight": "向前"
+      },
+      "cardinalPoints": {
+        "n": "北",
+        "ne": "東北",
+        "e": "東",
+        "se": "東南",
+        "s": "南",
+        "sw": "西南",
+        "w": "西",
+        "nw": "西北"
+      },
+      "search": {
+        "dataSources": {
+          "name": "圖層",
+          "properties": {
+            "abstract": "摘要",
+            "group": "群組",
+            "title": "標題",
+            "type": "種類",
+            "url": "URL"
+          }
+        }
+      },
+      "targetHtmlUrl": "開啟外部連結",
+      "timeFilter": {
+        "date": "日期",
+        "endDate": "結束日期",
+        "startDate": "開始日期"
+      },
+      "featureDetails": "featureDetails"
+    }
+  }
+}

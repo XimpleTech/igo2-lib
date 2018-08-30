@@ -1,6 +1,6 @@
 import olSourceCarto from 'ol/source/CartoDB';
 
-import { uuid } from '@igo2/utils';
+import { uuid } from '@ximple/igo2-utils';
 import { DataSource } from './datasource';
 import { DataSourceLegendOptions } from './datasource.interface';
 import { CartoDataSourceOptions } from './carto-datasource.interface';

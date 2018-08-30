@@ -4,7 +4,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 
-import { IgoFilterModule } from '@igo2/geo';
+import { IgoFilterModule } from '@ximple/igo2-geo';
 import { TimeAnalysisToolComponent } from './time-analysis-tool.component';
 
 @NgModule({

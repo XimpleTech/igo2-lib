@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 
-import { ConfigService, LanguageService } from '@igo2/core';
+import { ConfigService, LanguageService } from '@ximple/igo2-core';
 
 import { SearchSource } from './search-source';
 import { NominatimSearchSource } from './nominatim-search-source';
 import { IChercheSearchSource } from './icherche-search-source';
 import { DataSourceSearchSource } from './datasource-search-source';
+import { TgosSearchSource } from "./tgos-search-source";
 
 export function nominatimSearchSourcesFactory(
   http: HttpClient,
@@ -19,7 +20,7 @@ export function provideNominatimSearchSource() {
     provide: SearchSource,
     useFactory: nominatimSearchSourcesFactory,
     multi: true,
-    deps: [HttpClient, ConfigService]
+    deps: [ HttpClient, ConfigService ]
   };
 }
 
@@ -35,7 +36,7 @@ export function provideIChercheSearchSource() {
     provide: SearchSource,
     useFactory: ichercheSearchSourcesFactory,
     multi: true,
-    deps: [HttpClient, ConfigService]
+    deps: [ HttpClient, ConfigService ]
   };
 }
 
@@ -52,6 +53,22 @@ export function provideDataSourceSearchSource() {
     provide: SearchSource,
     useFactory: dataSourceSearchSourcesFactory,
     multi: true,
-    deps: [HttpClient, ConfigService, LanguageService]
+    deps: [ HttpClient, ConfigService, LanguageService ]
+  };
+}
+
+export function tgosSearchSourcesFactory(
+  http: HttpClient,
+  config: ConfigService
+) {
+  return new TgosSearchSource(http, config);
+}
+
+export function provideTgosSearchSource() {
+  return {
+    provide: SearchSource,
+    useFactory: tgosSearchSourcesFactory,
+    multi: true,
+    deps: [ HttpClient, ConfigService ]
   };
 }

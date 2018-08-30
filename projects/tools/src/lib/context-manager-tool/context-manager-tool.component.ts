@@ -1,6 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { Register, ToolService } from '@igo2/context';
+import { Register, ToolService } from '@ximple/igo2-context';
 
 @Register({
   name: 'contextManager',

@@ -1,7 +1,7 @@
 import olSourceTileArcGISRest from 'ol/source/TileArcGISRest';
 import * as olextent from 'ol/extent';
 
-import { uuid } from '@igo2/utils';
+import { uuid } from '@ximple/igo2-utils';
 import { DataSource } from './datasource';
 import { DataSourceLegendOptions } from './datasource.interface';
 import { TileArcGISRestDataSourceOptions } from './tilearcgisrest-datasource.interface';

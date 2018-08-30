@@ -1,5 +1,5 @@
 import olSourceImage from 'ol/source/Image';
-import { uuid, Watcher, SubjectStatus } from '@igo2/utils';
+import { uuid, Watcher, SubjectStatus } from '@ximple/igo2-utils';
 
 import { ImageLayer } from '../shared/layers/image-layer';
 

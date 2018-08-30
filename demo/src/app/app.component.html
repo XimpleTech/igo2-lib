@@ -7,16 +7,16 @@
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav opened="true" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
-        <a mat-list-item routerLink=".">Home</a>
+        <a mat-list-item routerLink=".">{{ 'Home' | translate }}</a>
 
         <hr>
 
-        <a mat-list-item routerLink="activity">Activity</a>
-        <a mat-list-item routerLink="config">Config</a>
-        <a mat-list-item routerLink="language">Language</a>
-        <a mat-list-item routerLink="media">Media</a>
-        <a mat-list-item routerLink="message">Message</a>
-        <a mat-list-item routerLink="request">Request</a>
+        <a mat-list-item routerLink="activity">{{ 'Activity' | translate }}</a>
+        <a mat-list-item routerLink="config">{{ 'Config' | translate }}</a>
+        <a mat-list-item routerLink="language">{{ 'Language' | translate }}</a>
+        <a mat-list-item routerLink="media">{{ 'Media' | translate }}</a>
+        <a mat-list-item routerLink="message">{{ 'Message' | translate }}</a>
+        <a mat-list-item routerLink="request">{{ 'Request' | translate }}</a>
 
         <hr>
 

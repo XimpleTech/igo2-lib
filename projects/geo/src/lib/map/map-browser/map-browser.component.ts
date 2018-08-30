@@ -7,8 +7,8 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { SubjectStatus } from '@igo2/utils';
-import { ActivityService } from '@igo2/core';
+import { SubjectStatus } from '@ximple/igo2-utils';
+import { ActivityService } from '@ximple/igo2-core';
 
 import { IgoMap, MapViewOptions } from '../shared';
 

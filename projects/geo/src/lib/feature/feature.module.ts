@@ -10,8 +10,8 @@ import {
   IgoKeyValueModule,
   IgoCollapsibleModule,
   IgoListModule
-} from '@igo2/common';
-import { IgoLanguageModule } from '@igo2/core';
+} from '@ximple/igo2-common';
+import { IgoLanguageModule } from '@ximple/igo2-core';
 
 import { FeatureGroupPipe } from './shared/feature-group.pipe';
 import { FeatureDetailsBindingDirective } from './feature-details/feature-details-binding.directive';

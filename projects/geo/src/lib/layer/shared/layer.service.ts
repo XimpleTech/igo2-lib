@@ -2,7 +2,7 @@ import { Injectable, Optional } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ConfigService } from '@igo2/core';
+import { ConfigService } from '@ximple/igo2-core';
 
 import {
   OSMDataSource,

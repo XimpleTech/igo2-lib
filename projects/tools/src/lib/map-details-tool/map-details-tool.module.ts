@@ -4,7 +4,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 
-import { IgoLayerModule } from '@igo2/geo';
+import { IgoLayerModule } from '@ximple/igo2-geo';
 import { MapDetailsToolComponent } from './map-details-tool.component';
 
 @NgModule({

@@ -4,7 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { ConfigService } from '@igo2/core';
+import { ConfigService } from '@ximple/igo2-core';
 import { Feature } from '../../feature/shared/feature.interface';
 import {
   FeatureType,

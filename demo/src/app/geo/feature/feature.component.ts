@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LanguageService } from '@igo2/core';
+import { LanguageService } from '@ximple/igo2-core';
 import {
   IgoMap,
   DataSourceService,
@@ -9,7 +9,7 @@ import {
   Feature,
   FeatureType,
   FeatureService
-} from '@igo2/geo';
+} from '@ximple/igo2-geo';
 
 @Component({
   selector: 'app-feature',

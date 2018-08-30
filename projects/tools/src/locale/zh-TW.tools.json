@@ -1,0 +1,16 @@
+{
+  "igo": {
+    "tools": {
+      "catalog": "目錄",
+      "contexts": "圖況",
+      "directions": "路線",
+      "importExport": "匯入與匯出",
+      "ogcFilter": "過濾條件",
+      "map": "地圖",
+      "print": "列印",
+      "searchResults": "搜尋結果",
+      "shareMap": "分享",
+      "timeAnalysis": "時間分析"
+    }
+  }
+}

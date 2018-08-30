@@ -8,7 +8,7 @@ import {
   MatButtonModule
 } from '@angular/material';
 
-import { IgoLanguageModule } from '@igo2/core';
+import { IgoLanguageModule } from '@ximple/igo2-core';
 
 import { ProtectedDirective } from './shared/protected.directive';
 import { AuthInterceptor } from './shared/auth.interceptor';

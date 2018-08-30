@@ -10,7 +10,7 @@ export class AppRequestComponent {
   constructor(private http: HttpClient) {}
 
   callHttp() {
-    const url = '/locale/en.json';
+    const url = '/locale/zh-TW.json';
     this.http.get(url).subscribe(rep => {
       console.log(rep);
     });

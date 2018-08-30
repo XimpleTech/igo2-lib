@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
-import { LanguageService } from '@igo2/core';
+import { LanguageService } from '@ximple/igo2-core';
 import {
   IgoMap,
   DataSourceService,
   LayerService,
   TimeFilterableDataSourceOptions
-} from '@igo2/geo';
+} from '@ximple/igo2-geo';
 
 @Component({
   selector: 'app-time-filter',

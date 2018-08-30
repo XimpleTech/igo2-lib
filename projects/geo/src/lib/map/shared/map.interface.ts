@@ -20,6 +20,7 @@ export interface MapViewOptions {
 export interface ControlsMapOptions {
   attribution?: boolean | AttributionOptions;
   scaleLine?: boolean | ScaleLineOptions;
+  overviewMap?: boolean | OverviewMapOptions;
 }
 
 export interface MapOptions {
@@ -38,4 +39,14 @@ export interface ScaleLineOptions {
 export interface AttributionOptions {
   html?: string;
   collapsed: boolean;
+}
+
+export interface OverviewMapOptions {
+  className?: string;
+  tipLabel?: string;
+  collapseLabel?: string;
+  label?: string;
+  collapsed?: boolean;
+  collapsible?: boolean;
+  target?: Element;
 }

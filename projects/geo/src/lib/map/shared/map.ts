@@ -4,6 +4,7 @@ import olFeature from 'ol/Feature';
 import olGeolocation from 'ol/Geolocation';
 import olControlAttribution from 'ol/control/Attribution';
 import olControlScaleLine from 'ol/control/ScaleLine';
+import olControlOverviewMap from 'ol/control/OverviewMap';
 import * as olproj from 'ol/proj';
 import * as olproj4 from 'ol/proj/proj4';
 import * as oleasing from 'ol/easing';
@@ -13,7 +14,7 @@ import * as olstyle from 'ol/style';
 import proj4 from 'proj4';
 import { BehaviorSubject, Subject, Subscription } from 'rxjs';
 
-import { SubjectStatus } from '@igo2/utils';
+import { SubjectStatus } from '@ximple/igo2-utils';
 
 import { Layer, VectorLayer } from '../../layer/shared/layers';
 import { FeatureDataSource } from '../../datasource/shared/datasources/feature-datasource';
@@ -23,7 +24,7 @@ import {
   MapViewOptions,
   MapOptions,
   AttributionOptions,
-  ScaleLineOptions
+  ScaleLineOptions, OverviewMapOptions
 } from './map.interface';
 
 export class IgoMap {
@@ -84,6 +85,12 @@ export class IgoMap {
           ? {}
           : this.options.controls.scaleLine) as ScaleLineOptions;
         controls.push(new olControlScaleLine(scaleLineOpt));
+      }
+      if (this.options.controls.overviewMap) {
+        const overviewMapOpt = (this.options.controls.overviewMap === true
+          ? {}
+          : this.options.controls.overviewMap) as OverviewMapOptions;
+        controls.push(new olControlOverviewMap(overviewMapOpt));
       }
     }
     let interactions = {};
@@ -455,7 +462,7 @@ export class IgoMap {
     return listLegend;
   }
 
-  setOverlayMarkerStyle(color = 'blue', text = undefined): olstyle.Style {
+  setOverlayMarkerStyle(color = 'blue', text?: string): olstyle.Style {
     let iconColor;
     switch (color) {
       case 'blue':

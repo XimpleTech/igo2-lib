@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ConfigService, LanguageOptions } from '@igo2/core';
+import { ConfigService, LanguageOptions } from '@ximple/igo2-core';
 
 @Component({
   selector: 'app-config',

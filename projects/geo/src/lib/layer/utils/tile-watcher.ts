@@ -1,5 +1,5 @@
 import olSourceTile from 'ol/source/Tile';
-import { uuid, Watcher, SubjectStatus } from '@igo2/utils';
+import { uuid, Watcher, SubjectStatus } from '@ximple/igo2-utils';
 
 import { TileLayer } from '../shared/layers/tile-layer';
 

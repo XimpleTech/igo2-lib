@@ -3,8 +3,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { uuid } from '@igo2/utils';
-import { ConfigService, Message } from '@igo2/core';
+import { uuid } from '@ximple/igo2-utils';
+import { ConfigService, Message } from '@ximple/igo2-core';
 
 import { Routing } from '../shared/routing.interface';
 import { RoutingFormat, SourceRoutingType } from '../shared/routing.enum';

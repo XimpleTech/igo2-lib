@@ -30,13 +30,13 @@
               "demo/src/locale",
               {
                 "glob": "**/*",
-                "input": "./dist/core/assets/",
-                "output": "./assets/igo2/core/"
+                "input": "./dist/igo2-core/assets/",
+                "output": "./assets/igo2-core/"
               },
               {
                 "glob": "**/*",
-                "input": "./dist/geo/assets/",
-                "output": "./assets/igo2/geo/"
+                "input": "./dist/igo2-geo/assets/",
+                "output": "./assets/igo2-geo/"
               }
             ],
             "styles": ["demo/src/styles.scss"],

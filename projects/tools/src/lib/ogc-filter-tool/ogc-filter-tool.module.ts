@@ -4,7 +4,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 
-import { IgoFilterModule } from '@igo2/geo';
+import { IgoFilterModule } from '@ximple/igo2-geo';
 import { OgcFilterToolComponent } from './ogc-filter-tool.component';
 
 @NgModule({
