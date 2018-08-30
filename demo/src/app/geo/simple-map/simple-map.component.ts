@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { LanguageService } from '@ximple/igo2-core';
 import { IgoMap, DataSourceService, LayerService } from '@ximple/igo2-geo';
+
+import * as olproj from 'ol/proj';
 
 @Component({
   selector: 'app-simple-map',
   templateUrl: './simple-map.component.html',
   styleUrls: ['./simple-map.component.scss']
 })
-export class AppSimpleMapComponent {
+export class AppSimpleMapComponent implements OnInit, OnDestroy {
   public map = new IgoMap({
     controls: {
       attribution: {
@@ -39,5 +41,17 @@ export class AppSimpleMapComponent {
           })
         );
       });
+  }
+
+  ngOnDestroy(): void {
+  }
+
+  ngOnInit(): void {
+    this.map.ol.on('click', (evt) => {
+      const e1: any = evt;
+      const lonlat = olproj.toLonLat(e1.coordinate);
+      console.log('click:' + e1.coordinate + ' lonlat:' + lonlat);
+    });
+
   }
 }
