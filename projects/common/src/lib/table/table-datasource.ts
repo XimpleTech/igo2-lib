@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material';
 import { Observable, BehaviorSubject, merge } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ObjectUtils } from '@igo2/utils';
+import { ObjectUtils } from '@ximple/igo2-utils';
 
 import { TableDatabase, TableModel } from './index';
 

@@ -1,6 +1,6 @@
 {
   "name": "@ximple/igo-demo",
-  "version": "0.22.4",
+  "version": "0.22.5",
   "description": "IGO Library",
   "author": "MSP",
   "license": "MIT",
@@ -71,8 +71,8 @@
     "jspdf": "^1.4.1",
     "jwt-decode": "^2.2.0",
     "moment": "^2.22.2",
-    "ol": "^5.1.3",
-    "proj4": "^2.4.4",
+    "ol": "^5.2.0",
+    "proj4": "^2.5.0",
     "rxjs": "^6.3.0",
     "ts-md5": "^1.2.4",
     "web-animations-js": "^2.3.1",

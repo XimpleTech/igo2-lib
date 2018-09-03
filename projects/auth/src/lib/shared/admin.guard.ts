@@ -6,7 +6,7 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 
-import { ConfigService } from '@igo2/core';
+import { ConfigService } from '@ximple/igo2-core';
 import { AuthService } from './auth.service';
 
 @Injectable({

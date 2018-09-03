@@ -5,7 +5,8 @@ import {
   Input,
   Optional
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 import { ConfigService } from '@ximple/igo2-core';
 import { AuthOptions } from '../shared/auth.interface';
@@ -137,10 +138,6 @@ export class AuthFormComponent implements OnInit {
     if (!this.router) {
       return;
     }
-
-    const logoutRoute = this.options.logoutRoute;
-    const loginRoute = this.options.loginRoute;
-    const currentRoute = this.router.url;
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationStart))
