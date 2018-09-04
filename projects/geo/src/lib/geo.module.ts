@@ -11,7 +11,7 @@ import { IgoLayerModule } from './layer/layer.module';
 import { IgoMapModule } from './map/map.module';
 import { IgoMetadataModule } from './metadata/metadata.module';
 import { IgoOverlayModule } from './overlay/overlay.module';
-import { IgoPrintModule } from './prn/print.module';
+import { IgoPrintModule } from './pnt/print.module';
 import { IgoQueryModule } from './query/query.module';
 import { IgoRoutingModule } from './routing/routing.module';
 import { IgoSearchModule } from './search/search.module';

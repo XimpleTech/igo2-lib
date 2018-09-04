@@ -1,5 +1,5 @@
 {
-  "welcome": "歡迎來到 {{title}}"
+  "welcome": "歡迎來到 {{title}}",
   "Home": "首頁",
   "Activity": "Activity",
   "Config": "組態設定",

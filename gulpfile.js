@@ -154,7 +154,9 @@ gulp.task('auth:copyLocale', () => {
 });
 
 gulp.task('geo:copyLocale', () => {
-  gulp.src('./projects/geo/src/locale/*').pipe(gulp.dest('./dist/igo2-core/locale'));
+  gulp
+    .src('./projects/geo/src/locale/*')
+    .pipe(gulp.dest('./dist/igo2-core/locale'));
 });
 
 gulp.task('context:copyLocale', () => {
