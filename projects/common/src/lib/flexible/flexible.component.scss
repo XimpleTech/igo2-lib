@@ -15,11 +15,13 @@
 }
 
 .igo-flexible-main {
+  height: 100%;
   flex: 0 0 auto;
   overflow: hidden;
 }
 
 .igo-flexible-main.column {
+
   transition: height 0.25s ease-in;
 }
 
