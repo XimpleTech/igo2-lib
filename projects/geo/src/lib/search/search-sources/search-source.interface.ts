@@ -13,5 +13,5 @@ export interface SearchSourcesOptions {
   icherche?: SearchSourceOptions;
   nominatim?: SearchSourceOptions;
   datasource?: SearchSourceOptions;
-  tgos?: SearchSourcesOptions;
+  tgos?: SearchSourceOptions;
 }
