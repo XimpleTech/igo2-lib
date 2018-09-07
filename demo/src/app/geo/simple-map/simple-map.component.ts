@@ -15,7 +15,8 @@ export class AppSimpleMapComponent implements OnInit, OnDestroy {
     controls: {
       attribution: {
         collapsed: true
-      }
+      },
+      scaleLine: true
     }
   });
 
