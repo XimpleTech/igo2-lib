@@ -1,6 +1,6 @@
 {
   "name": "@ximple/igo2-tools",
-  "version": "0.22.12",
+  "version": "0.23.1",
   "description": "IGO Library",
   "author": "MSP",
   "keywords": ["igo"],
@@ -16,8 +16,8 @@
   "peerDependencies": {
     "@angular/common": "^6.1.4",
     "@angular/core": "^6.1.4",
-    "@ximple/igo2-geo": "^0.22.12",
-    "@ximple/igo2-context": "^0.22.12",
+    "@ximple/igo2-geo": "^0.23.1",
+    "@ximple/igo2-context": "^0.23.1",
     "rxjs": "^6.2.2"
   }
 }
