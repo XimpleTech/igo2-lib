@@ -6,19 +6,19 @@ This repository is home to the IGO2 Library on which IGO2 is built. IGO2 and thi
 
 IGO2 library is divided into several elements:
 
-- @igo2/utils : Basic utilies without dependency (ex: base64, clipboard, uuid)
+- @ximple/igo2-utils : Basic utilies without dependency (ex: base64, clipboard, uuid)
 
-- @igo2/core : Element affecting the core of the application (ex: config, language, message, media, request)
+- @ximple/igo2-core : Element affecting the core of the application (ex: config, language, message, media, request)
 
-- @igo2/common : Library containing reusable components (ex: clickout, drag-drop, list, panel, spinner, table)
+- @ximple/igo2-common : Library containing reusable components (ex: clickout, drag-drop, list, panel, spinner, table)
 
-- @igo2/auth : Library grouping the authentication and security module
+- @ximple/igo2-auth : Library grouping the authentication and security module
 
-- @igo2/geo : Library containing the geomatic components. Depends on Openlayers.
+- @ximple/igo2-geo : Library containing the geomatic components. Depends on Openlayers.
 
-- @igo2/context : Library of components uniting @igo2/geo and @igo2/auth
+- @ximple/igo2-context : Library of components uniting @ximple/igo2-geo and @ximple/igo2-auth
 
-- @igo2/tools : Library simplifying component use as tools
+- @ximple/igo2-tools : Library simplifying component use as tools
 
 ## Demo
 
@@ -31,8 +31,8 @@ IGO2 library is divided into several elements:
 The latest release of IGO2 Library can be used and installed from npm.
 
 Example:
-`npm install --save @igo2/core`
-`npm install --save @igo2/common`
+`npm install --save @ximple/igo2-core`
+`npm install --save @ximple/igo2-common`
 
 - See the demo code for examples of simple use.
 

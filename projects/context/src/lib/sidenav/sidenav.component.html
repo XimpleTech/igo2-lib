@@ -8,7 +8,7 @@
 
     <igo-flexible
       #topPanel
-      initial="50%" initialMobile="100%"
+      initial="100%" initialMobile="100%"
       expanded="calc(100% - 58px)"
       [state]="topPanelState">
 
@@ -44,41 +44,6 @@
           <div class="igo-toolbox-container" [ngClass]="{'shown': tool ? true : false}">
             <igo-toolbox [animate]="true"></igo-toolbox>
           </div>
-        </igo-panel>
-      </div>
-
-      <div igoFlexibleFill class="igo-content">
-        <igo-panel
-          [title]="feature.title"
-          *ngIf="feature && media !== 'mobile'">
-
-          <button
-            mat-icon-button
-            panelLeftButton
-            class="igo-icon-button"
-            (click)="toggleTopPanel()">
-            <mat-icon>
-              <ng-container *ngIf="['collapsed', 'initial'].indexOf(topPanel.state) >= 0">
-                arrow_downward
-              </ng-container>
-              <ng-container *ngIf="topPanel.state === 'expanded'">
-                arrow_upward
-              </ng-container>
-            </mat-icon>
-          </button>
-
-          <button
-            mat-icon-button
-            panelRightButton
-            class="igo-icon-button"
-            *ngIf="media !== 'mobile'">
-            <mat-icon>open_in_new</mat-icon>
-          </button>
-
-          <igo-feature-details
-            [feature]="feature"
-            *ngIf="['collapsed', 'initial'].indexOf(topPanel.state) >= 0">
-          </igo-feature-details>
         </igo-panel>
       </div>
 

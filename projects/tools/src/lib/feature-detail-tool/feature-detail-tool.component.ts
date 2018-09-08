@@ -6,7 +6,7 @@ import { FeatureService } from '@ximple/igo2-geo';
 
 @Register({
   name: 'featureDetails',
-  title: 'igo.featureDetails',
+  title: 'igo.tools.featureDetails',
   icon: 'bookmark'
 })
 @Component({

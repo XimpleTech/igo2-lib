@@ -1,1 +1,1 @@
-npm install --save @igo2/utils
+npm install --save @ximple/igo2-utils

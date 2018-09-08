@@ -6,7 +6,7 @@ import { SearchSource } from './search-source';
 import { NominatimSearchSource } from './nominatim-search-source';
 import { IChercheSearchSource } from './icherche-search-source';
 import { DataSourceSearchSource } from './datasource-search-source';
-import { TgosSearchSource } from "./tgos-search-source";
+import { TgosSearchSource } from './tgos-search-source';
 
 export function nominatimSearchSourcesFactory(
   http: HttpClient,
