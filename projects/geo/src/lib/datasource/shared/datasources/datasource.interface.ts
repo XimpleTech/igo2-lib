@@ -3,7 +3,7 @@ import olSource from 'ol/source/Source';
 import { DataSource } from './datasource';
 
 export interface DataSourceOptions {
-  type?: 
+  type?:
     | 'wms'
     | 'wfs'
     | 'vector'
@@ -14,6 +14,7 @@ export interface DataSourceOptions {
     | 'arcgisrest'
     | 'tilearcgisrest';
   legend?: DataSourceLegendOptions;
+  optionsFromCapabilities?: boolean;
   // title: string;
   // alias?: string;
 
