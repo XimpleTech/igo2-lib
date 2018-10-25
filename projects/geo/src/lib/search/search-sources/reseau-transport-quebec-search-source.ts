@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ConfigService } from '@igo2/core';
 import { map } from 'rxjs/operators';
 import {
@@ -27,6 +27,7 @@ export class ReseauTransportsQuebecSearchSource extends SearchSource {
 
   private searchUrl = 'https://ws.mapserver.transports.gouv.qc.ca/swtq';
   private locateUrl = 'https://ws.mapserver.transports.gouv.qc.ca/swtq';
+  private zoomMaxOnSelect;
   private searchlimit = 5;
   private locatelimit = this.searchlimit * 2;
   private options: SearchSourceOptions;
@@ -39,6 +40,7 @@ export class ReseauTransportsQuebecSearchSource extends SearchSource {
     this.locateUrl = this.options.locateUrl || this.locateUrl;
     this.searchlimit = this.options.limit || this.searchlimit;
     this.locatelimit = this.options.locateLimit || this.locatelimit;
+    this.zoomMaxOnSelect = this.options.zoomMaxOnSelect || this.zoomMaxOnSelect;
   }
 
   getName(): string {
@@ -56,7 +58,7 @@ export class ReseauTransportsQuebecSearchSource extends SearchSource {
   search(term?: string): Observable<Feature[]> {
     term = term.replace(/auto|routes|route|km| |high|ways|way|roads|road|#|a-|-/gi, '');
     let chainage = '';
-
+    if (term.length === 0) { return of([]); }
     if (term.search(/\+/gi ) !== -1) {
       const split_term = term.split(/\+/gi);
       term = split_term[0];
@@ -128,7 +130,7 @@ export class ReseauTransportsQuebecSearchSource extends SearchSource {
         ];
 
     if (typename === '') {
-      return;
+      return of([]);
     }
 
     return this.http
@@ -162,10 +164,11 @@ export class ReseauTransportsQuebecSearchSource extends SearchSource {
 }
 
   private extractSearchData(response): Feature[] {
-    return response.features.map(this.formatSearchResult);
+    // return response.features.map(this.formatSearchResult);
+    return response.features.map(res => this.formatSearchResult(res, this.zoomMaxOnSelect));
   }
 
-  private formatSearchResult(result: any): Feature {
+  private formatSearchResult(result: any, zoomMaxOnSelect: number): Feature {
     const properties = Object.assign(
       {
         type: result.type
@@ -200,6 +203,7 @@ export class ReseauTransportsQuebecSearchSource extends SearchSource {
       source: ReseauTransportsQuebecSearchSource._name,
       sourceType: SourceFeatureType.Search,
       order: 1,
+      zoomMaxOnSelect: zoomMaxOnSelect,
       type: FeatureType.Feature,
       format: FeatureFormat.GeoJSON,
       title: properties.title,

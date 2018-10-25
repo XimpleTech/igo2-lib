@@ -3,6 +3,7 @@
  */
 
 export * from './lib/tools.module';
+export * from './lib/about-tool/about-tool.module';
 export * from './lib/context-manager-tool/context-manager-tool.module';
 export * from './lib/context-editor-tool/context-editor-tool.module';
 export * from './lib/catalog-tool/catalog-tool.module';
@@ -18,6 +19,7 @@ export * from './lib/share-map-tool/share-map-tool.module';
 export * from './lib/time-analysis-tool/time-analysis-tool.module';
 export * from './lib/ogc-filter-tool/ogc-filter-tool.module';
 
+export * from './lib/about-tool';
 export * from './lib/context-manager-tool';
 export * from './lib/context-editor-tool';
 export * from './lib/catalog-tool';
