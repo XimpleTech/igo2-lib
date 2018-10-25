@@ -4,7 +4,7 @@ import { Observable, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { WMSCapabilities, WMTSCapabilities } from 'ol/format';
-import olSourceWMTS from 'ol/source/WMTS';
+import { optionsFromCapabilities } from 'ol/source/WMTS.js';
 import olAttribution from 'ol/control/Attribution';
 
 import { ObjectUtils } from '@ximple/igo2-utils';
@@ -136,20 +136,15 @@ export class CapabilitiesService {
     const metadata = layer.DataURL ? layer.DataURL[0] : undefined;
 
     const options: WMSDataSourceOptions = ObjectUtils.removeUndefined({
-      // Save title under "alias" because we want to overwrite
-      // the default, mandatory title. If the title defined
-      // in the context is to be used along with the
-      // "optionsFromCapabilities" option, then it should be
-      // defined under "alias" in the context
-      alias: layer.Title,
-      view: {
+      _layerOptionsFromCapabilities: {
+        title: layer.Title,
         maxResolution:
           this.getResolutionFromScale(layer.MaxScaleDenominator) || Infinity,
         minResolution:
-          this.getResolutionFromScale(layer.MinScaleDenominator) || 0
-      },
-      metadata: {
-        url: metadata ? metadata.OnlineResource : undefined
+          this.getResolutionFromScale(layer.MinScaleDenominator) || 0,
+        metadata: {
+          url: metadata ? metadata.OnlineResource : undefined
+        }
       },
       timeFilter: this.getTimeFilter(layer)
     });
@@ -161,7 +156,7 @@ export class CapabilitiesService {
     baseOptions: WMTSDataSourceOptions,
     capabilities: any
   ): WMTSDataSourceOptions {
-    const options = olSourceWMTS.optionsFromCapabilities(
+    const options = optionsFromCapabilities(
       capabilities,
       baseOptions
     );

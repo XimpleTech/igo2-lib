@@ -19,6 +19,7 @@ import { ToolboxComponent } from './toolbox/toolbox.component';
     CommonModule,
     IgoLanguageModule,
     IgoListModule,
+    IgoStopPropagationModule,
     MatIconModule,
     MatListModule,
     MatTooltipModule

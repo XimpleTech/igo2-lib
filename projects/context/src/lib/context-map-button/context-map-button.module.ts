@@ -30,6 +30,7 @@ import { UserButtonComponent } from './user-button/user-button.component';
     CommonModule,
     IgoLanguageModule,
     IgoConfirmDialogModule,
+    IgoStopPropagationModule,
     IgoAuthModule,
     FormsModule,
     MatIconModule,

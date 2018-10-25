@@ -1,8 +1,19 @@
 import { NgModule } from '@angular/core';
-import { MatCardModule, MatButtonModule } from '@angular/material';
+import {
+  MatCardModule,
+  MatButtonModule,
+  MatIconModule
+} from '@angular/material';
 
-import { IgoPanelModule } from '@ximple/igo2-common';
-import { IgoMapModule } from '@ximple/igo2-geo';
+import { IgoPanelModule } from '@igo2/common';
+import {
+  IgoMapModule,
+  IgoLayerModule,
+  IgoMetadataModule,
+  IgoOverlayModule,
+  IgoQueryModule,
+  IgoFeatureModule
+} from '@ximple/igo2-geo';
 import { IgoContextManagerModule } from '@ximple/igo2-context';
 
 import { AppContextComponent } from './context.component';
@@ -14,8 +25,14 @@ import { AppContextRoutingModule } from './context-routing.module';
     AppContextRoutingModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
     IgoPanelModule,
     IgoMapModule,
+    IgoLayerModule,
+    IgoMetadataModule,
+    IgoOverlayModule,
+    IgoQueryModule,
+    IgoFeatureModule,
     IgoContextManagerModule
   ],
   exports: [AppContextComponent]

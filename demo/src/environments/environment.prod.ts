@@ -26,15 +26,23 @@ export const environment: Environment = {
       nominatim: {
         enabled: true
       },
+      reseautq: {
+        searchUrl: 'https://ws.mapserver.transports.gouv.qc.ca/swtq',
+        locateUrl: 'https://ws.mapserver.transports.gouv.qc.ca/swtq',
+        zoomMaxOnSelect: 8,
+        enabled: true
+      },
       icherche: {
-        url: 'https://geoegl.msp.gouv.qc.ca/icherche/geocode',
-        enabled: false
+        searchUrl: 'https://geoegl.msp.gouv.qc.ca/icherche/geocode',
+        locateUrl: 'https://geoegl.msp.gouv.qc.ca/icherche/xy',
+        zoomMaxOnSelect: 10,
+        enabled: true
       },
       datasource: {
-        url: 'https://geoegl.msp.gouv.qc.ca/igo2/api/layers/search'
+        searchUrl: 'https://geoegl.msp.gouv.qc.ca/igo2/api/layers/search'
       },
       tgos: {
-        url: 'https://addr.tgos.tw/addrws/v30/QueryAddr.asmx/QueryAddr?',
+        searchUrl: 'https://addr.tgos.tw/addrws/v30/QueryAddr.asmx/QueryAddr?',
         appid: '/9PZSOga/YetRdV5KHCY1XhIG5gGS/OsjGPC3ZrdnVsaAW9HlEeErw==',
         appkey: 'cGEErDNy5yNr14zbsE/4GSfiGP5i3PuZwlsR5ASVWUusGuHdTAiJg5chYjOvjS3dT' +
         '/+AxjWh4SAqLnjPk5CztZfjheHzw4PQT8kokv5IabMs+qhUkbRGw' +
