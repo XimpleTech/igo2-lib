@@ -1,6 +1,6 @@
 {
   "name": "@ximple/igo2-geo",
-  "version": "0.23.1",
+  "version": "0.24.0",
   "description": "IGO Library",
   "author": "MSP",
   "keywords": ["igo"],
@@ -17,17 +17,17 @@
     "ts-md5": "^1.2.4"
   },
   "peerDependencies": {
-    "@angular/animations": "^6.1.7",
-    "@angular/common": "^6.1.7",
-    "@angular/core": "^6.1.7",
-    "@angular/forms": "^6.1.7",
+    "@angular/animations": "^6.1.10",
+    "@angular/common": "^6.1.10",
+    "@angular/core": "^6.1.10",
+    "@angular/forms": "^6.1.10",
     "@angular/material": "^6.4.7",
-    "@ximple/igo2-common": "^0.23.1",
-    "@ximple/igo2-core": "^0.23.1",
-    "@ximple/igo2-utils": "^0.23.1",
+    "@ximple/igo2-common": "^0.24.0",
+    "@ximple/igo2-core": "^0.24.0",
+    "@ximple/igo2-utils": "^0.24.0",
     "ol": "^5.2.0",
     "proj4": "^2.5.0",
-    "rxjs": "^6.3.2"
+    "rxjs": "^6.3.3"
   },
   "optionalDependencies": {
     "@mat-datetimepicker/core": "^2.0.1",

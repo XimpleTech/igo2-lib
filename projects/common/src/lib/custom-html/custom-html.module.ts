@@ -7,7 +7,7 @@ import {
   MatButtonModule
 } from '@angular/material';
 
-import { IgoLanguageModule } from '@igo2/core';
+import { IgoLanguageModule } from '@ximple/igo2-core';
 
 import { CustomHtmlComponent } from './custom-html.component';
 

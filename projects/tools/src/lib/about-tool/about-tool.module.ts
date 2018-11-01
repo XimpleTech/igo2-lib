@@ -4,7 +4,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA
 } from '@angular/core';
 
-import { IgoCustomHtmlModule } from '@igo2/common';
+import { IgoCustomHtmlModule } from '@ximple/igo2-common';
 
 import { AboutToolComponent } from './about-tool.component';
 

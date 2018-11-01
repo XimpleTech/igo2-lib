@@ -39,7 +39,7 @@ export class TgosSearchSource extends SearchSource {
     super();
 
     this.options = this.config.getConfig('searchSources.tgos') || {};
-    this.searchUrl = this.options.url || this.searchUrl;
+    this.searchUrl = this.options.searchUrl || this.searchUrl;
     this.appId = this.options.appid || this.appId;
     this.appKey = this.options.appkey || this.appKey;
   }

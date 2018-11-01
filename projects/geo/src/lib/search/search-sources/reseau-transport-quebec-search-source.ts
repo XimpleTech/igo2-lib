@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { ConfigService } from '@igo2/core';
+import { ConfigService } from '@ximple/igo2-core';
 import { map } from 'rxjs/operators';
 import {
   Feature,

@@ -21,7 +21,11 @@
       floatLabel="never">
     </igo-search-bar>
 
-
+    <igo-feature-list
+      igoSearchBarBinding
+      [focusFirst]="false"
+      (select)="handleFeatureSelect($event)">
+    </igo-feature-list>
 
     <button
       mat-icon-button
@@ -31,11 +35,5 @@
       <mat-icon>settings_backup_restore</mat-icon>
     </button>
   </igo-panel>
-
-  <igo-feature-list
-    igoFeatureListBinding
-    [focusFirst]="true"
-    (select)="handleFeatureSelect($event)">
-  </igo-feature-list>
 
 </mat-card>

@@ -5,7 +5,7 @@ import {
   MatIconModule
 } from '@angular/material';
 
-import { IgoPanelModule } from '@igo2/common';
+import { IgoPanelModule } from '@ximple/igo2-common';
 import {
   IgoMapModule,
   IgoLayerModule,

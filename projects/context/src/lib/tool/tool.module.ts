@@ -7,7 +7,7 @@ import {
 } from '@angular/material';
 
 import { IgoLanguageModule } from '@ximple/igo2-core';
-import { IgoListModule } from '@ximple/igo2-common';
+import { IgoListModule, IgoStopPropagationModule } from '@ximple/igo2-common';
 
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ToolbarBindingDirective } from './toolbar/toolbar-binding.directive';

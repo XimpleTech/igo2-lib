@@ -18,9 +18,8 @@ import {
   IgoOverlayModule,
   provideIChercheSearchSource,
   provideDataSourceSearchSource,
-  provideNominatimSearchSource,
-  provideTgosSearchSource
-} from '@igo2/geo';
+  provideNominatimSearchSource
+} from '@ximple/igo2-geo';
 
 import { AppSearchComponent } from './search.component';
 import { AppSearchRoutingModule } from './search-routing.module';
@@ -45,7 +44,6 @@ import { AppSearchRoutingModule } from './search-routing.module';
   providers: [
     provideIChercheSearchSource(),
     provideDataSourceSearchSource(),
-    provideNominatimSearchSource(),
-    provideTgosSearchSource()]
+    provideNominatimSearchSource()]
 })
 export class AppSearchModule {}
