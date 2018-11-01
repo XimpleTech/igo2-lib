@@ -14,6 +14,7 @@ import {
   XYZDataSourceOptions,
   WFSDataSource,
   WFSDataSourceOptions,
+  WFSService,
   WMTSDataSource,
   WMTSDataSourceOptions,
   WMSDataSource,
@@ -33,11 +34,18 @@ import {
 export class DataSourceService {
   public datasources$ = new BehaviorSubject<DataSource[]>([]);
 
-  constructor(private capabilitiesService: CapabilitiesService) {}
+  constructor(
+    private capabilitiesService: CapabilitiesService,
+    private wfsDataSourceService: WFSService
+  ) {}
 
   createAsyncDataSource(context: AnyDataSourceOptions): Observable<DataSource> {
+    if (!context.type) {
+      console.error(context);
+      throw new Error('Datasource needs a type');
+    }
     let dataSource;
-    switch (context.type) {
+    switch (context.type.toLowerCase()) {
       case 'osm':
         dataSource = this.createOSMDataSource(context as OSMDataSourceOptions);
         break;
@@ -76,7 +84,8 @@ export class DataSourceService {
         );
         break;
       default:
-        break;
+        console.error(context);
+        throw new Error('Invalid datasource type');
     }
 
     this.datasources$.next(this.datasources$.value.concat([dataSource]));
@@ -99,7 +108,9 @@ export class DataSourceService {
   private createWFSDataSource(
     context: WFSDataSourceOptions
   ): Observable<WFSDataSource> {
-    return new Observable(d => d.next(new WFSDataSource(context)));
+    return new Observable(d =>
+      d.next(new WFSDataSource(context, this.wfsDataSourceService))
+    );
   }
 
   private createWMSDataSource(
@@ -109,11 +120,16 @@ export class DataSourceService {
       return this.capabilitiesService
         .getWMSOptions(context)
         .pipe(
-          map((options: WMSDataSourceOptions) => new WMSDataSource(options))
+          map(
+            (options: WMSDataSourceOptions) =>
+              new WMSDataSource(options, this.wfsDataSourceService)
+          )
         );
     }
 
-    return new Observable(d => d.next(new WMSDataSource(context)));
+    return new Observable(d =>
+      d.next(new WMSDataSource(context, this.wfsDataSourceService))
+    );
   }
 
   private createWMTSDataSource(

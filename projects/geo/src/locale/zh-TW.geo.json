@@ -117,7 +117,9 @@
       },
       "printForm": {
         "comment": "註解",
-        "format": "格式",
+        "doZipFile": "Zip 檔案",
+        "outputFormat": "輸出格式",
+        "paperFormat": "紙張格式",
         "imageFormat": "影像格式",
         "landscape": "橫向方式",
         "portrait": "直列方式",

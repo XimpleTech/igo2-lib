@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import {
   MatSidenavModule,
   MatToolbarModule,
+  MatButtonModule,
   MatIconModule,
   MatListModule
 } from '@angular/material';
@@ -34,7 +35,6 @@ import { AppContextModule } from './context/context/context.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,6 +43,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatButtonModule,
     MatIconModule,
     MatListModule,
 
@@ -70,17 +71,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
     AppContextModule,
 
-    AppRoutingModule,
-    TranslateModule.forRoot()
+    AppRoutingModule
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  constructor(translate: TranslateService) {
-    // this language will be used as a fallback when a translation isn't found in the current language
-    translate.setDefaultLang('zh-TW');
-
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
-    translate.use('zh-TW');
-  }
-}
+export class AppModule {}

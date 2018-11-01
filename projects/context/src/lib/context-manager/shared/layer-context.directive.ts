@@ -8,11 +8,12 @@ import {
   IgoMap,
   MapBrowserComponent,
   DataSourceService,
-  LayerService
+  LayerService,
+  LayerOptions
 } from '@ximple/igo2-geo';
 
 import { ContextService } from './context.service';
-import { DetailedContext, ContextLayer } from './context.interface';
+import { DetailedContext } from './context.interface';
 
 @Directive({
   selector: '[igoLayerContext]'
@@ -28,7 +29,6 @@ export class LayerContextDirective implements OnInit, OnDestroy {
   constructor(
     private component: MapBrowserComponent,
     private contextService: ContextService,
-    private dataSourceService: DataSourceService,
     private layerService: LayerService,
     @Optional() private route: RouteService
   ) {}
@@ -69,7 +69,7 @@ export class LayerContextDirective implements OnInit, OnDestroy {
     });
   }
 
-  private addLayerToMap(contextLayer: ContextLayer) {
+  private addLayerToMap(layerOptions: LayerOptions) {
     // if (contextLayer.maxScaleDenom) {
     //   contextLayer.maxResolution = this.getResolutionFromScale(
     //     contextLayer.maxScaleDenom
@@ -80,20 +80,16 @@ export class LayerContextDirective implements OnInit, OnDestroy {
     //     contextLayer.minScaleDenom
     //   );
     // }
-    const sourceContext = contextLayer.sourceOptions;
-    const layerContext: any = Object.assign({}, contextLayer);
-    delete layerContext.sourceOptions;
 
-    this.dataSourceService
-      .createAsyncDataSource(sourceContext)
-      .subscribe(dataSource => {
+    this.layerService
+      .createAsyncLayer(layerOptions)
+      .subscribe(layer => {
         this.getLayerParamVisibilityUrl(
-          dataSource.options['id'] ? dataSource.options['id'] : dataSource.id,
-          layerContext
+          layer.id,
+          layer
         );
 
-        layerContext.source = dataSource;
-        this.map.addLayer(this.layerService.createLayer(layerContext));
+        this.map.addLayer(layer);
       });
   }
 

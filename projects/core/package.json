@@ -1,6 +1,6 @@
 {
   "name": "@ximple/igo2-core",
-  "version": "0.23.1",
+  "version": "0.24.0",
   "description": "IGO Library",
   "author": "MSP",
   "keywords": ["igo"],
@@ -18,10 +18,10 @@
     "angular2-notifications": "^1.0.2"
   },
   "peerDependencies": {
-    "@angular/common": "^6.1.7",
-    "@angular/core": "^6.1.7",
-    "@angular/cdk": "^6.4.7",
-    "@ximple/igo2-utils": "^0.23.1",
-    "rxjs": "^6.3.2"
+    "@angular/common": "^6.1.10",
+    "@angular/core": "^6.1.10",
+    "@angular/cdk": "^6.4.10",
+    "@ximple/igo2-utils": "^0.24.0",
+    "rxjs": "^6.3.3"
   }
 }

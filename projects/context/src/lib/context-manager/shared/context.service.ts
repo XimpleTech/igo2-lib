@@ -103,6 +103,11 @@ export class ContextService {
     );
   }
 
+  setDefault(id: string): Observable<any> {
+    const url = this.baseUrl + '/contexts/default';
+    return this.http.post(url, { defaultContextId: id });
+  }
+
   delete(id: string): Observable<void> {
     const url = this.baseUrl + '/contexts/' + id;
     return this.http.delete<void>(url).pipe(
@@ -303,7 +308,7 @@ export class ContextService {
 
     // Update the tools options with those found in the context
     if (context.tools !== undefined) {
-      // this.toolService.setTools(context.tools);
+      this.toolService.setTools(context.tools);
     }
 
     if (!context.map) {
@@ -350,19 +355,18 @@ export class ContextService {
 
     const layers = igoMap.layers$.getValue();
 
-    let order = layers.length;
     for (const l of layers) {
       const layer: any = l;
       const opts = {
         id: layer.options.id ? String(layer.options.id) : undefined,
         title: layer.options.title,
-        type: layer.options.type,
-        source: {
+        zIndex: layer.zIndex,
+        visible: layer.visible,
+        sourceOptions: {
+          type: layer.dataSource.options.type,
           params: layer.dataSource.options.params,
           url: layer.dataSource.options.url
-        },
-        order: order--,
-        visible: layer.visible
+        }
       };
       context.layers.push(opts);
     }

@@ -2,6 +2,7 @@ import { Injectable, Optional } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { ObjectUtils } from '@ximple/igo2-utils';
 import { ConfigService } from '@ximple/igo2-core';
 
 import {
@@ -50,6 +51,16 @@ export class LayerService {
   createLayer(layerOptions: AnyLayerOptions): Layer {
     if (!layerOptions.source) {
       return;
+    }
+
+    if (
+      layerOptions.source.options &&
+      layerOptions.source.options.optionsFromCapabilities
+    ) {
+      layerOptions = ObjectUtils.mergeDeep(
+        layerOptions,
+        (layerOptions.source.options as any)._layerOptionsFromCapabilities
+      );
     }
 
     let layer;

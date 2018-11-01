@@ -25,7 +25,7 @@ export class DataSourceSearchSource extends SearchSource {
 
   static _name = 'igo.geo.search.dataSources.name';
 
-  private searchUrl = 'https://geoegl.msp.gouv.qc.ca/igo2/api/layers/search';
+  private searchUrl = 'https://geoegl.msp.gouv.qc.ca/apis/layers/search';
   private options: SearchSourceOptions;
 
   constructor(
@@ -36,7 +36,7 @@ export class DataSourceSearchSource extends SearchSource {
     super();
 
     this.options = this.config.getConfig('searchSources.datasource') || {};
-    this.searchUrl = this.options.url || this.searchUrl;
+    this.searchUrl = this.options.searchUrl || this.searchUrl;
   }
 
   getName(): string {

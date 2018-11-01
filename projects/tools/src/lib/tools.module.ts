@@ -14,7 +14,7 @@ import { IgoSearchResultsToolModule } from './search-results-tool/search-results
 import { IgoShareMapToolModule } from './share-map-tool/share-map-tool.module';
 import { IgoTimeAnalysisToolModule } from './time-analysis-tool/time-analysis-tool.module';
 import { IgoOgcFilterToolModule } from './ogc-filter-tool/ogc-filter-tool.module';
-import { IgoFeatureDetailToolModule } from './feature-detail-tool/feature-detail-tool.module';
+import { IgoAboutToolModule } from './about-tool/about-tool.module';
 
 @NgModule({
   imports: [],
@@ -34,7 +34,7 @@ import { IgoFeatureDetailToolModule } from './feature-detail-tool/feature-detail
     IgoShareMapToolModule,
     IgoTimeAnalysisToolModule,
     IgoOgcFilterToolModule,
-    IgoFeatureDetailToolModule
+    IgoAboutToolModule
   ]
 })
 export class IgoToolsModule {

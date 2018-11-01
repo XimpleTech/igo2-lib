@@ -14,11 +14,15 @@
   </igo-map-browser>
 
   <igo-panel title="Layers">
-    <igo-layer-list [layers]="map.layers">
+    <igo-layer-list 
+    [layers]="map.layers"
+    placeholder="Filter"
+    floatLabel="never">
 
       <ng-template #igoLayerItemToolbar let-layer="layer">
         <igo-metadata-button [layer]="layer"></igo-metadata-button>
         <igo-download-button [layer]="layer"></igo-download-button>
+        <igo-ogc-filter-button [ogcFiltersInLayers]="true" [layer]="layer"></igo-ogc-filter-button>
       </ng-template>
 
     </igo-layer-list>
