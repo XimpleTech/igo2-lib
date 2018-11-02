@@ -29,6 +29,15 @@ export const environment: Environment = {
       ]
     },
     searchSources: {
+      tgos: {
+        searchUrl: 'https://addr.tgos.nat.gov.tw/addrws/v30/QueryAddr.asmx/QueryAddr?',
+        appid: '/QzQKigbHTH3npq28f7uYBQByumsYu38P1r3p3900HVserrxdpdMMA==',
+        appkey: 'cGEErDNy5yNr14zbsE/4GSfiGP5i3PuZdLtXwLqpGib+nn9ElJXKdJiv8yUTp1tejsSSYzJ/PHvrhLQFOGKDbjvZmTTcIMHKPd7bsNCGzLj6Qa4FO2oQ9r4tN8S7qthT38YWxFpcHcveDJA/k204VGTxlPcRvVkr9Ruo2y174eyHPaR+bTSQYlLzv/o7dmqvOigtI/17he4tElDjf0WcNdN51krI1DV5iS7a8nhQVfBm5y8gZ8Mv6LSjv6bNYvAL15R4J0qFzirFxXtG3kmD80F9ax6oQ1L+vMVbwVahtr3KkaD9rNLoxtA14RV5yaoU',
+        limit: 10,
+        locateLimit: 15,
+        zoomMaxOnSelect: 8,
+        enabled: true
+      },
       nominatim: {
         enabled: true
       },

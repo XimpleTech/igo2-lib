@@ -1,19 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
-import { ConfigService } from '@ximple/igo2-core';
+import {ConfigService} from '@ximple/igo2-core';
 
-import {
-  Feature,
-  FeatureType,
-  FeatureFormat,
-  SourceFeatureType
-} from '../../feature';
+import {Feature, FeatureFormat, FeatureType, SourceFeatureType} from '../../feature';
 
-import { SearchSource } from './search-source';
-import { SearchSourceOptions } from './search-source.interface';
-import { map } from 'rxjs/operators';
+import {SearchSource} from './search-source';
+import {SearchSourceOptions} from './search-source.interface';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class TgosSearchSource extends SearchSource {
@@ -32,8 +27,7 @@ export class TgosSearchSource extends SearchSource {
   private appId = '';
   private appKey = '';
   private options: SearchSourceOptions;
-  data: any;
-
+  private zoomMaxOnSelect;
 
   constructor(private http: HttpClient, private config: ConfigService) {
     super();
@@ -42,6 +36,7 @@ export class TgosSearchSource extends SearchSource {
     this.searchUrl = this.options.searchUrl || this.searchUrl;
     this.appId = this.options.appid || this.appId;
     this.appKey = this.options.appkey || this.appKey;
+    this.zoomMaxOnSelect = this.options.zoomMaxOnSelect || this.zoomMaxOnSelect;
   }
 
   getName(): string {
@@ -58,7 +53,7 @@ export class TgosSearchSource extends SearchSource {
       .pipe(map(res => res.substring(res.indexOf('{'), res.lastIndexOf('}') + 1)))
       .pipe(map(text => JSON.parse(text)))
       .pipe(map(resJson => resJson.AddressList))
-      .pipe(map(res => this.extractData2(res, SourceFeatureType.Search)));
+      .pipe(map(res => this.extractData(res, SourceFeatureType.Search)));
   }
 
   locate(
@@ -68,11 +63,11 @@ export class TgosSearchSource extends SearchSource {
     return null;
   }
 
-  private extractData2(response, resultType): Feature[] {
+  private extractData(response, resultType): Feature[] {
     if (response[ 0 ] && response[ 0 ].error) {
       return [];
     }
-    return response.map(this.formatResultForTGos, resultType);
+    return response.map(res => this.formatResultForTGos(res, resultType, this.zoomMaxOnSelect));
   }
 
   private getSearchParams(term: string): HttpParams {
@@ -101,12 +96,13 @@ export class TgosSearchSource extends SearchSource {
     });
   }
 
-  private formatResultForTGos(result: any, resultType): Feature {
+  private formatResultForTGos(result: any, resultType, zoomMaxOnSelect: number): Feature {
     return {
       id: '179125824',
       source: TgosSearchSource._name,
       sourceType: resultType,
       order: 0,
+      zoomMaxOnSelect: zoomMaxOnSelect,
       type: FeatureType.Feature,
       format: FeatureFormat.GeoJSON,
       title: result.FULL_ADDR,
