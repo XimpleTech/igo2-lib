@@ -1,6 +1,6 @@
 {
   "name": "@ximple/igo2-context",
-  "version": "0.24.0",
+  "version": "0.24.2",
   "description": "IGO Library",
   "author": "MSP",
   "keywords": ["igo"],
@@ -19,11 +19,11 @@
     "@angular/core": "^6.1.10",
     "@angular/forms": "^6.1.10",
     "@angular/material": "^6.4.7",
-    "@ximple/igo2-auth": "^0.24.0",
-    "@ximple/igo2-common": "^0.24.0",
-    "@ximple/igo2-core": "^0.24.0",
-    "@ximple/igo2-utils": "^0.24.0",
-    "@ximple/igo2-geo": "^0.24.0",
+    "@ximple/igo2-auth": "^0.24.2",
+    "@ximple/igo2-common": "^0.24.2",
+    "@ximple/igo2-core": "^0.24.2",
+    "@ximple/igo2-utils": "^0.24.2",
+    "@ximple/igo2-geo": "^0.24.2",
     "ol": "^5.2.0",
     "rxjs": "^6.3.3"
   }

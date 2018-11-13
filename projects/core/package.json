@@ -1,6 +1,6 @@
 {
   "name": "@ximple/igo2-core",
-  "version": "0.24.0",
+  "version": "0.24.2",
   "description": "IGO Library",
   "author": "MSP",
   "keywords": ["igo"],
@@ -21,7 +21,7 @@
     "@angular/common": "^6.1.10",
     "@angular/core": "^6.1.10",
     "@angular/cdk": "^6.4.10",
-    "@ximple/igo2-utils": "^0.24.0",
+    "@ximple/igo2-utils": "^0.24.2",
     "rxjs": "^6.3.3"
   }
 }
