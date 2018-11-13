@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, EMPTY } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import * as olformat from 'ol/format';
@@ -33,6 +33,7 @@ import { QueryOptions, QueryableDataSource } from './query.interface';
   providedIn: 'root'
 })
 export class QueryService {
+  public queryEnabled = true;
   constructor(
     private http: HttpClient,
     private featureService: FeatureService
@@ -46,6 +47,9 @@ export class QueryService {
 
   queryLayer(layer: Layer, options: QueryOptions): Observable<Feature[]> {
     const url = this.getQueryUrl(layer.dataSource, options);
+    if (!url) {
+      return EMPTY;
+    }
     const request = this.http.get(url, { responseType: 'text' });
 
     this.featureService.clear();
@@ -313,7 +317,9 @@ export class QueryService {
           options.resolution,
           options.projection,
           {
-            INFO_FORMAT: wmsDatasource.params.info_format || this.getMimeInfoFormat(datasource.options.queryFormat),
+            INFO_FORMAT:
+              wmsDatasource.params.info_format ||
+              this.getMimeInfoFormat(datasource.options.queryFormat),
             QUERY_LAYERS: wmsDatasource.params.layers,
             FEATURE_COUNT: wmsDatasource.params.feature_count || '5'
           }

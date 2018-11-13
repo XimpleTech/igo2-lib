@@ -109,11 +109,14 @@ export class QueryDirective implements AfterViewInit, OnDestroy {
       let queryTitleValue = '';
       if (
         layerOL.get('sourceOptions').queryTitle &&
-        featureOL.getProperties().hasOwnProperty(layerOL.get('sourceOptions').queryTitle)
+        featureOL
+          .getProperties()
+          .hasOwnProperty(layerOL.get('sourceOptions').queryTitle)
       ) {
         title = '';
-        queryTitleValue =
-          featureOL.getProperties()[layerOL.get('sourceOptions').queryTitle];
+        queryTitleValue = featureOL.getProperties()[
+          layerOL.get('sourceOptions').queryTitle
+        ];
       }
       featureOL.set('clickedTitle', title + queryTitleValue);
       return featureOL;
@@ -122,6 +125,9 @@ export class QueryDirective implements AfterViewInit, OnDestroy {
 
   private handleMapClick(event: olMapBrowserEvent) {
     this.unsubscribeQueries();
+    if (!this.queryService.queryEnabled) {
+      return;
+    }
     const clickedFeatures: olFeature[] = [];
     const format = new olFormatGeoJSON();
     const mapProjection = this.map.projection;
@@ -209,7 +215,9 @@ export class QueryDirective implements AfterViewInit, OnDestroy {
   }
 
   private isQueryable(dataSource: QueryableDataSource) {
-    return dataSource.options.queryable;
+    return dataSource.options.queryable !== undefined
+      ? dataSource.options.queryable
+      : true;
   }
 
   private platformModifierKeyOnly(mapBrowserEvent) {
