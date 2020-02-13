@@ -1,0 +1,31 @@
+<table class="igo-striped mat-typography" *ngIf="feature && isObject(feature.properties) && feature.properties.target !== 'iframe'">
+  <tbody>
+    <tr *ngFor="let property of filterFeatureProperties(feature) | keyvalue">
+
+      <td *ngIf="feature.properties.target === '_blank' && property.key === 'url'">
+        <mat-icon mat-list-avatar svgIcon="{{icon}}"></mat-icon>
+      </td>
+
+      <td *ngIf="feature.properties.target === '_blank' && property.key === 'url'">
+        <a href="{{property.value}}" target='_blank'> {{ 'igo.geo.targetHtmlUrl' | translate }} {{title}}</a>
+      </td>
+
+      <td id="keyValue" *ngIf="feature.properties.target === undefined">
+        {{property.key }}
+      </td>
+
+      <td *ngIf="feature.properties.target === undefined && !isObject(property.value) && !isUrl(property.value)" [innerHTML]=property.value>
+      </td>
+
+      <td *ngIf="feature.properties.target === undefined && !isObject(property.value) && isUrl(property.value)">
+        <a href="{{property.value}}" target='_blank'>{{ 'igo.geo.targetHtmlUrl' | translate }} </a>
+      </td>
+
+      <td *ngIf="feature.properties.target === undefined && isObject(property.value)" [innerHTML]="property.value | json">
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+
+<iframe *ngIf="feature && isObject(feature.properties) && feature.properties.target === 'iframe'" [src]='htmlSanitizer(feature.properties.url)'></iframe>

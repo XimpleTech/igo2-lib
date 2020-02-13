@@ -1,0 +1,20 @@
+:host {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: auto;
+  padding: 10px 5px;
+}
+
+.igo-form-field-wrapper {
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.igo-form-field-colspan-2 {
+  width: 100%;
+}
+
+.igo-form-field-colspan-1 {
+  width: 50%;
+}

@@ -1,0 +1,27 @@
+<mat-list-item *ngIf="!action.checkbox"
+  matTooltipClass="actionbarItemTooltip"
+  matTooltipShowDelay="500"
+  [matTooltip]="withTooltip ? (tooltip | translate) : ''"
+  [ngClass]="ngClass$ | async"
+  (click)="onClick()">
+  <button *ngIf="withIcon"
+    mat-list-avatar
+    mat-icon-button
+    [color]="color"
+    [disabled]="disabled$ | async">
+    <mat-icon *ngIf="withIcon" svgIcon="{{icon}}"></mat-icon>
+  </button>
+  <h4 *ngIf="withTitle" matLine>{{title | translate}}</h4>
+</mat-list-item>
+
+<mat-list-item class="item-checkbox" *ngIf="action.checkbox"
+  matTooltipClass="actionbarItemTooltip"
+  matTooltipShowDelay="500"
+  [matTooltip]="withTooltip ? (tooltip | translate) : ''"
+  [ngClass]="ngClass$ | async">
+  <mat-checkbox *ngIf="withTitle"
+      (change)="action.handler()"
+      [checked]="action.checkCondition">
+      {{title | translate}}
+  </mat-checkbox>
+</mat-list-item>

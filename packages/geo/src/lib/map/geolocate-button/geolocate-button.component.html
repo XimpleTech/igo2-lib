@@ -1,0 +1,10 @@
+<div class="igo-geolocate-button-container">
+  <button
+    mat-icon-button
+    [matTooltip]="'igo.geo.mapButtons.geolocate' | translate"
+    matTooltipPosition="left"
+    [color]="color"
+    (click)="map.geolocate()">
+    <mat-icon svgIcon="crosshairs-gps"></mat-icon>
+  </button>
+</div>

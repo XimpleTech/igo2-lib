@@ -1,0 +1,42 @@
+$slide-toggle-width: 60px;
+
+.measure-type-toggle {
+  padding: 10px;
+  text-align: center;
+
+  mat-button-toggle-group {
+    width: 100%;
+
+    mat-button-toggle {
+      width: 50%;
+    }
+  }
+}
+
+
+.measure-options {
+  overflow-x: hidden;
+
+  mat-slide-toggle {
+    width: 100%;
+    margin: 10px;
+
+    ::ng-deep .mat-slide-toggle-content {
+      width: calc(100% - #{$slide-toggle-width});
+    }
+  }
+}
+
+.measure-store-buttons {
+  width: 100%;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.measure-store-buttons button:first-of-type {
+  margin-left: 14px;
+}
+
+.table-compact ::ng-deep .mat-header-cell.mat-column-selectionCheckbox {
+  width: 52px;
+}

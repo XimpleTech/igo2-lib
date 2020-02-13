@@ -1,0 +1,22 @@
+:host {
+  overflow: hidden;
+}
+
+.igo-datasource-filters-container {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+}
+
+.mat-list-item {
+  height: auto;
+}
+
+.igo-layer-legend-container {
+  padding-left: 1.125em;
+  width: calc(100% - 18px);
+}
+
+mat-icon.disabled {
+  color: rgba(0,0,0,.38);
+}

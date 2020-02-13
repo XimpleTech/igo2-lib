@@ -1,0 +1,17 @@
+form {
+  margin: 10px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+#uriInput {
+  .fieldWrapper {
+    display: block;
+    overflow: hidden;
+  }
+  .prefix {
+    float: left;
+  }
+}

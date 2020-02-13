@@ -12,43 +12,162 @@ interface Environment {
 export const environment: Environment = {
   production: false,
   igo: {
+    importWithStyle: true,
+    projections: [
+      {
+        code: 'EPSG:32198',
+        alias: 'Quebec Lambert',
+        def:
+          '+proj=lcc +lat_1=60 +lat_2=46 +lat_0=44 +lon_0=-68.5 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs',
+        extent: [-886251.0296, 180252.9126, 897177.3418, 2106143.8139]
+      }
+    ],
     auth: {
+      url: '/apis/users',
+      tokenKey: 'testIgo2Lib',
       intern: {
         enabled: true
-      }
+      },
+      allowAnonymous: true
     },
     language: {
       prefix: './locale/'
     },
+    importExport: {
+      url: '/apis/ogre'
+    },
     catalog: {
       sources: [
         {
+          id: 'Gououvert',
           title: 'Gouvouvert',
           url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/igo_gouvouvert.fcgi'
+        },
+        {
+          id: 'DefiningInfoFormat',
+          title: 'Defining info_format',
+          url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/swtq',
+          queryFormat: {
+            html: '*',
+            'application/json': [
+              'stations_meteoroutieres',
+              'histo_stations_meteoroutieres'
+            ]
+          },
+          queryHtmlTarget: 'iframe',
+          count: 30
+        },
+        {
+          id: 'catalogwithregex',
+          title: 'Filtered catalog by regex',
+          url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/swtq',
+          regFilters: ['zpegt']
+        },
+        {
+          id: 'catalogwithtooltipcontrol',
+          title: 'Controling tooltip format',
+          url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/igo_gouvouvert.fcgi',
+          tooltipType: 'abstract' // or title
+        },
+        {
+          id: 'fusion_catalog',
+          title: '(composite catalog) fusion catalog',
+          composite: [
+            {
+              id: 'tq_swtq',
+              url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/swtq'
+            },
+            {
+              id: 'rn_wmts',
+              url: 'https://servicesmatriciels.mern.gouv.qc.ca/erdas-iws/ogc/wmts/Cartes_Images',
+              type: 'wmts',
+              crossOrigin: true,
+              matrixSet: 'EPSG_3857',
+              version: '1.0.0'
+            }
+          ]
+        },
+        {
+          id: 'group_impose',
+          title: '(composite catalog) group imposed and unique layer title for same source',
+          composite: [
+            {
+              id: 'tq_swtq',
+              url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/swtq',
+              regFilters: ['zpegt'],
+              groupImpose: {id: 'zpegt', title: 'zpegt'}
+            },
+            {
+              id: 'Gououvert',
+              url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/igo_gouvouvert.fcgi',
+              regFilters: ['zpegt'],
+              groupImpose: {id: 'zpegt', title: 'zpegt'}
+            },
+            {
+              id: 'Gououvert',
+              url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/igo_gouvouvert.fcgi',
+              regFilters: ['zpegt'],
+              groupImpose: {id: 'zpegt', title: 'zpegt'}
+            },
+            {
+              id: 'rn_wmts',
+              url: 'https://servicesmatriciels.mern.gouv.qc.ca/erdas-iws/ogc/wmts/Cartes_Images',
+              type: 'wmts',
+              crossOrigin: true,
+              matrixSet: 'EPSG_3857',
+              version: '1.0.0',
+              groupImpose: {id: 'cartetopo', title: 'Carte topo échelle 1/20 000'}
+            }
+          ]
+        },
+        {
+          id: 'tag_layernametitle',
+          title: '(composite catalog) tag source on same layer title',
+          composite: [
+            {
+              id: 'tq_swtq',
+              url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/swtq',
+              regFilters: ['limtn_charg'],
+              groupImpose: {id: 'mix_swtq_gouv', title: 'mix same name layer'}
+            },
+            {
+              id: 'Gououvert',
+              url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/igo_gouvouvert.fcgi',
+              regFilters: ['limtn_charg'],
+              groupImpose: {id: 'mix_swtq_gouv', title: 'mix same name layer'}
+            }
+          ]
         }
       ]
     },
     searchSources: {
       nominatim: {
-        enabled: true
-      },
-      reseautq: {
-        searchUrl: 'https://ws.mapserver.transports.gouv.qc.ca/swtq',
-        locateUrl: 'https://ws.mapserver.transports.gouv.qc.ca/swtq',
-        limit: 5,
-        locateLimit: 15,
-        zoomMaxOnSelect: 8,
         enabled: false
       },
       icherche: {
-        searchUrl: 'https://geoegl.msp.gouv.qc.ca/icherche/geocode',
-        locateUrl: 'https://geoegl.msp.gouv.qc.ca/icherche/xy',
-        zoomMaxOnSelect: 10,
+        searchUrl: '/apis/icherche',
+        order: 2,
+        enabled: true,
+        params: {
+          limit: '8'
+        }
+      },
+      coordinatesreverse: {
+        showInPointerSummary: true
+      },
+      icherchereverse: {
+        showInPointerSummary: true,
+        searchUrl: '/apis/terrapi',
+        order: 3,
         enabled: true
       },
-      datasource: {
-        searchUrl: 'https://geoegl.msp.gouv.qc.ca/igo2/api/layers/search',
-        enabled: false
+      ilayer: {
+        searchUrl: '/apis/layers/search',
+        order: 4,
+        enabled: true,
+        params: {
+          limit: '5'
+        }
       }
     }
   }

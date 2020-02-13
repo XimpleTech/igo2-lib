@@ -1,0 +1,27 @@
+<igo-list [navigation]="false" [selection]="false">
+  <ng-template ngFor let-item [ngForOf]="store.view.all$() | async">
+    <ng-container *ngIf="isGroup(item)">
+      <igo-catalog-browser-group
+        [catalog]="catalog"
+        [group]="item"
+        [state]="store.state"
+        [resolution]="resolution$ | async"
+        [catalogAllowLegend]="catalogAllowLegend"
+        [toggleCollapsed]="toggleCollapsedGroup"
+        (addedChange)="onGroupAddedChange($event)"
+        (layerAddedChange)="onLayerAddedChange($event)">
+      </igo-catalog-browser-group>
+    </ng-container>
+
+    <ng-container *ngIf="isLayer(item)">
+      <igo-catalog-browser-layer
+        igoListItem
+        [layer]="item"
+        [resolution]="resolution$ | async"
+        [catalogAllowLegend]="catalogAllowLegend"
+        [added]="store.state.get(item).added"
+        (addedChange)="onLayerAddedChange($event)">
+      </igo-catalog-browser-layer>
+    </ng-container>
+  </ng-template>
+</igo-list>

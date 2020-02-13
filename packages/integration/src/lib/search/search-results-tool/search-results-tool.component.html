@@ -1,0 +1,64 @@
+<div *ngIf="!store || store.empty" style="margin: 10px;">
+  <section class="mat-typography">
+    <h4>{{ 'igo.integration.searchResultsTool.noResults' | translate }}</h4>
+    <p>{{ 'igo.integration.searchResultsTool.doSearch' | translate }}</p>
+</section>
+</div>
+
+<igo-flexible
+  *ngIf="store && !(store.empty$ | async)"
+  #topPanel
+  initial="100%"
+  initialMobile="100%"
+  collapsed="calc(100% - 58px)"
+  collapsedMobile="calc(100% - 58px)"
+  expanded="60%"
+  expandedMobile="60%"
+  [state]="(feature$ | async) ? topPanelState : 'initial'">
+
+  <div class="igo-content">
+    <igo-search-results
+      [store]="store"
+      [showIcons]="showIcons"
+      [term]="term"
+      [settingsChange$]="settingsChange$"
+      placeholder="false"
+      (resultFocus)="onResultFocus($event)"
+      (resultSelect)="onResultFocus($event)"
+      (moreResults)="onSearch($event)">
+      <ng-template #igoSearchItemToolbar let-result="result">
+        <igo-search-add-button
+          [map]="map"
+          [layer]="result">
+        </igo-search-add-button>
+      </ng-template>
+    </igo-search-results>
+  </div>
+
+  <div igoFlexibleFill class="igo-content">
+    <igo-panel [title]="featureTitle" *ngIf="feature$ | async">
+
+      <button
+        mat-icon-button
+        panelLeftButton
+        class="igo-icon-button"
+        (click)="toggleTopPanel()">
+        <mat-icon [svgIcon]="(topPanelState$ | async) === 'collapsed' ? 'arrow-up' : 'arrow-down'"></mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        panelRightButton
+        class="igo-icon-button"
+        (click)="zoomToFeatureExtent()"
+        *ngIf="feature.geometry">
+        <mat-icon svgIcon="magnify-plus-outline"></mat-icon>
+      </button>
+
+      <igo-feature-details
+        [feature]="feature$ | async">
+      </igo-feature-details>
+    </igo-panel>
+  </div>
+
+</igo-flexible>

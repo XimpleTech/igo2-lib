@@ -1,0 +1,15 @@
+@import '../lib/action/action.theming';
+@import '../lib/collapsible/collapsible.theming';
+@import '../lib/entity/entity.theming';
+@import '../lib/list/list.theming';
+@import '../lib/panel/panel.theming';
+@import '../lib/tool/tool.theming';
+
+@mixin igo-common-theming($theme, $typography) {
+  @include igo-action-theming($theme);
+  @include igo-collapsible-theming($theme);
+  @include igo-entity-theming($theme);
+  @include igo-list-theming($theme);
+  @include igo-panel-theming($theme);
+  @include igo-tool-theming($theme);
+}

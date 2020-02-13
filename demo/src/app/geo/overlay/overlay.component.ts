@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { LanguageService } from '@igo2/core';
 import {
   IgoMap,
   DataSourceService,
   LayerService,
-  OverlayService,
+  FEATURE,
   Feature,
-  FeatureType
+  FeatureMotion
 } from '@igo2/geo';
 
 @Component({
@@ -15,7 +15,7 @@ import {
   templateUrl: './overlay.component.html',
   styleUrls: ['./overlay.component.scss']
 })
-export class AppOverlayComponent {
+export class AppOverlayComponent implements OnInit, AfterViewInit {
   public map = new IgoMap({
     overlay: true,
     controls: {
@@ -33,9 +33,10 @@ export class AppOverlayComponent {
   constructor(
     private languageService: LanguageService,
     private dataSourceService: DataSourceService,
-    private layerService: LayerService,
-    private overlayService: OverlayService
-  ) {
+    private layerService: LayerService
+  ) {}
+
+  ngOnInit() {
     this.dataSourceService
       .createAsyncDataSource({
         type: 'osm'
@@ -48,13 +49,16 @@ export class AppOverlayComponent {
           })
         );
       });
+  }
 
+  ngAfterViewInit() {
     const feature1: Feature = {
-      id: '1',
-      source: 'testSource',
-      title: 'testTitle',
-      type: FeatureType.Feature,
+      type: FEATURE,
       projection: 'EPSG:4326',
+      meta: {
+        id: 1
+      },
+      properties: {},
       geometry: {
         type: 'Point',
         coordinates: [-73, 46.6]
@@ -62,11 +66,12 @@ export class AppOverlayComponent {
     };
 
     const feature2: Feature = {
-      id: '2',
-      source: 'testSource',
-      title: 'testTitle2',
-      type: FeatureType.Feature,
+      type: FEATURE,
       projection: 'EPSG:4326',
+      meta: {
+        id: 2
+      },
+      properties: {},
       geometry: {
         type: 'LineString',
         coordinates: [[-72, 47.8], [-73.5, 47.4], [-72.4, 48.6]]
@@ -74,17 +79,21 @@ export class AppOverlayComponent {
     };
 
     const feature3: Feature = {
-      id: '3',
-      source: 'testSource',
-      title: 'testTitle3',
-      type: FeatureType.Feature,
+      type: FEATURE,
       projection: 'EPSG:4326',
+      meta: {
+        id: 3
+      },
+      properties: {},
       geometry: {
         type: 'Polygon',
         coordinates: [[[-71, 46.8], [-73, 47], [-71.2, 46.6]]]
       }
     };
 
-    this.overlayService.setFeatures([feature1, feature2, feature3]);
+    this.map.overlay.setFeatures(
+      [feature1, feature2, feature3],
+      FeatureMotion.None
+    );
   }
 }

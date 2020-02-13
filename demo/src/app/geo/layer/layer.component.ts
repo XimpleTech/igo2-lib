@@ -44,6 +44,8 @@ export class AppLayerComponent {
         this.map.addLayer(
           this.layerService.createLayer({
             title: 'OSM',
+            visible: true,
+            baseLayer: true,
             source: dataSource
           })
         );
@@ -93,8 +95,8 @@ export class AppLayerComponent {
           url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/igo_gouvouvert.fcgi',
           optionsFromCapabilities: true,
           params: {
-            layers: 'MELS_CS_ANGLO_S',
-            version: '1.3.0'
+            LAYERS: 'MELS_CS_ANGLO_S',
+            VERSION: '1.3.0'
           }
         }
       })
@@ -106,10 +108,67 @@ export class AppLayerComponent {
         visible: false,
         sourceOptions: {
           type: 'wms',
-          url: 'https://ws.mapserver.transports.gouv.qc.ca/swtq',
+          url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/swtq',
           params: {
-            layers: 'bgr_v_sous_route_res_sup_act',
-            version: '1.3.0'
+            LAYERS: 'bgr_v_sous_route_res_sup_act',
+            VERSION: '1.3.0'
+          }
+        }
+      })
+      .subscribe(l => this.map.addLayer(l));
+
+    this.layerService
+      .createAsyncLayer({
+        title: 'lieu habité',
+        visible: false,
+        sourceOptions: {
+          type: 'wms',
+          url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/swtq',
+          optionsFromCapabilities: true,
+          params: {
+            LAYERS: 'lieuhabite',
+            VERSION: '1.3.0'
+          }
+        }
+      })
+      .subscribe(l => this.map.addLayer(l));
+
+    this.layerService
+      .createAsyncLayer({
+        title: 'sh_dis_eco',
+        visible: false,
+        sourceOptions: {
+          type: 'wms',
+          url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/mffpecofor.fcgi',
+          optionsFromCapabilities: true,
+          params: {
+            LAYERS: 'sh_dis_eco',
+            VERSION: '1.3.0'
+          }
+        }
+      })
+      .subscribe(l => this.map.addLayer(l));
+
+    this.layerService
+      .createAsyncLayer({
+        title: 'nurc:Arc_Sample_Parent',
+        visible: false,
+        legendOptions: {
+          // collapsed: false,
+          display: true,
+          // url: 'https://v.seloger.com/s/width/1144/visuels/0/m/l/4/0ml42xbt1n3itaboek3qec5dtskdgw6nlscu7j69k.jpg',
+          stylesAvailable: [
+            { name: 'rain', title: 'Pluie' },
+            { name: 'raster', title: 'Défaut' }
+          ] //
+        },
+        sourceOptions: {
+          type: 'wms',
+          url: 'https://demo.geo-solutions.it/geoserver/ows',
+          optionsFromCapabilities: true,
+          params: {
+            LAYERS: 'nurc:Arc_Sample', // , test:Linea_costa
+            VERSION: '1.3.0'
           }
         }
       })
@@ -121,10 +180,10 @@ export class AppLayerComponent {
         visible: false,
         sourceOptions: {
           type: 'wms',
-          url: 'https://ws.mapserver.transports.gouv.qc.ca/swtq',
+          url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/swtq',
           params: {
-            layers: 'evenements',
-            version: '1.3.0'
+            LAYERS: 'evenements',
+            VERSION: '1.3.0'
           }
         }
       })
@@ -135,8 +194,8 @@ export class AppLayerComponent {
       url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/igo_gouvouvert.fcgi',
       refreshIntervalSec: 15,
       params: {
-        layers: 'vg_observation_v_inondation_embacle_wmst',
-        version: '1.3.0'
+        LAYERS: 'vg_observation_v_inondation_embacle_wmst',
+        VERSION: '1.3.0'
       }
     };
 

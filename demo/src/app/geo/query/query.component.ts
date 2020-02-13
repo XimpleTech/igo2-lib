@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { BehaviorSubject } from 'rxjs';
+
 import olFeature from 'ol/Feature';
 import olPoint from 'ol/geom/Point';
 import olPolygon from 'ol/geom/Polygon';
@@ -14,9 +16,13 @@ import {
   LayerService,
   OverlayService,
   Feature,
-  FeatureType,
-  FeatureService
+  QueryableDataSourceOptions,
+  QueryFormat,
+  QueryHtmlTarget,
+  SearchResult
 } from '@igo2/geo';
+
+import { getEntityTitle, EntityStore } from '@igo2/common';
 
 @Component({
   selector: 'app-query',
@@ -24,6 +30,8 @@ import {
   styleUrls: ['./query.component.scss']
 })
 export class AppQueryComponent {
+  public feature$ = new BehaviorSubject<Feature>(undefined);
+
   public map = new IgoMap({
     controls: {
       attribution: {
@@ -41,8 +49,7 @@ export class AppQueryComponent {
     private languageService: LanguageService,
     private dataSourceService: DataSourceService,
     private layerService: LayerService,
-    private overlayService: OverlayService,
-    private featureService: FeatureService
+    private overlayService: OverlayService
   ) {
     this.dataSourceService
       .createAsyncDataSource({
@@ -57,41 +64,69 @@ export class AppQueryComponent {
         );
       });
 
-      this.dataSourceService
+    this.dataSourceService
       .createAsyncDataSource({
         type: 'wms',
-        url: 'https://ws.mapserver.transports.gouv.qc.ca/swtq',
+        url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/swtq',
+        queryable: true,
+        queryTitle: 'num_rts',
         params: {
           layers: 'bgr_v_sous_route_res_sup_act',
           version: '1.3.0'
         }
-
-      })
+      } as QueryableDataSourceOptions)
       .subscribe(dataSource => {
         this.map.addLayer(
           this.layerService.createLayer({
             title: 'WMS',
-            source: dataSource
+            source: dataSource,
+            sourceOptions: dataSource.options
           })
         );
       });
 
     this.dataSourceService
       .createAsyncDataSource({
-        type: 'vector'
-      })
+        type: 'wms',
+        url: 'https://geoegl.msp.gouv.qc.ca/apis/ws/swtq',
+        queryable: true,
+        queryFormat: QueryFormat.HTMLGML2,
+        queryHtmlTarget: QueryHtmlTarget.IFRAME,
+        params: {
+          layers: 'bgr_v_sous_route_res_sup_act',
+          version: '1.3.0'
+        }
+      } as QueryableDataSourceOptions)
+      .subscribe(dataSource => {
+        this.map.addLayer(
+          this.layerService.createLayer({
+            title: 'WMS html with a pre call in GML',
+            source: dataSource,
+            sourceOptions: dataSource.options
+          })
+        );
+      });
+
+    this.dataSourceService
+      .createAsyncDataSource({
+        type: 'vector',
+        queryable: true,
+        queryTitle: 'So beautiful ${name}',
+        sourceFields: [
+          { name: 'name', alias: 'Alias name' },
+          { name: 'description', alias: 'Alias description' }
+        ]
+      } as QueryableDataSourceOptions)
       .subscribe(dataSource => {
         this.map.addLayer(
           this.layerService.createLayer({
             title: 'Vector Layer',
-            source: dataSource
+            source: dataSource,
+            sourceOptions: dataSource.options
           })
         );
         this.addFeatures(dataSource as FeatureDataSource);
       });
-
-    this.featureService.clear();
-    this.overlayService.clear();
   }
 
   addFeatures(dataSource: FeatureDataSource) {
@@ -101,14 +136,14 @@ export class AppQueryComponent {
         olproj.transform([-72, 47.8], 'EPSG:4326', 'EPSG:3857'),
         olproj.transform([-73.5, 47.4], 'EPSG:4326', 'EPSG:3857'),
         olproj.transform([-72.4, 48.6], 'EPSG:4326', 'EPSG:3857')
-      ])
+      ]),
     });
 
     const feature2 = new olFeature({
       name: 'feature2',
       geometry: new olPoint(
         olproj.transform([-73, 46.6], 'EPSG:4326', 'EPSG:3857')
-      )
+      ),
     });
 
     const feature3 = new olFeature({
@@ -119,29 +154,22 @@ export class AppQueryComponent {
           olproj.transform([-73, 47], 'EPSG:4326', 'EPSG:3857'),
           olproj.transform([-71.2, 46.6], 'EPSG:4326', 'EPSG:3857')
         ]
-      ])
+      ]),
     });
 
     dataSource.ol.addFeatures([feature1, feature2, feature3]);
   }
 
-  clearFeature() {
-    this.featureService.clear();
-    this.overlayService.clear();
-  }
-
   handleQueryResults(results) {
     const features: Feature[] = results.features;
+    let feature;
     if (features.length) {
-      this.featureService.setFeatures(features);
+      feature = features[0];
     }
+    this.feature$.next(feature);
   }
 
-  handleFeatureFocus(feature: Feature) {
-    this.overlayService.setFeatures([feature]);
-  }
-
-  handleFeatureSelect(feature: Feature) {
-    this.overlayService.setFeatures([feature]);
+  getTitle(result: SearchResult) {
+    return getEntityTitle(result);
   }
 }

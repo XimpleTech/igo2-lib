@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import {
   MatCardModule,
@@ -9,17 +8,27 @@ import {
   MatTooltipModule
 } from '@angular/material';
 
-import { ConfigService, LanguageService } from '@igo2/core';
-import { IgoPanelModule } from '@igo2/common';
+import { IgoMessageModule } from '@igo2/core';
+
 import {
+  IgoPanelModule,
+  IgoActionbarModule,
+  IgoContextMenuModule
+} from '@igo2/common';
+
+import {
+  IgoFeatureModule,
   IgoMapModule,
   IgoSearchModule,
-  IgoFeatureModule,
-  IgoOverlayModule,
   provideIChercheSearchSource,
-  provideDataSourceSearchSource,
-  provideNominatimSearchSource
+  provideILayerSearchSource,
+  provideNominatimSearchSource,
+  provideIChercheReverseSearchSource,
+  provideCoordinatesReverseSearchSource,
+  provideCadastreSearchSource
 } from '@igo2/geo';
+
+import { IgoAppSearchModule } from '@igo2/integration';
 
 import { AppSearchComponent } from './search.component';
 import { AppSearchRoutingModule } from './search-routing.module';
@@ -28,22 +37,28 @@ import { AppSearchRoutingModule } from './search-routing.module';
   declarations: [AppSearchComponent],
   imports: [
     CommonModule,
-    HttpClientModule,
     AppSearchRoutingModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
+    IgoMessageModule.forRoot(),
     IgoPanelModule,
     IgoMapModule,
-    IgoSearchModule,
-    IgoFeatureModule,
-    IgoOverlayModule
+    IgoSearchModule.forRoot(),
+    IgoAppSearchModule,
+    IgoActionbarModule,
+    IgoContextMenuModule,
+    IgoFeatureModule
   ],
   exports: [AppSearchComponent],
   providers: [
+    provideCoordinatesReverseSearchSource(),
+    provideCadastreSearchSource(),
     provideIChercheSearchSource(),
-    provideDataSourceSearchSource(),
-    provideNominatimSearchSource()]
+    provideILayerSearchSource(),
+    provideNominatimSearchSource(),
+    provideIChercheReverseSearchSource()
+  ]
 })
 export class AppSearchModule {}

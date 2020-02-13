@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 const gulp = require('gulp');
 const del = require('del');
+const babel = require('gulp-babel');
 const exec = require('gulp-exec');
 const merge = require('gulp-merge-json');
 const jeditor = require('gulp-json-editor');
@@ -31,10 +32,18 @@ gulp.task('geo:clean', done => {
 
 // ==========================================================
 
+gulp.task('core:copyIcons', done => {
+  gulp
+    .src('./node_modules/@mdi/angular-material/mdi.svg')
+    .pipe(gulp.dest('./dist/core/assets/icons'));
+
+  done();
+});
+
 gulp.task('core:copyAssets', done => {
   gulp
-    .src('./projects/core/src/assets/**/*', {
-      base: './projects/core/src/assets/'
+    .src('./packages/core/src/assets/**/*', {
+      base: './packages/core/src/assets/'
     })
     .pipe(gulp.dest('./dist/core/assets'));
 
@@ -43,8 +52,9 @@ gulp.task('core:copyAssets', done => {
 
 gulp.task('common:copyAssets', done => {
   gulp
-    .src('./projects/common/src/assets', {
-      base: './projects/common/src/assets/', allowEmpty: true
+    .src('./packages/common/src/assets', {
+      base: './packages/common/src/assets/',
+      allowEmpty: true
     })
     .pipe(gulp.dest('./dist/common/assets'));
 
@@ -53,8 +63,9 @@ gulp.task('common:copyAssets', done => {
 
 gulp.task('auth:copyAssets', done => {
   gulp
-    .src('./projects/auth/src/assets', {
-      base: './projects/auth/src/assets/', allowEmpty: true
+    .src('./packages/auth/src/assets', {
+      base: './packages/auth/src/assets/',
+      allowEmpty: true
     })
     .pipe(gulp.dest('./dist/auth/assets'));
 
@@ -63,8 +74,8 @@ gulp.task('auth:copyAssets', done => {
 
 gulp.task('geo:copyAssets', done => {
   gulp
-    .src('./projects/geo/src/assets/**/*', {
-      base: './projects/geo/src/assets/'
+    .src('./packages/geo/src/assets/**/*', {
+      base: './packages/geo/src/assets/'
     })
     .pipe(gulp.dest('./dist/geo/assets'));
 
@@ -75,7 +86,7 @@ gulp.task('geo:copyAssets', done => {
 
 gulp.task('core:copyStyles', done => {
   gulp
-    .src('./projects/core/src/style/**/*')
+    .src('./packages/core/src/style/**/*')
     .pipe(gulp.dest('./dist/core/style'));
 
   done();
@@ -83,7 +94,7 @@ gulp.task('core:copyStyles', done => {
 
 gulp.task('common:copyStyles', done => {
   gulp
-    .src('./projects/common/src/style/**/*')
+    .src('./packages/common/src/style/**/*')
     .pipe(gulp.dest('./dist/common/style'));
 
   done();
@@ -91,14 +102,14 @@ gulp.task('common:copyStyles', done => {
 
 gulp.task('auth:copyStyles', done => {
   gulp
-    .src('./projects/auth/src/style/**/*')
+    .src('./packages/auth/src/style/**/*')
     .pipe(gulp.dest('./dist/auth/style'));
 
   done();
 });
 
 gulp.task('geo:copyStyles', done => {
-  gulp.src('./projects/geo/src/style/**/*').pipe(gulp.dest('./dist/geo/style'));
+  gulp.src('./packages/geo/src/style/**/*').pipe(gulp.dest('./dist/geo/style'));
   done();
 });
 
@@ -109,17 +120,17 @@ gulp.task('core:bundleStyles', done => {
     .src('.')
     .pipe(
       exec(
-        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/core/src/style/core.theming.scss -d ./dist/core/style/core.theming.scss'
+        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./packages/core/src/style/core.theming.scss -d ./dist/core/style/core.theming.scss'
       )
     )
     .pipe(
       exec(
-        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/core/src/style/theming.scss -d ./dist/core/style/theming.scss'
+        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./packages/core/src/style/theming.scss -d ./dist/core/style/theming.scss'
       )
     )
     .pipe(
       exec(
-        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/core/src/style/all.theming.scss -d ./dist/core/style/all.theming.scss'
+        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./packages/core/src/style/all.theming.scss -d ./dist/core/style/all.theming.scss'
       )
     )
     .pipe(exec.reporter());
@@ -130,7 +141,7 @@ gulp.task('common:bundleStyles', done => {
     .src('.')
     .pipe(
       exec(
-        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/common/src/style/common.theming.scss -d ./dist/common/style/common.theming.scss'
+        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./packages/common/src/style/common.theming.scss -d ./dist/common/style/common.theming.scss'
       )
     )
     .pipe(exec.reporter());
@@ -141,7 +152,7 @@ gulp.task('geo:bundleStyles', done => {
     .src('.')
     .pipe(
       exec(
-        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./projects/geo/src/style/geo.theming.scss -d ./dist/geo/style/geo.theming.scss'
+        'node ./node_modules/scss-bundle/dist/bundle-cli.js -e ./packages/geo/src/style/geo.theming.scss -d ./dist/geo/style/geo.theming.scss'
       )
     )
     .pipe(exec.reporter());
@@ -151,41 +162,41 @@ gulp.task('geo:bundleStyles', done => {
 
 gulp.task('core:copyLocale', done => {
   gulp
-    .src('./projects/core/src/locale/*')
+    .src('./packages/core/src/locale/*')
     .pipe(gulp.dest('./dist/core/locale'));
   done();
 });
 
 gulp.task('common:copyLocale', done => {
   gulp
-    .src('./projects/common/src/locale/*')
+    .src('./packages/common/src/locale/*')
     .pipe(gulp.dest('./dist/core/locale'));
   done();
 });
 
 gulp.task('auth:copyLocale', done => {
   gulp
-    .src('./projects/auth/src/locale/*')
+    .src('./packages/auth/src/locale/*')
     .pipe(gulp.dest('./dist/core/locale'));
   done();
 });
 
 gulp.task('geo:copyLocale', done => {
-  gulp.src('./projects/geo/src/locale/*').pipe(gulp.dest('./dist/core/locale'));
+  gulp.src('./packages/geo/src/locale/*').pipe(gulp.dest('./dist/core/locale'));
   done();
 });
 
 gulp.task('context:copyLocale', done => {
   gulp
-    .src('./projects/context/src/locale/*')
+    .src('./packages/context/src/locale/*')
     .pipe(gulp.dest('./dist/core/locale'));
 
   done();
 });
 
-gulp.task('tools:copyLocale', done => {
+gulp.task('integration:copyLocale', done => {
   gulp
-    .src('./projects/tools/src/locale/*')
+    .src('./packages/integration/src/locale/*')
     .pipe(gulp.dest('./dist/core/locale'));
 
   done();
@@ -226,20 +237,20 @@ gulp.task(
 
 gulp.task('utils:bumpVersion', done => {
   gulp
-    .src('./projects/utils/package.json')
+    .src('./packages/utils/package.json')
     .pipe(
       jeditor({
         version: version
       })
     )
-    .pipe(gulp.dest('./projects/utils/.'));
+    .pipe(gulp.dest('./packages/utils/.'));
 
   done();
 });
 
 gulp.task('core:bumpVersion', done => {
   gulp
-    .src('./projects/core/package.json')
+    .src('./packages/core/package.json')
     .pipe(
       jeditor({
         version: version,
@@ -248,14 +259,19 @@ gulp.task('core:bumpVersion', done => {
         }
       })
     )
-    .pipe(gulp.dest('./projects/core/.'));
+    .pipe(gulp.dest('./packages/core/.'));
+
+  gulp
+    .src(['./packages/core/src/lib/config/version.ts'])
+    .pipe(replace(/lib: '[A-Za-z0-9\.\-]+'/g, `lib: '${version}'`))
+    .pipe(gulp.dest('./packages/core/src/lib/config/.'));
 
   done();
 });
 
 gulp.task('common:bumpVersion', done => {
   gulp
-    .src('./projects/common/package.json')
+    .src('./packages/common/package.json')
     .pipe(
       jeditor({
         version: version,
@@ -265,14 +281,14 @@ gulp.task('common:bumpVersion', done => {
         }
       })
     )
-    .pipe(gulp.dest('./projects/common/.'));
+    .pipe(gulp.dest('./packages/common/.'));
 
   done();
 });
 
 gulp.task('auth:bumpVersion', done => {
   gulp
-    .src('./projects/auth/package.json')
+    .src('./packages/auth/package.json')
     .pipe(
       jeditor({
         version: version,
@@ -282,14 +298,14 @@ gulp.task('auth:bumpVersion', done => {
         }
       })
     )
-    .pipe(gulp.dest('./projects/auth/.'));
+    .pipe(gulp.dest('./packages/auth/.'));
 
   done();
 });
 
 gulp.task('geo:bumpVersion', done => {
   gulp
-    .src('./projects/geo/package.json')
+    .src('./packages/geo/package.json')
     .pipe(
       jeditor({
         version: version,
@@ -300,14 +316,14 @@ gulp.task('geo:bumpVersion', done => {
         }
       })
     )
-    .pipe(gulp.dest('./projects/geo/.'));
+    .pipe(gulp.dest('./packages/geo/.'));
 
   done();
 });
 
 gulp.task('context:bumpVersion', done => {
   gulp
-    .src('./projects/context/package.json')
+    .src('./packages/context/package.json')
     .pipe(
       jeditor({
         version: version,
@@ -320,14 +336,14 @@ gulp.task('context:bumpVersion', done => {
         }
       })
     )
-    .pipe(gulp.dest('./projects/context/.'));
+    .pipe(gulp.dest('./packages/context/.'));
 
   done();
 });
 
-gulp.task('tools:bumpVersion', done => {
+gulp.task('integration:bumpVersion', done => {
   gulp
-    .src('./projects/tools/package.json')
+    .src('./packages/integration/package.json')
     .pipe(
       jeditor({
         version: version,
@@ -337,7 +353,7 @@ gulp.task('tools:bumpVersion', done => {
         }
       })
     )
-    .pipe(gulp.dest('./projects/tools/.'));
+    .pipe(gulp.dest('./packages/integration/.'));
 
   done();
 });
@@ -351,7 +367,7 @@ gulp.task(
     'auth:bumpVersion',
     'geo:bumpVersion',
     'context:bumpVersion',
-    'tools:bumpVersion'
+    'integration:bumpVersion'
   ])
 );
 
@@ -359,9 +375,32 @@ gulp.task(
 
 gulp.task('geo:fixOL', done => {
   gulp
-    .src(['./node_modules/ol/proj.js'])
-    .pipe(replace('@typedef {module:ol/proj/Projection', '@typedef {'))
+    .src(['./node_modules/ol/package.json'])
+    .pipe(
+      jeditor({
+        sideEffects: true
+      })
+    )
     .pipe(gulp.dest('./node_modules/ol/'));
+
+  done();
+});
+
+gulp.task('geo:fixMapbox', done => {
+  gulp
+    .src(
+      [
+        './node_modules/@mapbox/mapbox-gl-style-spec/deref.js',
+        './node_modules/ol-mapbox-style/stylefunction.js'
+      ],
+      { base: './' }
+    )
+    .pipe(
+      babel({
+        presets: ['@babel/env']
+      })
+    )
+    .pipe(gulp.dest('.'));
 
   done();
 });
@@ -373,7 +412,7 @@ gulp.task(
   gulp.series(
     'core:clean',
     gulp.parallel(['core:copyAssets', 'core:copyStyles', 'core:copyLocale']),
-    gulp.parallel(['core:bundleStyles']),
+    gulp.parallel(['core:copyIcons', 'core:bundleStyles']),
     'core:bundleLocale'
   )
 );
@@ -413,9 +452,12 @@ gulp.task(
 
 gulp.task('context', gulp.series('context:copyLocale', 'core:bundleLocale'));
 
-gulp.task('tools', gulp.series('tools:copyLocale', 'core:bundleLocale'));
+gulp.task(
+  'integration',
+  gulp.series('integration:copyLocale', 'core:bundleLocale')
+);
 
 gulp.task(
   'default',
-  gulp.series(['core', 'common', 'auth', 'geo', 'context', 'tools'])
+  gulp.series(['core', 'common', 'auth', 'geo', 'context', 'integration'])
 );

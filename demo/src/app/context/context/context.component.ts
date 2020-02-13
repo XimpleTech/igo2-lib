@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { LanguageService } from '@igo2/core';
-import { IgoMap, OverlayService, Feature, FeatureService } from '@igo2/geo';
+import { IgoMap, OverlayService, MapService } from '@igo2/geo';
+
 @Component({
   selector: 'app-context',
   templateUrl: './context.component.html',
@@ -23,27 +24,9 @@ export class AppContextComponent {
 
   constructor(
     private languageService: LanguageService,
-    private overlayService: OverlayService,
-    private featureService: FeatureService
-  ) {}
-
-  clearFeature() {
-    this.featureService.clear();
-    this.overlayService.clear();
-  }
-
-  handleQueryResults(results) {
-    const features: Feature[] = results.features;
-    if (features.length) {
-      this.featureService.setFeatures(features);
-    }
-  }
-
-  handleFeatureFocus(feature: Feature) {
-    this.overlayService.setFeatures([feature]);
-  }
-
-  handleFeatureSelect(feature: Feature) {
-    this.overlayService.setFeatures([feature]);
+    private mapService: MapService,
+    private overlayService: OverlayService
+  ) {
+    this.mapService.setMap(this.map);
   }
 }

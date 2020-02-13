@@ -1,14 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import {} from '@angular/platform-browser';
 import {
+  MatIconRegistry,
   MatSidenavModule,
   MatToolbarModule,
   MatButtonModule,
   MatIconModule,
   MatListModule
 } from '@angular/material';
-
 import { AppHomeModule } from './core/home/home.module';
 import { AppActivityModule } from './core/activity/activity.module';
 import { AppConfigModule } from './core/config/config.module';
@@ -17,19 +18,33 @@ import { AppMediaModule } from './core/media/media.module';
 import { AppMessageModule } from './core/message/message.module';
 import { AppRequestModule } from './core/request/request.module';
 
+import { AppActionModule } from './common/action/action.module';
+import { AppDynamicComponentModule } from './common/dynamic-component/dynamic-component.module';
+import { AppEntityTableModule } from './common/entity-table/entity-table.module';
+import { AppEntitySelectorModule } from './common/entity-selector/entity-selector.module';
+import { AppFormModule } from './common/form/form.module';
+import { AppTableModule } from './common/table/table.module';
+import { AppToolModule } from './common/tool/tool.module';
+import { AppWidgetModule } from './common/widget/widget.module';
+
 import { AppAuthFormModule } from './auth/auth-form/auth-form.module';
 
 import { AppSimpleMapModule } from './geo/simple-map/simple-map.module';
 import { AppLayerModule } from './geo/layer/layer.module';
 import { AppOverlayModule } from './geo/overlay/overlay.module';
+import { AppGeometryModule } from './geo/geometry/geometry.module';
 import { AppFeatureModule } from './geo/feature/feature.module';
+import { AppMeasureModule } from './geo/measure/measure.module';
 import { AppQueryModule } from './geo/query/query.module';
 import { AppCatalogModule } from './geo/catalog/catalog.module';
 import { AppSearchModule } from './geo/search/search.module';
 import { AppPrintModule } from './geo/print/print.module';
+import { AppImportExport } from './geo/import-export/import-export.module';
 import { AppDirectionsModule } from './geo/directions/directions.module';
 import { AppTimeFilterModule } from './geo/time-filter/time-filter.module';
 import { AppOgcFilterModule } from './geo/ogc-filter/ogc-filter.module';
+import { AppSpatialFilterModule } from './geo/spatial-filter/spatial-filter.module';
+import { AppWorkspaceModule } from './geo/workspace/workspace.module';
 
 import { AppContextModule } from './context/context/context.module';
 
@@ -55,19 +70,33 @@ import { AppComponent } from './app.component';
     AppMessageModule,
     AppRequestModule,
 
+    AppActionModule,
+    AppDynamicComponentModule,
+    AppEntityTableModule,
+    AppEntitySelectorModule,
+    AppFormModule,
+    AppTableModule,
+    AppToolModule,
+    AppWidgetModule,
+
     AppAuthFormModule,
 
     AppSimpleMapModule,
     AppLayerModule,
     AppOverlayModule,
+    AppGeometryModule,
     AppFeatureModule,
+    AppMeasureModule,
     AppQueryModule,
     AppCatalogModule,
     AppSearchModule,
     AppPrintModule,
+    AppImportExport,
     AppDirectionsModule,
     AppTimeFilterModule,
     AppOgcFilterModule,
+    AppSpatialFilterModule,
+    AppWorkspaceModule,
 
     AppContextModule,
 
@@ -75,4 +104,12 @@ import { AppComponent } from './app.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
+    matIconRegistry.addSvgIconSet(
+      domSanitizer.bypassSecurityTrustResourceUrl(
+        './assets/igo2/core/icons/mdi.svg'
+      )
+    );
+  }
+}
