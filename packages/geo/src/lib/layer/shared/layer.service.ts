@@ -56,11 +56,10 @@ export class LayerService {
 
     if (
       layerOptions.source.options &&
-      layerOptions.source.options.optionsFromCapabilities
+      layerOptions.source.options._layerOptionsFromSource
     ) {
       layerOptions = ObjectUtils.mergeDeep(
-        (layerOptions.source.options as any)._layerOptionsFromCapabilities ||
-          {},
+        layerOptions.source.options._layerOptionsFromSource,
         layerOptions || {}
       );
     }
@@ -144,7 +143,7 @@ export class LayerService {
 
     if (layerOptions.source instanceof ClusterDataSource) {
       const serviceStyle = this.styleService;
-      const baseStyle = layerOptions.style;
+      const baseStyle = layerOptions.clusterBaseStyle;
       layerOptions.style = feature => {
         return serviceStyle.createClusterStyle(
           feature,

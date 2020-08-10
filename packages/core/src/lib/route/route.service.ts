@@ -37,12 +37,11 @@ export class RouteService {
       visibleOffLayersKey: 'invisiblelayers',
       directionsCoordKey: 'routing',
       toolKey: 'tool',
-      llcKKey: 'llck',
-      llcAKey: 'llca',
-      llcVKey: 'llcv',
-      llcRKey: 'llcr',
       wmsUrlKey: 'wmsUrl',
-      layersKey:  'layers'
+      wmsLayersKey:  'wmsLayers',
+      wmtsUrlKey: 'wmtsUrl',
+      wmtsLayersKey:  'wmtsLayers',
+      vectorKey: 'vector'
     };
     this.options = Object.assign({}, defaultOptions, options);
   }

@@ -13,13 +13,16 @@ import {
   IgoLayerModule,
   IgoMetadataModule,
   IgoDownloadModule,
-  IgoFilterModule
+  IgoFilterModule,
+  IgoImportExportModule
 } from '@igo2/geo';
 
 import { IgoContextModule } from '@igo2/context';
 
 import { MapDetailsToolComponent } from './map-details-tool/map-details-tool.component';
 import { MapToolComponent } from './map-tool/map-tool.component';
+import { MapToolsComponent } from './map-tools/map-tools.component';
+import { MapLegendToolComponent } from './map-legend/map-legend-tool.component';
 
 @NgModule({
   imports: [
@@ -31,12 +34,13 @@ import { MapToolComponent } from './map-tool/map-tool.component';
     IgoLayerModule,
     IgoMetadataModule,
     IgoDownloadModule,
+    IgoImportExportModule,
     IgoFilterModule,
     IgoContextModule
   ],
-  declarations: [MapToolComponent, MapDetailsToolComponent],
-  exports: [MapToolComponent, MapDetailsToolComponent],
-  entryComponents: [MapToolComponent, MapDetailsToolComponent],
+  declarations: [MapToolComponent, MapToolsComponent, MapDetailsToolComponent, MapLegendToolComponent],
+  exports: [MapToolComponent, MapToolsComponent, MapDetailsToolComponent, MapLegendToolComponent],
+  entryComponents: [MapToolComponent, MapToolsComponent, MapDetailsToolComponent, MapLegendToolComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class IgoAppMapModule {

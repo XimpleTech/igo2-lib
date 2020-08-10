@@ -16,6 +16,11 @@
       "baselayersSwitcher": {
         "title": "Basemaps"
       },
+      "dataSource": {
+        "unavailableTitle": "Layer unavailable",
+        "optionsApiUnavailable": "Layer information could not be retrieved. Some layers may not present the correct information.",
+        "unavailable": "The layer '{{value}}' is unavailable at the moment or you don't have the required permissions."
+      },
       "dropGeoFile": {
         "invalid": {
           "text": "The file '{{value}}' is invalid ({{mimeType}})",
@@ -34,7 +39,7 @@
           "title": "The file '{{value}}' is unreadable"
         },
         "tooLarge": {
-          "text": "The file '{{value}}' is too large (Max: 30 MB)",
+          "text": "The file '{{value}}' is too large (Max: {{size}} MB)",
           "title": "File too large"
         },
         "invalidSRS": {
@@ -47,24 +52,48 @@
           "text": "No feature could be exported.",
           "title": "Nothing to export"
         },
+        "noFormat": {
+          "text": "No export format valid for all selected layers. Please export the layers one at a time.",
+          "title": "No valid format"
+        },
         "failed": {
           "text": "Failed to export",
           "title": "Failed to export features"
+        },
+        "success": {
+          "text": "Features have been exported.",
+          "title": "Features export success"
+        },
+        "format": {
+          "GeoJSON": "GeoJSON",
+          "GML": "GML",
+          "GPX": "GPX",
+          "KML": "KML",
+          "Shapefile": "Shapefile",
+          "CSVcomma": "CSV (comma delimited)",
+          "CSVsemicolon": "CSV (semicolon delimited)",
+          "URL": "URL"
         }
       },
       "importExportForm": {
         "exportButton": "Export",
+        "exportButtonLink": "Open the link",
         "exportFormatPlaceholder": "Format",
         "exportLayerPlaceholder": "Layer",
+        "exportFileNamePlaceholder": "Filename",
         "exportTabTitle": "Export",
+        "exportFeatureInExtent": "Export only features in map extent",
+        "exportNoLayersExportable": "There is no exportable layer in your map",
         "importButton": "Import",
         "importProjPlaceholder": "Coordinate system",
         "importTabTitle": "Import",
         "importClarifications": "Clarifications",
-        "importSizeMax": "The file size limit is 30 MB.",
+        "importSizeMax": "The file size limit is {{size}} Mb",
+        "importFormatAuthorized": "Formats authorized: geojson, kml, gpx, gml, shapefile",
         "importShpZip": "Shapefiles must be zipped."
       },
       "operators": {
+        "caseSensitive": "Case sensitive",
         "And": "And",
         "Or": "Or",
         "PropertyIsEqualTo": "=",
@@ -75,11 +104,28 @@
         "PropertyIsLessThan": "<",
         "PropertyIsLessThanOrEqualTo": "<=",
         "PropertyIsBetween": "between",
-        "During": "during",
+        "During": "during (temporal)",
         "PropertyIsNull": "is null",
-        "Intersects": "intersects",
-        "Within": "within",
-        "Contains": "contains"
+        "Intersects": "intersects (spatial)",
+        "Within": "within (spatial)",
+        "Contains": "contains (spatial)",
+        "tooltip": {
+          "And": "Logical operator between filters where both conditions must be true",
+          "Or": "Logical operator between filters where at least one (1) condition must be true",
+          "PropertyIsEqualTo": "Identical (case sensitive)",
+          "PropertyIsNotEqualTo": "Different(case sensitive)",
+          "PropertyIsLike": "Like Example: *road* Finds any values that have 'road' in any position. road* Finds any values that begin by 'road'. wildCard ='*', singleChar = '.' escapeChar = '!' (case sensitive)",
+          "PropertyIsGreaterThan": "Greater than",
+          "PropertyIsGreaterThanOrEqualTo": "Greater than or equal to ",
+          "PropertyIsLessThan": "Lesser than",
+          "PropertyIsLessThanOrEqualTo": "Lesser than or equal to",
+          "PropertyIsBetween": "Apply a range check between the lower and upper boundary (values are included)",
+          "During": "Apply a range check for time attributes",
+          "PropertyIsNull": "Return features where the attribute is null",
+          "Intersects": "Return features in geometric intersection with the provided geometry",
+          "Within": "Return feature which are completely contained by the provided geometry",
+          "Contains": "Return feature completely containing by the provided geometry"
+        }
       },
       "sourceFields": {
         "selectField": "Choose a field"
@@ -107,9 +153,16 @@
       "layer": {
         "hideLayer": "Hide Layer",
         "lowerLayer": "Bring layer backward",
+        "filterLowerLayer": "The backward movement is always done according to the order of the map!",
         "filterPlaceholder": "Filter the layers list",
+        "activateSelectionMode": "Activate multiple selection mode",
+        "deactivateSelectionMode": "Deactivate multiple selection mode",
+        "tools": "Tools",
+        "selectAll": "Select all",
+        "deselectAll": "Deselect all",
         "opacity": "Opacity",
         "raiseLayer": "Bring layer forward",
+        "filterRaiseLayer": "The forward movement is always done according to the order of the map!",
         "moreOptions": "More options",
         "removeLayer": "Remove this layer from the map",
         "showFeaturesList": "Show features list",
@@ -127,7 +180,12 @@
           "loadingLegendText": "Loading legend",
           "noLegendText": "No legend available for this layer",
           "noLegendScale": "No legend available for this scale",
-          "selectStyle": "Select the style of the legend"
+          "selectStyle": "Select the style of the legend",
+          "showAll": "Show all legends (non visible and out of range)",
+          "noLayersVisibleWithShowAllButton": "No layer currently visible. Activate the button above to see all the legends.",
+          "noLayersVisibleWithShowAllButtonButZoom": "No layer currently visible. If you zoom in the map, some layers will appear OR activate the button above to see all the legends.",
+          "noLayersVisible": "No layers currently visible.",
+          "noLayersVisibleButZoom": "No layers currently visible. However, if you zoom in the map, some layers will appear."
         }
       },
       "download": {
@@ -240,7 +298,10 @@
             "title": "Title",
             "type": "Type",
             "url": "URL",
-            "metadataUrl": "Metadata"
+            "metadataUrl": "Metadata",
+            "name": "Layer name",
+            "urlInfo": "URL - WMS/WFS",
+            "downloadUrl": "Data download"
           },
           "type": {
             "layer": "Layer",
@@ -294,6 +355,8 @@
           "tooltip": "Based on every search source, show the summary of the pointer location. Use F2 to activate/desactivate."
         },
         "searchSources": {
+          "selectAll": "Select All",
+          "unselectAll": "Unselect All",
           "settings": {
             "results type": "Results type",
             "ecmax": "Maximum deviation",
@@ -316,6 +379,8 @@
         "polygon": "Polygon"
       },
       "targetHtmlUrl": "Open the external link",
+      "searchByCoord": "Search by coordinates",
+      "searchByName": "Search by name",
       "timeFilter": {
         "date": "Date",
         "endDate": "End Date",
@@ -335,6 +400,7 @@
         "layer": "Layer",
         "goSearch": "Launch research",
         "removeLayer": "Remove results",
+        "exportLayer": "Export results",
         "clearForm": "Remove draw",
         "clearSearch": "Reset",
         "Address": "Addresses",

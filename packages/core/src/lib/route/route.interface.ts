@@ -8,10 +8,9 @@ export interface RouteServiceOptions {
   visibleOffLayersKey?: boolean | string;
   directionsCoordKey?: boolean | string;
   toolKey?: boolean | string;
-  llcKKey?: boolean | string;
-  llcAKey?: boolean | string;
-  llcVKey?: boolean | string;
-  llcRKey?: boolean | string;
   wmsUrlKey?: boolean | string;
-  layersKey?: boolean | string;
+  wmsLayersKey?: boolean | string;
+  wmtsUrlKey?: boolean | string;
+  wmtsLayersKey?: boolean | string;
+  vectorKey?: boolean | string;
 }
