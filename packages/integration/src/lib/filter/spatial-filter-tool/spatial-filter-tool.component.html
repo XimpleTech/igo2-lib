@@ -15,16 +15,19 @@
     [zone]="zone"
     [loading]="loading"
     [store]="store"
-    [layers]="layers"
+    [layers]="activeLayers"
+    [thematicLength]="thematicLength"
     (radiusEvent)="radius = $event"
     (freehandControl)="freehandDrawIsActive = $event"
     (drawZoneEvent)="zone = $event"
     (itemTypeChange)="itemType = $event"
     (thematicChange)="thematics = $event"
     (toggleSearch)="getOutputToggleSearch()"
-    (clearButtonEvent)="layers = $event"
+    (clearButtonEvent)="clearMap()"
     (clearSearchEvent)="getOutputClearSearch()"
-    (export)="activateExportTool()">
+    (export)="activateExportTool()"
+    (openWorkspace)="activateWorkspace()"
+    >
   </igo-spatial-filter-item>
 </igo-panel>
 

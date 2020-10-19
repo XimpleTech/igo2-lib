@@ -1,5 +1,5 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { MatIconRegistry } from '@angular/material';
+import { Component, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
 import { Observable, forkJoin } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -20,7 +20,8 @@ import {
   SpatialFilterQueryType,
   SpatialFilterThematic,
   Layer,
-  createOverlayMarkerStyle
+  createOverlayMarkerStyle,
+  ExportOptions
 } from '@igo2/geo';
 import { EntityStore, ToolComponent } from '@igo2/common';
 import olFormatGeoJSON from 'ol/format/GeoJSON';
@@ -30,6 +31,7 @@ import { ImportExportState } from './../../import-export/import-export.state';
 import * as olstyle from 'ol/style';
 import { MessageService, LanguageService } from '@igo2/core';
 import { ToolState } from '../../tool/tool.state';
+import { WorkspaceState } from '../../workspace/workspace.state';
 
 /**
  * Tool to apply spatial filter
@@ -58,11 +60,14 @@ export class SpatialFilterToolComponent {
   @Input() freehandDrawIsActive: boolean;
 
   public layers: Layer[] = [];
+  public activeLayers: Layer[] = [];
 
   public queryType: SpatialFilterQueryType;
   public thematics: SpatialFilterThematic[];
   public zone: Feature;
   public radius: number;
+
+  public iterator = 1;
 
   public selectedFeature$: BehaviorSubject<Feature> = new BehaviorSubject(
     undefined
@@ -76,6 +81,8 @@ export class SpatialFilterToolComponent {
 
   public loading = false;
 
+  public thematicLength = 0;
+
   constructor(
     private matIconRegistry: MatIconRegistry,
     private spatialFilterService: SpatialFilterService,
@@ -85,7 +92,9 @@ export class SpatialFilterToolComponent {
     private messageService: MessageService,
     private languageService: LanguageService,
     private importExportState: ImportExportState,
-    private toolState: ToolState
+    private toolState: ToolState,
+    private workspaceState: WorkspaceState,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   getOutputType(event: SpatialFilterType) {
@@ -102,8 +111,41 @@ export class SpatialFilterToolComponent {
   }
 
   activateExportTool() {
-    this.importExportState.setSelectedTab(1);
+    const ids = [];
+    for (const layer of this.layers) {
+      ids.push(layer.id);
+    }
+    this.importExportState.setMode('export');
+    this.importExportState.setsExportOptions({ layers: ids } as ExportOptions);
     this.toolState.toolbox.activateTool('importExport');
+  }
+
+  activateWorkspace() {
+    let layerToOpenWks;
+    this.workspaceState.store.entities$.subscribe(() => {
+      if (this.activeLayers.length && this.workspaceState.store.all().length > 1) {
+        if (this.itemType === SpatialFilterItemType.Thematics) {
+            for (const thematic of this.thematics) {
+              if (!thematic.zeroResults) {
+                layerToOpenWks = this.activeLayers.find(layer => layer.title.includes(thematic.name + ' ' + this.iterator.toString()));
+                break;
+              }
+          }
+        } else {
+            const title = 'Adresses ' + this.iterator.toString();
+            this.activeLayers.forEach((layer) => {
+              if (layer.title.includes(title)) {
+                layerToOpenWks = layer;
+              }
+            });
+        }
+
+        if (layerToOpenWks) {
+          this.workspaceState.workspacePanelExpanded = true;
+          this.workspaceState.setActiveWorkspaceByLayerId(layerToOpenWks.id);
+        }
+      }
+    });
   }
 
   private loadFilterList() {
@@ -133,22 +175,34 @@ export class SpatialFilterToolComponent {
     this.queryType = undefined;
   }
 
+  clearMap() {
+    this.layers = [];
+    this.activeLayers = [];
+    this.thematicLength = 0;
+    this.iterator = 1;
+    if (this.type !== SpatialFilterType.Predefined) {
+      this.zone = undefined;
+    }
+  }
+
   private loadThematics() {
     this.loading = true;
     let zeroResults = true;
+    let thematics;
     this.tryAddFeaturesToMap([this.zone]);
-    if (!this.thematics) {
+    if (this.itemType !== SpatialFilterItemType.Thematics) {
       const theme: SpatialFilterThematic = {
         name: ''
       };
-      this.thematics = [theme];
+      thematics = [theme];
+    } else {
+      thematics = this.thematics;
     }
     if (this.type === SpatialFilterType.Polygon) {
       this.radius = undefined;
     }
-
     const observables$: Observable<Feature[]>[] = [];
-    this.thematics.forEach(thematic => {
+    thematics.forEach(thematic => {
       observables$.push(
         this.spatialFilterService
           .loadFilterItem(
@@ -177,9 +231,13 @@ export class SpatialFilterToolComponent {
 
               this.tryAddPointToMap(featuresPoint, idPoint);
               this.tryAddLayerToMap(featuresLinePoly, idLinePoly);
-
               if (features.length) {
                 zeroResults = false;
+                this.thematicLength += 1;
+                thematic.zeroResults = false;
+                this.cdRef.detectChanges();
+              } else {
+                thematic.zeroResults = true;
               }
 
               if (features.length >= 10000) {
@@ -230,16 +288,21 @@ export class SpatialFilterToolComponent {
     for (const feature of features) {
       if (this.type === SpatialFilterType.Predefined) {
         for (const layer of this.map.layers) {
-          if (layer.options._internal && layer.options._internal.code === feature.properties.code) {
+          if (
+            layer.options._internal &&
+            layer.options._internal.code === feature.properties.code
+          ) {
             return;
           }
-          if (layer.title.startsWith('Zone')) {
+          if (layer.title?.startsWith('Zone')) {
             this.map.removeLayer(layer);
           }
         }
+      } else {
+        this.activeLayers = [];
       }
-      for (const layer of this.map.layers) {
-        if (layer.title.startsWith('Zone')) {
+      for (const layer of this.layers) {
+        if (layer.title?.startsWith('Zone')) {
           i++;
         }
       }
@@ -289,9 +352,16 @@ export class SpatialFilterToolComponent {
           const featuresOl = features.map(f => {
             return featureToOl(f, this.map.projection);
           });
+          if (this.type !== SpatialFilterType.Predefined) {
+            const type = this.type === SpatialFilterType.Point ? 'Cercle' : 'Polygone';
+            featuresOl[0].set('nom', 'Zone', true);
+            featuresOl[0].set('type', type, true);
+          }
           dataSource.ol.addFeatures(featuresOl);
           this.map.addLayer(olLayer);
           this.layers.push(olLayer);
+          this.activeLayers.push(olLayer);
+          this.cdRef.detectChanges();
         });
     }
   }
@@ -302,12 +372,12 @@ export class SpatialFilterToolComponent {
    */
   private tryAddPointToMap(features: Feature[], id) {
     let i = 1;
-    if (features.length > 1) {
+    if (features.length) {
       if (this.map === undefined) {
         return;
       }
-      for (const layer of this.map.layers) {
-        if (layer.title.startsWith(features[0].meta.title)) {
+      for (const layer of this.layers) {
+        if (layer.title?.startsWith(features[0].meta.title)) {
           i++;
         }
       }
@@ -340,7 +410,6 @@ export class SpatialFilterToolComponent {
           const featuresOl = features.map(feature => {
             return featureToOl(feature, this.map.projection);
           });
-
           dataSource.ol.source.addFeatures(featuresOl);
           if (this.map.layers.find(layer => layer.id === olLayer.id)) {
             this.map.removeLayer(
@@ -350,8 +419,11 @@ export class SpatialFilterToolComponent {
             olLayer.title = (features[0].meta.title + ' ' + i) as string;
             olLayer.options.title = olLayer.title;
           }
+          this.iterator = i;
           this.map.addLayer(olLayer);
           this.layers.push(olLayer);
+          this.pushLayer(olLayer);
+          this.cdRef.detectChanges();
         });
     }
   }
@@ -383,7 +455,7 @@ export class SpatialFilterToolComponent {
         return;
       }
       for (const layer of this.map.layers) {
-        if (layer.title.startsWith(features[0].meta.title)) {
+        if (layer.title?.startsWith(features[0].meta.title)) {
           i++;
         }
       }
@@ -413,6 +485,8 @@ export class SpatialFilterToolComponent {
           }
           this.map.addLayer(olLayer);
           this.layers.push(olLayer);
+          this.pushLayer(olLayer);
+          this.cdRef.detectChanges();
         });
     }
   }
@@ -424,6 +498,19 @@ export class SpatialFilterToolComponent {
         featureProjection: this.map.projection
       });
       moveToOlFeatures(this.map, [olFeature], FeatureMotion.Zoom);
+    }
+  }
+
+  pushLayer(layer) {
+    let push = true;
+    for (const lay of this.activeLayers) {
+      if (lay.id === layer.id) {
+        push = false;
+      }
+    }
+
+    if (push === true) {
+      this.activeLayers.push(layer);
     }
   }
 }

@@ -1,7 +1,8 @@
 import { Injectable, Optional } from '@angular/core';
 
 import { RouteService, ConfigService, MessageService } from '@igo2/core';
-import { IgoMap, Layer } from '@igo2/geo';
+import { Layer } from '@igo2/geo';
+import type { IgoMap } from '@igo2/geo';
 
 import { ContextService } from '../../context-manager/shared/context.service';
 
@@ -85,7 +86,9 @@ export class ShareMapService {
     const contextLayersID = [];
     const contextLayers = this.contextService.context$.value.layers;
     for (const contextLayer of contextLayers) {
-      contextLayersID.push(contextLayer.id || contextLayer.source.id);
+      if ( typeof contextLayer.id !== 'undefined'  ||  typeof contextLayer.source !== 'undefined' ) {
+        contextLayersID.push(contextLayer.id || contextLayer.source.id);
+      }
     }
 
     const addedLayersQueryParamsWms = this.makeLayersByService(layers, contextLayersID, 'wms');

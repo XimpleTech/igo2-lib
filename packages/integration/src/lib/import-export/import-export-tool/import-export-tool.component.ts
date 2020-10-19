@@ -1,10 +1,12 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 
 import { ToolComponent } from '@igo2/common';
+import type { WorkspaceStore } from '@igo2/common';
 import { IgoMap, ExportOptions } from '@igo2/geo';
 
 import { MapState } from '../../map/map.state';
 import { ImportExportState } from '../import-export.state';
+import { WorkspaceState } from '../../workspace/workspace.state';
 
 @ToolComponent({
   name: 'importExport',
@@ -24,29 +26,34 @@ export class ImportExportToolComponent implements OnInit {
    */
   get map(): IgoMap { return this.mapState.map; }
 
+  get workspaceStore(): WorkspaceStore {
+    return this.workspaceState.store;
+  }
+
   public importExportType$: string = 'layer';
 
   constructor(
     private mapState: MapState,
-    public importExportState: ImportExportState
+    public importExportState: ImportExportState,
+    private workspaceState: WorkspaceState,
   ) {}
 
   ngOnInit(): void {
-    this.selectedTab();
+    this.selectMode();
   }
 
-  private selectedTab() {
-    const userSelectedTab = this.importExportState.selectedTab$.value;
-    if (userSelectedTab !== undefined) {
-      this.importExportState.setSelectedTab(userSelectedTab);
+  private selectMode() {
+    const userSelectedMode = this.importExportState.selectedMode$.value;
+    if (userSelectedMode !== undefined) {
+      this.importExportState.setMode(userSelectedMode);
     } else {
-      this.importExportState.setSelectedTab(0);
+      this.importExportState.setMode('import');
 
     }
   }
 
-  public tabChanged(tab: number) {
-    this.importExportState.setSelectedTab(tab);
+  public modeChanged(mode: string) {
+    this.importExportState.setMode(mode);
   }
 
   public exportOptionsChange(exportOptions: ExportOptions) {

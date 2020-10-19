@@ -1,6 +1,6 @@
 <div class="import-export-toggle mat-typography">
   <mat-button-toggle-group
-        [value]="activeImportExport"
+        [value]="selectedMode"
         (change)="onImportExportChange($event)">
         <mat-button-toggle [value]="'import'">
           {{'igo.geo.importExportForm.importTabTitle' | translate}}
@@ -11,7 +11,7 @@
   </mat-button-toggle-group>
 </div>
 
-<form class="igo-form" *ngIf="activeImportExport === 'import'">
+<form class="igo-form" *ngIf="selectedMode === 'import'">
   <div class="igo-input-container">
     <mat-form-field>
       <input
@@ -36,7 +36,7 @@
       (change)="importFiles($event.target.files)">
   </div>
 </form>
-<section class="mat-typography" *ngIf="activeImportExport === 'import'">
+<section class="mat-typography" *ngIf="selectedMode === 'import'">
   <h4>{{'igo.geo.importExportForm.importClarifications' | translate}}</h4>
   <ul>
     <li>{{'igo.geo.importExportForm.importSizeMax' | translate: {size: fileSizeMb} }}</li>
@@ -45,18 +45,38 @@
   </ul>
 </section>
 
-<section class="mat-typography" *ngIf="(exportableLayers$ | async).length === 0 && activeImportExport === 'export'">
+<section class="mat-typography" *ngIf="(exportableLayers$ | async).length === 0 && selectedMode === 'export'">
   <h4>{{'igo.geo.importExportForm.exportNoLayersExportable' | translate}}</h4>
 </section>
 
-<form class="igo-form" [formGroup]="form" *ngIf="(exportableLayers$ | async).length > 0 && activeImportExport === 'export'">
+<form class="igo-form" [formGroup]="form" *ngIf="(exportableLayers$ | async).length > 0 && selectedMode === 'export'">
   <div class="igo-input-container">
     <mat-form-field>
       <mat-label>{{'igo.geo.importExportForm.exportLayerPlaceholder' | translate}}</mat-label>
-      <mat-select
-        [formControl]="form.controls.layer" multiple>
-        <mat-option *ngFor="let layer of (exportableLayers$ | async)" [value]="layer.id">
-          {{layer.title}}
+      <mat-select 
+        [(value)]="layers" multiple>
+        <mat-select-trigger>
+          {{layers.length ? getLayerTitleById(layers[0]) : ''}}
+          <span *ngIf="layers.length > 1" class="export-select-trigger">
+            (+{{layers.length - 1}} {{(layers?.length === 2 ? 'igo.geo.importExportForm.other' : 'igo.geo.importExportForm.others') | translate }})
+          </span>
+        </mat-select-trigger>        
+        <mat-option 
+          *ngFor="let layer of (exportableLayers$ | async)"
+          [ngClass]="{'igo-export-layer-mat-option': layerHasSelectedFeatures(layer)}"
+          [value]="layer.id"
+          (click)="$event.stopPropagation()">
+          <p mat-line>{{layer.title}}</p>
+          <p mat-line>
+            <mat-slide-toggle
+              *ngIf="layerHasSelectedFeatures(layer)"
+                [labelPosition]="'after'"
+                (click)="onlySelectedClick($event,layer.id)"
+                (checked)="inLayersIdToExportSelectionOnly(layer)"
+                (change)="onlySelected($event,layer.id)">
+                <small>{{'igo.geo.importExportForm.exportSelectedFeature' | translate}}</small>
+            </mat-slide-toggle>
+          </p>
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -85,6 +105,20 @@
     </mat-form-field>
   </div>
 
+  <div class="igo-input-container" *ngIf="form.value.format === 'CSVcomma' || form.value.format === 'CSVsemicolon'">
+    <mat-form-field>
+      <mat-label>{{'igo.geo.importExportForm.encodingPlaceholder' | translate}}</mat-label>
+      <mat-select
+        formControlName="encoding">
+        <ng-container *ngIf="(encodings$ | async).length !== 0">
+          <mat-option *ngFor="let encoding of (encodings$ | async) | keyvalue" [value]="encoding.key">
+            {{'igo.geo.export.encoding.' + encoding.value | translate}}
+          </mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
   <div class="export-options mat-typography" *ngIf="form.value.format !== 'URL'">
     <mat-slide-toggle
         formControlName="featureInMapExtent"
@@ -99,7 +133,7 @@
       type="button"
       [disabled]="!form.valid || (loading$ | async)"
       (click)="handleExportFormSubmit(form.value)">
-      {{form.value.format !== 'URL'  ? ('igo.geo.importExportForm.exportButton' | translate): ('igo.geo.importExportForm.exportButtonLink' | translate)}}
+      {{form.value.format !== 'URL'  ? ('igo.geo.importExportForm.exportButton' | translate): (form.value.layers.length > 1  ? ('igo.geo.importExportForm.exportButtonLinks' | translate): ('igo.geo.importExportForm.exportButtonLink' | translate))}}
     </button>
     <igo-spinner [shown]="loading$ | async"></igo-spinner>
   </div>

@@ -8,7 +8,9 @@
         "layer.removeFromMapOutRange": "Remove from map. The layer is not visible at the current scale. Please zoom in/out",
         "group.addToMap": "Add all layers from this group to map",
         "group.removeFromMap": "Remove all layers from this group to map",
-        "baseLayers": "Baselayers"
+        "baseLayers": "Baselayers",
+        "unavailableTitle": "Catalog unavailable",
+        "unavailable": "The catalog '{{value}}' is unavailable at the moment or you don't have the required permissions."
       },
       "clickOnMap": {
         "clickedFeature": "Clicked Feature"
@@ -60,6 +62,12 @@
           "text": "Failed to export",
           "title": "Failed to export features"
         },
+        "popupBlocked": {
+          "text": "</br>Enable the popup in your browser. </br>For Chrome and Edge, on the right into the Address Bar.</br>{{extraMessage}}",
+          "selectAgain": "Fix it and re-select an output format.",
+          "retry": "Please retry to export",
+          "title": "Popup blocked by your browser"
+        },
         "success": {
           "text": "Features have been exported.",
           "title": "Features export success"
@@ -73,24 +81,33 @@
           "CSVcomma": "CSV (comma delimited)",
           "CSVsemicolon": "CSV (semicolon delimited)",
           "URL": "URL"
+        },
+        "encoding": {
+          "LATIN1": "LATIN-1",
+          "UTF8": "UTF-8"
         }
       },
       "importExportForm": {
         "exportButton": "Export",
         "exportButtonLink": "Open the link",
+        "exportButtonLinks": "Open the links",
         "exportFormatPlaceholder": "Format",
         "exportLayerPlaceholder": "Layer",
         "exportFileNamePlaceholder": "Filename",
+        "encodingPlaceholder": "Encoding",
         "exportTabTitle": "Export",
         "exportFeatureInExtent": "Export only features in map extent",
         "exportNoLayersExportable": "There is no exportable layer in your map",
+        "exportSelectedFeature": "Export only selected features",
         "importButton": "Import",
         "importProjPlaceholder": "Coordinate system",
         "importTabTitle": "Import",
         "importClarifications": "Clarifications",
         "importSizeMax": "The file size limit is {{size}} Mb",
         "importFormatAuthorized": "Formats authorized: geojson, kml, gpx, gml, shapefile",
-        "importShpZip": "Shapefiles must be zipped."
+        "importShpZip": "Shapefiles must be zipped.",
+        "other": "other",
+        "others": "others"
       },
       "operators": {
         "caseSensitive": "Case sensitive",
@@ -153,6 +170,7 @@
       "layer": {
         "hideLayer": "Hide Layer",
         "lowerLayer": "Bring layer backward",
+        "hideSelectedLayers": "Hide selected layers",
         "filterLowerLayer": "The backward movement is always done according to the order of the map!",
         "filterPlaceholder": "Filter the layers list",
         "activateSelectionMode": "Activate multiple selection mode",
@@ -167,6 +185,7 @@
         "removeLayer": "Remove this layer from the map",
         "showFeaturesList": "Show features list",
         "showLayer": "Show Layer",
+        "showSelectedLayers": "Show selected layers",
         "subsetLayersListKeyword": "Subset the layers's list by title or type (wms, wfs,...)",
         "deleteKeyword": "Delete the keyword",
         "subsetLayersListOnlyVisible": "Subset the layers's list by visibility",
@@ -285,6 +304,7 @@
       },
       "search": {
         "placeholder": "Search for a localisation or a layer",
+        "emptyType.placeholder": "Please choose a search type",
         "feature.title": "Localisation",
         "feature.placeholder": "Search for a place localisation",
         "layer.title": "Layer",
@@ -335,7 +355,8 @@
             "place": "Place",
             "sumi": "SUMI mark",
             "km": "Mileage mark",
-            "entreprise": "Entreprise"
+            "entreprise": "Entreprise",
+            "cadastre": "Cadastre"
           },
           "restrictExtent": {
             "map": "À l'étendue de la carte",
@@ -381,10 +402,13 @@
       "targetHtmlUrl": "Open the external link",
       "searchByCoord": "Search by coordinates",
       "searchByName": "Search by name",
+      "seeRouting": "See routing",
       "timeFilter": {
         "date": "Date",
         "endDate": "End Date",
-        "startDate": "Start Date"
+        "startDate": "Start Date",
+        "hour": "Hour",
+        "minute": "Minute"
       },
       "spatialFilter": {
         "predefined": "Predefined Zone",
@@ -418,7 +442,9 @@
           "culturel": "Cultural",
           "education": "Education",
           "sante": "Health",
-          "securite": "Security"
+          "securite": "Security",
+          "sepaq": "SEPAQ",
+          "transport": "Transportation"
         }
       },
       "terrapi": {
@@ -434,6 +460,10 @@
         "hydro": "Hydrography",
         "routes": "Roads",
         "bati": "Buildings",
+        "batiment": "Buildings",
+        "camping": "Camping",
+        "equipement": "Equipment",
+        "commun": "Public",
         "geographie": "Natural sites",
         "parc": "Parks",
         "secteur": "Sector",
@@ -514,8 +544,18 @@
         "ogcFilter.close": "Close",
         "ogcFilter.title": "Filters",
         "ogcFilter.tooltip": "Apply filters",
-        "wfsDownload.title": "Download",
-        "wfsDownload.tooltip": "Download"
+        "download.title": "Download",
+        "download.tooltip": "Download",
+        "inMapExtent.title": "Show records in map extent only",
+        "inMapExtent.active.tooltip": "Show records in map extent only",
+        "inMapExtent.inactive.tooltip": "Show all records",
+        "zoomAuto.title": "Zoom auto",
+        "zoomAuto.tooltip": "Zoom auto",
+        "selected.title": "Show selected records only",
+        "selected.tooltip": "Show selected records only",
+        "clearSelection.title": "Deselect all",
+        "clearSelection.tooltip": "Deselect all records"
+
       },
       "network": {
         "online": {
